@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Deji from '../assets/images/deji.jpg';
+// import Deji from '../assets/images/deji.jpg';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoCloseSharp } from 'react-icons/io5';
 import mobilemenu from '../../constants/index.js';
@@ -31,7 +31,7 @@ const Navbar = () => {
     <div>
       <div className="flex mobile-nav-box px-[1.2rem] h-[12vh] items-center bg-[#f5f5f5] justify-between">
         <div className="flex gap-2 items-center">
-          <img src={Deji} alt="profile" className="logo" />
+          {/* <img src={Deji} alt="profile" className="logo" /> */}
           <p className="text-[1rem] text-[#1f1e1e]">Ayodeji Olupinla</p>
         </div>
         <div onClick={handleClick} className="cursor-pointer">
