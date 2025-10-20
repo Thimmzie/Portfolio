@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: Montserrat;
-  src: url('../src/assets/font/Montserrat-Bold.ttf');
+  src: url('../src/assets/font/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf');
 }
 @import 'tailwindcss';
 
@@ -16,7 +16,7 @@
 }
 html,
 body {
-  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Nunito Sans', sans-serif; */
   scroll-behavior: smooth;
   overflow-x: hidden !important;
   max-width: 100%;
@@ -44,4 +44,48 @@ body {
 .mobile-nav-box {
   display: flex;
   justify-content: space-between;
+}
+.cta-btn {
+  position: relative;
+  background: #1f4282;
+  color: #fff;
+  overflow: hidden;
+}
+
+.cta-btn::before {
+  width: 0;
+  height: 4.5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #030101;
+  transition: all 0.35s;
+  content: '';
+  z-index: 2;
+}
+
+.cta-btn::after {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0.5rem;
+  background-color: #182f5a;
+  transform: translate(0, -100%);
+  transition: all 0.35s;
+  content: attr(data-hover);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-btn:hover::before {
+  width: 100%;
+}
+
+.cta-btn:hover::after {
+  transform: translate(0, 0);
 }

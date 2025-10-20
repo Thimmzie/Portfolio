@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-// import Deji from '../assets/images/deji.jpg';
+import Deji from '../assets/images/deji.jpg';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoCloseSharp } from 'react-icons/io5';
 import mobilemenu from '../../constants/index.js';
@@ -29,36 +29,73 @@ const Navbar = () => {
   }, [sidemenu]);
   return (
     <div>
-      <div className="flex mobile-nav-box px-[1.2rem] h-[12vh] items-center bg-[#f5f5f5] justify-between">
-        <div className="flex gap-2 items-center">
-          {/* <img src={Deji} alt="profile" className="logo" /> */}
-          <p className="text-[1rem] text-[#1f1e1e]">Ayodeji Olupinla</p>
+      <nav>
+        <div className="flex mobile-nav-box px-[1.2rem] h-[12vh] items-center bg-[#f5f5f5] justify-between sm:px-[1.8rem] lg:px-[2.5rem]">
+          <div className="flex gap-2 items-center">
+            <img src={Deji} alt="profile" className="logo" />
+            <p className="text-[1.2rem] text-[#1f1e1e] lg:text-[1rem]">
+              Ayodeji Olupinla
+            </p>
+          </div>
+          <div onClick={handleClick} className="cursor-pointer block lg:hidden">
+            {!sidemenu ? (
+              <GiHamburgerMenu size={25} />
+            ) : (
+              <IoCloseSharp size={29} />
+            )}
+          </div>
+          <div className="hidden lg:block">
+            <ul
+              ref={menuRef}
+              className="bg-[#f5f5f5] p-4 mobile flex gap-[2rem]"
+            >
+              {mobilemenu.map((nav) => (
+                <li key={nav.id} className="py-2">
+                  <a
+                    className="text-[1rem] text-[#1b1b1b] font-[500] hover:text-[#345186] transition-[1.2s]"
+                    href={`#${nav.id}`}
+                  >
+                    {nav.title}
+                  </a>
+                </li>
+              ))}
+
+              <button className="bg-[#1f4282] w-[20rem] h-[7vh] text-[white] rounded-4xl mt-[2rem] reach-btn block lg:hidden">
+                <a href="#">Reach out to me</a>
+              </button>
+            </ul>
+          </div>
+          <button
+            className="bg-[#1f4282] w-[15rem] h-[7vh] rounded-4xl  reach-btn hidden lg:block hover:cursor-pointer cta-btn"
+            data-hover="Go Ahead 😎"
+          >
+            <a href="#">Reach out to me</a>
+          </button>
         </div>
-        <div onClick={handleClick} className="cursor-pointer">
-          {!sidemenu ? (
-            <GiHamburgerMenu size={25} />
-          ) : (
-            <IoCloseSharp size={29} />
+        <div className="block lg:hiden">
+          {sidemenu && (
+            <ul
+              ref={menuRef}
+              className="bg-[#f5f5f5] p-4 mobile block lg:hidden"
+            >
+              {mobilemenu.map((nav) => (
+                <li key={nav.id} className="py-2">
+                  <a
+                    className="text-[1.2rem] text-[#1b1b1b] font-[500]"
+                    href={`#${nav.id}`}
+                  >
+                    {nav.title}
+                  </a>
+                </li>
+              ))}
+
+              <button className="bg-[#1f4282] w-[20rem] h-[7vh] text-[white] rounded-4xl mt-[2rem] reach-btn">
+                Reach out to me
+              </button>
+            </ul>
           )}
         </div>
-      </div>
-      {sidemenu && (
-        <ul ref={menuRef} className="bg-[#f5f5f5] p-4 mobile">
-          {mobilemenu.map((nav) => (
-            <li key={nav.id} className="py-2">
-              <a
-                className="text-[1.2rem] text-[#1b1b1b] font-[500]"
-                href={`#${nav.id}`}
-              >
-                {nav.title}
-              </a>
-            </li>
-          ))}
-          <button className="bg-[#1f4282] w-[20rem] h-[7vh] text-[white] rounded-4xl mt-[2rem] reach-btn">
-            Reach out to me
-          </button>
-        </ul>
-      )}
+      </nav>
     </div>
   );
 };
