@@ -92,3 +92,12 @@ body {
 .cta-btn:active {
   transform: scale(0.96);
 }
+.greeting-container {
+  transform-origin: bottom center;
+  position: relative;
+  z-index: 1000;
+}
+.pleasantries-text {
+  display: block;
+  will-change: transform, opacity;
+}
