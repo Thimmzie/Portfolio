@@ -20,7 +20,7 @@ const Navbar = () => {
         {
           y: 0,
           opacity: 1,
-          duration: 0.8,
+          duration: 1.2,
           ease: 'expo.out',
           stagger: 0.2,
         }

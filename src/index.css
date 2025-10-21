@@ -89,3 +89,6 @@ body {
 .cta-btn:hover::after {
   transform: translate(0, 0);
 }
+.cta-btn:active {
+  transform: scale(0.96);
+}
