@@ -90,7 +90,7 @@ const Navbar = () => {
               ))}
 
               <button className="bg-[#1f4282] w-[20rem] h-[7vh] text-[white] rounded-4xl mt-[2rem] reach-btn">
-                Reach out to me
+                Reach out to me yeahhh
               </button>
             </ul>
           )}
