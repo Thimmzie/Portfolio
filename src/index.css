@@ -6,22 +6,29 @@
 } */
 
 @font-face {
-  font-family: Montserrat;
+  font-family: Nunito;
   src: url('../src/assets/font/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf');
+}
+@font-face {
+  font-family: 'FiraSans';
+  src: url('../src/assets/font/FiraSans-BoldItalic.ttf') format('truetype');
 }
 @import 'tailwindcss';
 
 @theme {
   /* --color-purple: #8a66f1; */
+
+  --font-nunito: 'NunitoSans', sans-serif;
+  --font-fira: 'FIraSans', sans-serif;
 }
 html,
 body {
-  /* font-family: 'Nunito Sans', sans-serif; */
+  font-family: var(--font-nunito);
   scroll-behavior: smooth;
   overflow-x: hidden !important;
   max-width: 100%;
   /* background-color: #191f30; */
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
   font-weight: bold;
 }
 /* .gradient {
@@ -35,6 +42,61 @@ body {
   -webkit-text-fill-color: transparent;
   letter-spacing: 1rem;
 } */
+/* .hamburger {
+  color: #e7e7e7;
+  background-color: #000000;
+  border-radius: 50%;
+  padding: 0.8rem;
+  width: 3rem;
+  height: 3rem;
+}
+.hamburger-close {
+  color: #e7e7e7;
+  background-color: #383838;
+  border-radius: 50%;
+  padding: 0.8rem;
+  width: 3rem;
+  height: 3rem;
+} */
+.bar {
+  display: block;
+  width: 20px;
+  height: 3px;
+  /* margin: 0 auto; */
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #d1d0d0;
+  transform-origin: center;
+}
+.hamburger {
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: #252525;
+  border-radius: 50%;
+  padding: 0.8rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(3px) rotate(45deg);
+}
+.hamburger.active .bar:nth-child(2) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+.menu-div {
+  background-image: linear-gradient(rgba(0, 0, 0, 1.5), rgba(0, 0, 0, 0.6)),
+    url('./assets/images/dejii.JPG');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 .logo {
   width: 3rem;
   height: 3rem;
@@ -47,18 +109,17 @@ body {
 }
 .cta-btn {
   position: relative;
-  background: #1f4282;
+  background: #252525;
   color: #fff;
   overflow: hidden;
 }
-
 .cta-btn::before {
   width: 0;
   height: 4.5px;
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: #030101;
+  background-color: #4e6692;
   transition: all 0.35s;
   content: '';
   z-index: 2;
@@ -92,9 +153,12 @@ body {
 .cta-btn:active {
   transform: scale(0.96);
 }
+
 .greeting-container {
   transform-origin: bottom center;
-  position: relative;
+  position: fixed;
+  left: 0;
+  right: 0;
   z-index: 1000;
 }
 .pleasantries-text {

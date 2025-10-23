@@ -1,8 +1,8 @@
 const Mobilemenu = [
-  { id: 'home', title: 'Home' },
-  { id: 'about', title: 'About Me' },
-  { id: 'project', title: 'Projects' },
-  { id: 'article', title: 'Articles' },
+  { id: 'home', title: 'Home', path: '/' },
+  { id: 'about', title: 'About Me', path: '/about' },
+  { id: 'project', title: 'Projects', path: '/project' },
+  { id: 'article', title: 'Articles', path: '/article' },
   // { id: 'reachout', title: 'Reach out to me' },
 ];
 

@@ -50,7 +50,7 @@ const Greetings = () => {
   }, []);
   return (
     <div
-      className="bg-[#191f30] h-[100vh] flex flex-col items-center justify-center text-[2rem] md:text-[2.5rem] text-[white] lg:text-[3.5arem] greeting-container"
+      className="bg-[#000000] h-[100vh] flex flex-col items-center justify-center text-[2rem] md:text-[2.5rem] text-[white] lg:text-[3.5arem] greeting-container"
       ref={containerRef}
     >
       <span ref={textRef} className="pleasantries-text">

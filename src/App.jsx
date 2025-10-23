@@ -12,14 +12,15 @@ function App() {
     const timer = setTimeout(() => {
       gsap.to('.greeting-container', {
         y: '-100%',
-        scaleY: 0.1,
-        borderRadius: '0 0 10% 10%',
+        scale: 0.8,
+        opacity: 1,
+        borderRadius: '0 0 2% 2%',
         ease: 'power2.inOut',
-        duration: 0.5,
+        duration: 0.8,
         onComplete: () => setShowGreetings(false),
       });
       // setShowGreetings(false);
-    }, 3000);
+    }, 2700);
     return () => clearTimeout(timer);
   }, []);
 
