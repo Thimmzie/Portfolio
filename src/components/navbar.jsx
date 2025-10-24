@@ -8,24 +8,56 @@ import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [sidemenu, setSidemenu] = useState(false);
-  const menuRef = useRef(null);
+  const menuRef = useRef();
+  const tl = useRef();
 
   const handleClick = () => {
     setSidemenu(!sidemenu);
   };
   useEffect(() => {
-    if (sidemenu && menuRef.current) {
-      gsap.fromTo(
-        menuRef.current.querySelectorAll('li, .reach-btn'),
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: 'expo.out',
-          stagger: 0.2,
-        }
-      );
+    // if (sidemenu && menuRef.current) {
+    //   gsap.fromTo(
+    //     menuRef.current.querySelectorAll('li, .reach-btn'),
+    //     { y: 50, opacity: 0 },
+    //     {
+    //       y: 0,
+    //       opacity: 1,
+    //       duration: 1.2,
+    //       ease: 'expo.out',
+    //       stagger: 0.2,
+    //     }
+    //   );
+    // }
+    gsap.fromTo(
+      '.ayo',
+      { y: 20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        ease: 'back.inOut',
+      }
+    );
+  }, [sidemenu]);
+
+  useEffect(() => {
+    tl.current = gsap.timeline({ paused: true })
+    .fromTo(
+      menuRef.current,
+      { opacity: 0, scale: 0.2, z: 100 },
+      {
+        opacity: 1,
+        scale: 1,
+        z: 0,
+        duration: 0.8,
+        ease: 'back.inOut',
+        delay: 0.3,
+      }
+    );
+  }, [sidemenu]);
+
+  useEffect(() => {
+    if (tl.current) {
+      sidemenu ? tl.current.play() : tl.current.reverse();
     }
   }, [sidemenu]);
   const location = useLocation();
@@ -39,19 +71,10 @@ const Navbar = () => {
           >
             <span className="bar"></span>
             <span className="bar"></span>
-            {/* {!sidemenu ? (
-              <HiOutlineMenuAlt4 size={22} className="hamburger" />
-            ) : (
-              <IoCloseSharp size={29} className="hamburger-close" />
-            )} */}
-          </div>
-          {/* <img src={Deji} alt="profile" className="logo" /> */}
-
           <div className="">
             <p className="text-[1.2rem] text-[#1f1e1e] lg:text-[1rem]">
               Ayodeji Olupinla
             </p>
-            {/* <p className="[font-family:var(--font-fira)] ">firagy</p> */}
           </div>
           <div className="lg:hidden text-[#f5f5f5]">hd</div>
           {/* <div>
@@ -100,7 +123,7 @@ const Navbar = () => {
         </div>
         <div>
           {sidemenu && (
-            <div className="block lg:hiden h-[100vh] z-[1000] absolute top-0 left-0 right-0 px-[1.2rem] pt-[1.7rem] menu-div">
+            <div className="block inset-0 h-[100vh] z-[1000] absolute top-0 left-0 right-0 px-[1.2rem] pt-[1.7rem] menu-div">
               <div className="flex items-center">
                 <div
                   onClick={handleClick}
@@ -116,12 +139,12 @@ const Navbar = () => {
                 </div> */}
               </div>
               <div className=" flex flex-col items-center">
-                <h1 className="text-[#ffff] [font-family:var(--font-fira)] text-[1.3rem] mt-[-2.5rem]  ayo">
+                <h1 className="text-[#ffff] [font-family:var(--font-fira)] text-[1.4rem] mt-[-2.5rem] ayo">
                   Ayodeji!
                 </h1>
                 <ul
                   ref={menuRef}
-                  className=" flex flex-col items-center mobile lg:hidden mt-[3.5rem]"
+                  className=" flex flex-col items-center mobile lg:hidden mt-[3.5rem] ul"
                 >
                   {mobilemenu.map((nav) => (
                     <li key={nav.id} className="py-2">

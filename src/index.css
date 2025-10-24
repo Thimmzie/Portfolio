@@ -96,6 +96,12 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  perspective: 1000px;
+}
+.ul {
+  opacity: 0;
+  transform: translateZ(100px) scale(0.8);
+  /* transition: opacity 0.3s; */
 }
 .logo {
   width: 3rem;
