@@ -40,9 +40,9 @@ const Greetings = () => {
     return () => {
       const container = containerRef.current;
       gsap.to(container, {
-        y: '-100%',
+        y: '0',
         scaleY: 0.1,
-        borderRadius: '0 0 10% 10%',
+        borderRadius: '0 0 0 0',
         ease: 'power2.inOut',
         duration: 0.5,
       });

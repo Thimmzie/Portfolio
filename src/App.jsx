@@ -10,12 +10,11 @@ function App() {
   const [showGreetings, setShowGreetings] = useState(true);
   useEffect(() => {
     const timer = setTimeout(() => {
-      gsap.to('.greeting-container', {
-        y: '-100%',
-        scale: 0.8,
-        opacity: 1,
-        borderRadius: '0 0 2% 2%',
-        ease: 'power2.inOut',
+      gsap.from('.greeting-container', {
+        z: '10',
+        scale: 0.2,
+        opacity: 0,
+        ease: 'back.inOut',
         duration: 0.8,
         onComplete: () => setShowGreetings(false),
       });

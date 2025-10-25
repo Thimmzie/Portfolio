@@ -90,19 +90,70 @@ body {
 .hamburger.active .bar:nth-child(2) {
   transform: translateY(-8px) rotate(-45deg);
 }
+
 .menu-div {
   background-image: linear-gradient(rgba(0, 0, 0, 1.5), rgba(0, 0, 0, 0.6)),
     url('./assets/images/dejii.JPG');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
   perspective: 1000px;
 }
-.ul {
-  opacity: 0;
-  transform: translateZ(100px) scale(0.8);
-  /* transition: opacity 0.3s; */
+@media (min-width: 640px) {
+  .menu-div {
+    background-image: linear-gradient(rgba(0, 0, 0, 1.5), rgba(0, 0, 0, 0.6)),
+      url('./assets/images/dejii.JPG');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    perspective: 1000px;
+  }
 }
+@media (min-width: 768px) {
+  .menu-div {
+    background-image: linear-gradient(rgba(0, 0, 0, 1.5), rgba(0, 0, 0, 0.6)),
+      url('./assets/images/dejii.JPG');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    perspective: 1000px;
+  }
+}
+.cont {
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+
+.ul {
+  transform: translateZ(700px);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.22, 0.8, 0.36, 1),
+    opacity 0.35s ease;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+.fly-in {
+  opacity: 1;
+  transform: translateZ(0);
+}
+.fly-out {
+  transform: translateZ(700px);
+  opacity: 0;
+}
+
+/* @keyframes flyIn {
+  0% {
+    transform: translateZ(200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+} */
 .logo {
   width: 3rem;
   height: 3rem;
