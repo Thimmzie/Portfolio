@@ -7,19 +7,18 @@ const hero = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-[3rem] mt-[3rem] w-full mb-[40rem]">
       <div className="px-[1.3rem]">
-        <p className="text-[#4c4c4c] pb-[1rem] text-[1.1rem]">Hi Founder,</p>
-        <h2 className="pb-[1rem] text-[#1a1919] text-[1.7rem] font-[800]">
+        <h4 className="text-[#4c4c4c] pb-[1rem] text-[1.1rem]">Hi Founder,</h4>
+        <h2 className="pb-[1rem] text-[#1a1919] text-[1.7rem] font-[900]">
           Looking to take your brand or project to the{' '}
-          <span className="text-[#455ce9] [font-family:var(--font-nunito)] tracking-wider italic font-extrabold">
+          <span className="text-[#455ce9] [font-family:var(--font-nunito)] tracking-wider font-extrabold">
             next level
           </span>
           ?
         </h2>
-        <h4 className="text-[#4c4c4c] text-[1.1rem]">
-          I help brands stand out in the digital era. Collaborately, we will set
-          the pace for what's ahead. I build modern, high-performing websites
-          that help you grow faster combining clean design, optimized speed, and
-          smart technology to turn your ideas into polished digital experiences.
+        <h4 className="text-[#4c4c4c] text-[1.1rem] text-justify leading-8">
+          I help brands stand out in the digital era. Together, we will set the
+          pace for what's ahead with modern, and high speed websites built for
+          performance and great SEO.
         </h4>
       </div>
       <div

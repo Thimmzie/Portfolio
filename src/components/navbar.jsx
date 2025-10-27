@@ -128,7 +128,7 @@ const Navbar = () => {
                   </li>
                 ))}
 
-                <button className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-3xl mt-[2rem] text-[1.1rem] lg:hidden reach-btn">
+                <button className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-full mt-[2rem] text-[1.1rem] lg:hidden reach-btn">
                   Get in touch
                 </button>
               </ul>

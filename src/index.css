@@ -146,8 +146,7 @@ body {
   background-color: black;
 }
 .menu-div {
-  background-image: linear-gradient(rgba(0, 0, 0, 1.5), rgba(0, 0, 0, 0.6)),
-    url('./assets/images/dejii.JPG');
+  background-color: black;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
