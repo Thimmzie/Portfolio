@@ -6,8 +6,8 @@
 } */
 
 @font-face {
-  font-family: Nunito;
-  src: url('../src/assets/font/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf');
+  font-family: Helvetica;
+  src: url('../src/assets/font/HelveticaNeueBold.otf');
 }
 @font-face {
   font-family: 'FiraSans';
@@ -18,12 +18,12 @@
 @theme {
   /* --color-purple: #8a66f1; */
 
-  --font-nunito: 'NunitoSans', sans-serif;
+  --font-helvetica: 'HelveticaNeue', sans-serif;
   --font-fira: 'FIraSans', sans-serif;
 }
 html,
 body {
-  font-family: var(--font-nunito);
+  font-family: var(--font-helvetica);
   scroll-behavior: smooth;
   overflow-x: hidden !important;
   max-width: 100%;
@@ -145,6 +145,38 @@ body {
 .hamburger-side.active:hover .bar-side:nth-child(2) {
   background-color: black;
 }
+@media (hover: hover) and (pointer: fine) {
+  .hamburger-side:hover {
+    background-color: #ececec;
+  }
+  .hamburger-side.active:hover .bar-side {
+    background-color: black;
+  }
+}
+
+/* Mobile / touch devices */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover entirely but preserve default look */
+  .hamburger-side {
+    background-color: rgb(43, 42, 42); /* your default */
+  }
+
+  /* When tapped (active), keep normal feedback */
+  .hamburger-side:active {
+    background-color: #ececec;
+  }
+
+  .hamburger-side.active:active .bar-side {
+    background-color: black;
+  }
+}
+
+/* Prevent lingering focus outlines / stuck states */
+.hamburger-side,
+.hamburger {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
 .menu-div {
   background-color: black;
   background-repeat: no-repeat;
@@ -218,59 +250,70 @@ body {
   justify-content: space-between;
 }
 .cta-btn {
-  position: relative;
-  background: #252525;
-  color: #fff;
-  overflow: hidden;
-  border: solid 1px black;
-}
-.cta-btn::before {
-  width: 0;
-  height: 4.5px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
   background-color: #000000;
-  transition: all 0.35s;
-  content: '';
-  z-index: 2;
+  color: #fff;
+  width: 25vw;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 2rem;
+  height: 7vh;
 }
+/* @media (min-width: 1024px) {
+  .cta-btn {
+    position: relative;
+    background: #252525;
+    color: #fff;
+    overflow: hidden;
+    border: solid 1px black;
+  }
+  .cta-btn::before {
+    width: 0;
+    height: 4.5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #000000;
+    transition: all 0.35s;
+    content: '';
+    z-index: 2;
+  }
 
-.cta-btn::after {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 0.5rem;
-  background-color: #ececec;
-  transform: translate(0, -100%);
-  transition: all 0.35s;
-  content: attr(data-hover);
-  color: #0a0a0a;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+  .cta-btn::after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0.5rem;
+    background-color: #ececec;
+    transform: translate(0, -100%);
+    transition: all 0.35s;
+    content: attr(data-hover);
+    color: #0a0a0a;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-.cta-btn:hover::before {
-  width: 100%;
-}
+  .cta-btn:hover::before {
+    width: 100%;
+  }
 
-.cta-btn:hover::after {
-  transform: translate(0, 0);
-}
-.cta-btn:active {
-  transform: scale(0.96);
-}
-.cta-btn.active {
-  position: relative;
-  background: #ffff;
-  color: #252525;
-  overflow: hidden;
-}
+  .cta-btn:hover::after {
+    transform: translate(0, 0);
+  }
+  .cta-btn:active {
+    transform: scale(0.96);
+  }
+  .cta-btn.active {
+    position: relative;
+    background: #ffff;
+    color: #252525;
+    overflow: hidden;
+  }
+} */
 .greeting-container {
   transform-origin: bottom center;
   position: fixed;
@@ -287,14 +330,14 @@ body {
   color: #fff;
   border-radius: 2rem;
   border: none;
-  height: 9vh;
+  height: 8vh;
   width: 90%;
   font-size: 1.2rem;
 }
 .btn3 {
   border: solid 2px#888888;
   border-radius: 2rem;
-  height: 9vh;
+  height: 8vh;
   width: 90%;
   font-size: 1.2rem;
 }

@@ -15,7 +15,7 @@ const hero = () => {
           </span>
           ?
         </h2>
-        <h4 className="text-[#4c4c4c] text-[1.1rem] text-justify leading-8">
+        <h4 className="text-[#4c4c4c] text-[1.2rem] leading-8 text-justify ">
           I help brands stand out in the digital era. Together, we will set the
           pace for what's ahead with modern, and high speed websites built for
           performance and great SEO.
@@ -29,9 +29,9 @@ const hero = () => {
 
         <button className="btn3">My CV</button>
       </div>
-      <div className="img">
+      <div className="px-[2rem]">
         <img
-          className="w-[20rem] h-[20rem] rounded-3xl object-cover"
+          className="w-[30rem] h-[30rem] rounded-3xl object-cover "
           src={Deji}
         />
       </div>
