@@ -223,40 +223,35 @@ const hero = () => {
         <div className="flex justify-center items-center mt-[3rem] sm:mt-[6.5rem] lg:mt-0">
           <div
             ref={containerRef}
-            className="relative h-[40vh] sm:h-[60vh] md:h-[90vh] w-[50vw] lg:w-[25vw]"
+            className="relative h-[40vh] sm:h-[60vh] md:h-[90vh] w-fit max-w-[90vw] mx-auto"
           >
-            <div
-              ref={imgWrap1}
-              className="absolute top-0 left-0 z-40 will-change-transform"
-            >
-              <img src={Deji} alt="Deji" className="w-[23rem] rounded-3xl" />
-            </div>
+            {/* Wrapper that defines real width for absolutely positioned images */}
+            <div className="relative w-[20rem] sm:w-[30rem] md:w-[35rem] lg:w-[24rem]">
+              <div
+                ref={imgWrap1}
+                className="absolute top-0 left-0 z-40 will-change-transform"
+              >
+                <img src={Deji} className="w-full rounded-3xl" />
+              </div>
 
-            <div
-              ref={imgWrap2}
-              className="absolute top-0 left-[1.5rem] z-30 rotate-[7deg] will-change-transform"
-            >
-              <img
-                src={Dejitwo}
-                alt="Deji two"
-                className="w-[23rem] rounded-3xl"
-              />
-            </div>
+              <div
+                ref={imgWrap2}
+                className="absolute top-0 left-[1.5rem] z-30 rotate-[7deg] will-change-transform"
+              >
+                <img src={Dejitwo} className="w-full rounded-3xl" />
+              </div>
 
-            <div
-              ref={imgWrap3}
-              className="absolute top-0 right-[1.5rem] z-20 rotate-[-7deg] will-change-transform"
-            >
-              <img
-                src={Dejithree}
-                alt="Deji three"
-                className="w-[23rem] rounded-3xl"
-              />
+              <div
+                ref={imgWrap3}
+                className="absolute top-0 right-[1.5rem] z-20 rotate-[-7deg] will-change-transform"
+              >
+                <img src={Dejithree} className="w-full rounded-3xl" />
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <section ref={trackRef} className="relative py-10 w-full ">
+      {/* <section ref={trackRef} className="relative py-10 w-full ">
         <div className="flex whitespace-nowrap w-max text-[2rem] lg:text-[5rem] text-[#4d4c4c] bg-[#fafafa] py-[2rem] tracking-wider [font-family:var(--font-fira)] overflow-hidden">
           <span className="mx-10 inline-block">Frontend Engineer</span>
           <span className="mx-10 inline-block">Technical Writer</span>
@@ -268,7 +263,7 @@ const hero = () => {
           <span className="mx-10 inline-block">Problem Solver</span>
           <span className="mx-10 inline-block">React Dev</span>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
