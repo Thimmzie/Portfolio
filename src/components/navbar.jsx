@@ -76,12 +76,25 @@ const Navbar = () => {
             )}
           </div>
           <div>
-            <button
-              className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl reach-btn hidden lg:block hover:cursor-pointer lg:z-[1100] fixed cta-btn"
-              data-hover="Go Ahead 😎"
-            >
-              <a href="#">Get in touch</a>
-            </button>
+            {sidemenu ? (
+              <button
+                className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] ctatwo-btn"
+                data-hover="Get in touch"
+              >
+                <a href="#">
+                  <span>Get in touch</span>
+                </a>
+              </button>
+            ) : (
+              <button
+                className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] cta-btn"
+                data-hover="Get in touch"
+              >
+                <a href="#">
+                  <span>Get in touch</span>
+                </a>
+              </button>
+            )}
           </div>
         </div>
         <div
@@ -128,7 +141,7 @@ const Navbar = () => {
                   </li>
                 ))}
 
-                <button className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-full mt-[2rem] text-[1.1rem] lg:hidden reach-btn">
+                <button className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-full mt-[2rem] text-[1.1rem] sm:hidden lg:hidden reach-btn">
                   Get in touch
                 </button>
               </ul>

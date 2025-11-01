@@ -1,9 +1,9 @@
-/* :root {
+:root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-} */
+}
 
 @font-face {
   font-family: Helvetica;
@@ -30,6 +30,7 @@ body {
   /* background-color: #191f30; */
   /* background-color: #f5f5f5; */
   /* color: #455ce9; */
+  /* background-color: #041914; */
   font-weight: bold;
 }
 /* .gradient {
@@ -146,36 +147,10 @@ body {
   background-color: black;
 }
 @media (hover: hover) and (pointer: fine) {
-  .hamburger-side:hover {
-    background-color: #ececec;
-  }
-  .hamburger-side.active:hover .bar-side {
+  .hamburger-side.active:hover .bar-side:nth-child(1),
+  .hamburger-side.active:hover .bar-side:nth-child(2) {
     background-color: black;
   }
-}
-
-/* Mobile / touch devices */
-@media (hover: none) and (pointer: coarse) {
-  /* Remove hover entirely but preserve default look */
-  .hamburger-side {
-    background-color: rgb(43, 42, 42); /* your default */
-  }
-
-  /* When tapped (active), keep normal feedback */
-  .hamburger-side:active {
-    background-color: #ececec;
-  }
-
-  .hamburger-side.active:active .bar-side {
-    background-color: black;
-  }
-}
-
-/* Prevent lingering focus outlines / stuck states */
-.hamburger-side,
-.hamburger {
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
 }
 .menu-div {
   background-color: black;
@@ -185,28 +160,7 @@ body {
   background-attachment: fixed;
   perspective: 1000px;
 }
-@media (min-width: 640px) {
-  .menu-div {
-    background-image: linear-gradient(rgba(0, 0, 0, 1.5), rgba(0, 0, 0, 0.6)),
-      url('./assets/images/dejii.JPG');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: fixed;
-    perspective: 1000px;
-  }
-}
-@media (min-width: 768px) {
-  .menu-div {
-    background-image: linear-gradient(rgba(0, 0, 0, 1.5), rgba(0, 0, 0, 0.6)),
-      url('./assets/images/dejii.JPG');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: fixed;
-    perspective: 1000px;
-  }
-}
+
 .cont {
   perspective: 800px;
   transform-style: preserve-3d;
@@ -228,17 +182,6 @@ body {
   transform: translateZ(700px);
   opacity: 0;
 }
-
-/* @keyframes flyIn {
-  0% {
-    transform: translateZ(200px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateZ(0);
-    opacity: 1;
-  }
-} */
 .logo {
   width: 3rem;
   height: 3rem;
@@ -252,11 +195,23 @@ body {
 .cta-btn {
   background-color: #000000;
   color: #fff;
-  width: 25vw;
+  width: 19vw;
   font-size: 0.9rem;
   border: none;
-  border-radius: 2rem;
+  border-radius: 3rem;
   height: 7vh;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+    color 0.6s ease-in-out 0.15s, transform 0.5s ease-in-out;
+}
+.ctatwo-btn {
+  background-color: #ffff;
+  color: #000000;
+  width: 19vw;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 3rem;
+  height: 7vh;
+  transition: background-color 0.2s ease-in-out 0.1s, transform 0.3s ease-in-out;
 }
 /* @media (min-width: 1024px) {
   .cta-btn {
@@ -330,14 +285,179 @@ body {
   color: #fff;
   border-radius: 2rem;
   border: none;
-  height: 8vh;
-  width: 90%;
+  height: 7.5vh;
+  width: 100%;
   font-size: 1.2rem;
 }
 .btn3 {
   border: solid 2px#888888;
   border-radius: 2rem;
-  height: 8vh;
-  width: 90%;
+  height: 7.5vh;
+  width: 100%;
   font-size: 1.2rem;
+}
+@media (min-width: 768px) {
+  .btn2 {
+    background-color: #000000;
+    color: #fff;
+    border-radius: 2rem;
+    border: none;
+    height: 8vh;
+    width: 100%;
+    font-size: 1.2rem;
+  }
+  .btn3 {
+    border: solid 2px#888888;
+    border-radius: 2rem;
+    height: 8vh;
+    width: 100%;
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .btn2 {
+    background-color: #000000;
+    color: #fff;
+    border-radius: 2rem;
+    border: none;
+    height: 8vh;
+    width: 18vw;
+    font-size: 0.9rem;
+  }
+  .btn3 {
+    border: solid 2px#888888;
+    border-radius: 2rem;
+    height: 8vh;
+    width: 18vw;
+    font-size: 0.9rem;
+  }
+  .cta-btn {
+    background-color: #000000;
+    color: #fff;
+    width: 12vw;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 3rem;
+    height: 8vh;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+      color 0.6s ease-in-out 0.15s, transform 0.5s ease-in-out;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #455ce9;
+    transform: translateY(100%);
+    transition: transform 0.25s ease-in-out;
+    border-radius: inherit;
+    z-index: 2;
+  }
+  .cta-btn::after {
+    content: attr(data-hover);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transform: translateY(150%);
+    transition: transform 0.25s ease-in-out;
+    font-weight: 600;
+    font-size: inherit;
+    z-index: 2;
+  }
+  .cta-btn:hover::before {
+    transform: translateY(0);
+  }
+  .cta-btn:hover::after {
+    transform: translateY(0);
+  }
+  .cta-btn span {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.5s ease, opacity 0.1s ease;
+  }
+
+  .cta-btn:hover span {
+    transform: scale(0.1);
+    opacity: 0.2;
+  }
+  .ctatwo-btn {
+    background-color: #ffff;
+    color: #000000;
+    width: 12vw;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 3rem;
+    height: 8vh;
+    transition: background-color 0.2s ease-in-out 0.1s,
+      transform 0.3s ease-in-out;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .ctatwo-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #455ce9;
+    transform: translateY(100%);
+    transition: transform 0.25s ease-in-out;
+    border-radius: inherit;
+    z-index: 2;
+  }
+  .ctatwo-btn::after {
+    content: attr(data-hover);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transform: translateY(150%);
+    transition: transform 0.25s ease-in-out;
+    font-weight: 600;
+    font-size: inherit;
+    z-index: 2;
+  }
+  .ctatwo-btn:hover::before {
+    transform: translateY(0);
+  }
+  .ctatwo-btn:hover::after {
+    transform: translateY(0);
+  }
+  .ctatwo-btn span {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.5s ease, opacity 0.1s ease;
+  }
+
+  .ctatwo-btn:hover span {
+    transform: scale(0.1);
+    opacity: 0.2;
+  }
+}
+.stack-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+.stack-container:hover img.first {
+  transform: translateY(-5px) scale(1.07);
+}
+.stack-container img {
+  position: absolute;
+  width: 100%;
+  transition: transform 0.4s ease-in-out;
+  transform: translateZ(700px);
+}
+.title-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
