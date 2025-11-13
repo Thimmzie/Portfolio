@@ -32,6 +32,7 @@ body {
   /* color: #455ce9; */
   /* background-color: #041914; */
   font-weight: bold;
+  overflow-y: scroll;
 }
 /* .gradient {
   background: linear-gradient(
@@ -159,6 +160,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   perspective: 1000px;
+  overflow: hidden;
 }
 
 .cont {
@@ -179,8 +181,10 @@ body {
   transform: translateZ(0);
 }
 .fly-out {
-  transform: translateZ(700px);
+  transform: translateZ(400px);
   opacity: 0;
+  transition-timing-function: cubic-bezier(0.45, 0, 0.8, 0.2);
+  transition-duration: 0.8s;
 }
 .logo {
   width: 3rem;
@@ -285,14 +289,14 @@ body {
   color: #fff;
   border-radius: 2rem;
   border: none;
-  height: 7.5vh;
+  height: 6.8vh;
   width: 100%;
   font-size: 1.2rem;
 }
 .btn3 {
   border: solid 2px#888888;
   border-radius: 2rem;
-  height: 7.5vh;
+  height: 6.8vh;
   width: 100%;
   font-size: 1.2rem;
 }
@@ -318,11 +322,58 @@ body {
   .btn2 {
     background-color: #000000;
     color: #fff;
-    border-radius: 2rem;
-    border: none;
-    height: 8vh;
     width: 18vw;
     font-size: 0.9rem;
+    border: none;
+    border-radius: 3rem;
+    height: 8vh;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+      color 0.6s ease-in-out 0.15s, transform 0.5s ease-in-out;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .btn2::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #455ce9;
+    transform: translateY(100%);
+    transition: transform 0.25s ease-in-out;
+    border-radius: inherit;
+    z-index: 2;
+  }
+  .btn2::after {
+    content: attr(data-hover);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transform: translateY(150%);
+    transition: transform 0.25s ease-in-out;
+    font-weight: 600;
+    font-size: inherit;
+    z-index: 2;
+  }
+  .btn2:hover::before {
+    transform: translateY(0);
+  }
+  .btn2:hover::after {
+    transform: translateY(0);
+  }
+  .btn2 span {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.5s ease, opacity 0.1s ease;
+  }
+
+  .btn2:hover span {
+    transform: scale(0.1);
+    opacity: 0.2;
   }
   .btn3 {
     border: solid 2px#888888;
@@ -330,6 +381,62 @@ body {
     height: 8vh;
     width: 18vw;
     font-size: 0.9rem;
+  }
+  .btn3 {
+    background-color: #ffffff;
+    color: #020202;
+    width: 18vw;
+    font-size: 0.9rem;
+    border: solid 2px#888888;
+    border-radius: 2rem;
+    height: 8vh;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+      color 0.6s ease-in-out 0.15s, transform 0.5s ease-in-out;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .btn3::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #455ce9;
+    transform: translateY(100%);
+    transition: transform 0.25s ease-in-out;
+    border-radius: inherit;
+    z-index: 2;
+  }
+  .btn3::after {
+    content: attr(data-hover);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transform: translateY(150%);
+    transition: transform 0.25s ease-in-out;
+    font-weight: 600;
+    font-size: inherit;
+    z-index: 2;
+  }
+  .btn3:hover::before {
+    transform: translateY(0);
+  }
+  .btn3:hover::after {
+    transform: translateY(0);
+  }
+  .btn3 span {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.5s ease, opacity 0.1s ease;
+  }
+
+  .btn3:hover span {
+    transform: scale(0.1);
+    opacity: 0.2;
   }
   .cta-btn {
     background-color: #000000;
@@ -460,4 +567,107 @@ body {
 .title-container {
   perspective: 1000px;
   transform-style: preserve-3d;
+}
+/* .floating-hamburger {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.floating-hamburger.visible {
+  opacity: 1;
+  transform: translateY(0);
+} */
+
+@media (min-width: 1024px) {
+  #float-side {
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background-color: #252525;
+    border-radius: 50%;
+    padding: 0.8rem;
+    width: 5rem;
+    height: 5rem;
+    outline: none;
+  }
+  #float-side:hover {
+    background-color: #455ce9;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  #float-side:hover .bar {
+    display: block;
+    width: 20px;
+    height: 3px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #f7f7f7;
+    transform-origin: center;
+  }
+  #float {
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: #070707;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    border: none;
+    z-index: 1000;
+  }
+  .float-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: #455ce9;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    border-radius: 50%;
+    z-index: 0;
+  }
+  #float:hover .float-overlay {
+    transform: translateY(0);
+  }
+  #float:not(:hover) .float-overlay {
+    transform: translateY(100%);
+  }
+  #float .bar {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 3px;
+    background-color: #f7f7f7;
+    border-radius: 2px;
+    z-index: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  #float .bar + .bar {
+    margin-top: 6px;
+  }
+  #float:hover .bar {
+    transform: scale(1.5);
+    opacity: 5;
+  }
+}
+/* .float-parent {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+} */
+.floating-hamburger.hidden {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.floating-hamburger.visible {
+  pointer-events: auto;
+  visibility: visible;
 }
