@@ -74,7 +74,7 @@ const Navbar = () => {
       );
     } else {
       gsap.to(el, {
-        z: -600,
+        z: 600,
         opacity: 0,
         scale: 0.8,
         duration: 0.6,
@@ -95,9 +95,12 @@ const Navbar = () => {
     const checkNavbar = () => {
       const bottom = navEl.getBoundingClientRect().bottom;
 
-      setShowFloatingHamburger((prev) =>
-        bottom < 0 ? (prev ? prev : true) : prev ? false : prev
-      );
+      const shouldShow = bottom < 0;
+
+      setShowFloatingHamburger((prev) => {
+        if (prev !== shouldShow) return shouldShow;
+        return prev;
+      });
     };
 
     const onScroll = () => {
@@ -163,42 +166,25 @@ const Navbar = () => {
   return (
     <div>
       {showFloatingHamburger && (
-        <div
-          ref={floatRef}
-          className={`fixed top-5 right-5 z-[13000] floating-hamburger ${
-            showFloatingHamburger ? 'visible' : 'hidden'
-          }`}
-        >
-          {sidemenu ? (
-            <button
-              onClick={handleClick}
-              aria-expanded={sidemenu}
-              id="float-side"
-              className={`hamburger-side ${sidemenu ? 'active' : ''}`}
-            >
-              <span className="bar-side" />
-              <span className="bar-side" />
-            </button>
-          ) : (
-            <button
-              onClick={handleClick}
-              aria-expanded={sidemenu}
-              id="float"
-              className={`hamburger ${sidemenu ? 'active' : ''}`}
-            >
-              <span className="float-overlay" aria-hidden="true" />
-              <span className="bar" />
-              <span className="bar" />
-            </button>
-          )}
+        <div ref={floatRef} className="fixed top-5 right-5 z-[13000]">
+          <button
+            onClick={handleClick}
+            aria-expanded={sidemenu}
+            id="float"
+            className={`hamburger ${sidemenu ? 'active' : ''}`}
+          >
+            <span className="float-overlay" aria-hidden="true" />
+            <span className="bar" />
+            <span className="bar" />
+          </button>
         </div>
       )}
       <nav ref={navbarRef}>
         <div
-          className={`flex mobile-nav-box px-[1.2rem] pt-[1.7rem] items-center sm:px-[1.8rem] lg:px-[1.8rem] z-[1200] relative overflow-y-hidden transition-opacity duration-300 ${
+          className={`flex mobile-nav-box px-[1.2rem] pt-[1.7rem] items-center sm:px-[1.8rem] lg:px-[1.8rem] z-[1200] relative overflow-y-hidden transition-all duration-500 ${
             sidemenu && showFloatingHamburger
-              ? 'opacity-0 pointer-events-none invisible hidden'
-              : 'opacity-100 block'
+              ? 'opacity-0 pointer-events-none absolute -top-[6rem] -right-[5rem] scale-[0.98]'
+              : 'opacity-100 pointer-events-auto relative top-0 right-0 scale-[1]'
           }`}
         >
           <div>

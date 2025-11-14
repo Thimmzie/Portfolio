@@ -568,18 +568,65 @@ body {
   perspective: 1000px;
   transform-style: preserve-3d;
 }
-/* .floating-hamburger {
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+@media (max-width: 1023px) {
+  #float.active .bar:nth-child(2) {
+    transform: translateY(3px) rotate(45deg);
+  }
+
+  #float.active .bar:nth-child(3) {
+    transform: translateY(-3px) rotate(-45deg);
+  }
 }
 
-.floating-hamburger.visible {
-  opacity: 1;
-  transform: translateY(0);
-} */
-
-@media (min-width: 1024px) {
+#float {
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: #252525;
+  border-radius: 50%;
+  padding: 0.8rem;
+  width: 4rem;
+  height: 4rem;
+  outline: none;
+}
+#float-side {
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: #252525;
+  border-radius: 50%;
+  padding: 0.8rem;
+  width: 4rem;
+  height: 4rem;
+  outline: none;
+}
+@media (min-width: 640px) {
+  #float {
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background-color: #252525;
+    border-radius: 50%;
+    padding: 0.8rem;
+    width: 5rem;
+    height: 5rem;
+    outline: none;
+  }
   #float-side {
     z-index: 1000;
     display: flex;
@@ -596,20 +643,8 @@ body {
     height: 5rem;
     outline: none;
   }
-  #float-side:hover {
-    background-color: #455ce9;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-  }
-  #float-side:hover .bar {
-    display: block;
-    width: 20px;
-    height: 3px;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background-color: #f7f7f7;
-    transform-origin: center;
-  }
+}
+@media (min-width: 1024px) {
   #float {
     position: relative;
     width: 5rem;
@@ -617,12 +652,13 @@ body {
     border-radius: 50%;
     background-color: #070707;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     overflow: hidden;
     border: none;
-    z-index: 1000;
+    transition: background 0.3s ease;
   }
   .float-overlay {
     position: absolute;
@@ -633,41 +669,25 @@ body {
     border-radius: 50%;
     z-index: 0;
   }
+
   #float:hover .float-overlay {
     transform: translateY(0);
   }
-  #float:not(:hover) .float-overlay {
-    transform: translateY(100%);
-  }
   #float .bar {
     position: relative;
-    display: block;
-    width: 20px;
+    width: 24px;
     height: 3px;
     background-color: #f7f7f7;
     border-radius: 2px;
-    z-index: 1;
+    margin: 4px 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1;
+  }
+  #float.active .bar:nth-child(2) {
+    transform: translateY(7px) rotate(45deg);
   }
 
-  #float .bar + .bar {
-    margin-top: 6px;
+  #float.active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
-  #float:hover .bar {
-    transform: scale(1.5);
-    opacity: 5;
-  }
-}
-/* .float-parent {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-} */
-.floating-hamburger.hidden {
-  pointer-events: none;
-  visibility: hidden;
-}
-
-.floating-hamburger.visible {
-  pointer-events: auto;
-  visibility: visible;
 }
