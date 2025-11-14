@@ -691,3 +691,20 @@ body {
     transform: translateY(-7px) rotate(-45deg);
   }
 }
+.floating-wrapper {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateZ(-400px);
+  transition: opacity 0.2s linear;
+}
+
+.floating-wrapper.is-visible {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateZ(0);
+}
+
+.floating-wrapper.is-hidden {
+  pointer-events: none;
+  opacity: 0;
+}

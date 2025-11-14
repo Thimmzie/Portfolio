@@ -11,6 +11,7 @@ const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
   const navbarRef = useRef(null);
   const floatRef = useRef(null);
+  const observerRef = useRef(null);
 
   useEffect(() => {
     let timer;
@@ -52,6 +53,9 @@ const Navbar = () => {
     gsap.killTweensOf(el);
 
     if (showFloatingHamburger) {
+      el.classList.remove('is-hidden');
+      el.classList.add('is-visible');
+
       gsap.fromTo(
         el,
         {
@@ -68,52 +72,63 @@ const Navbar = () => {
           opacity: 1,
           scale: 1,
           duration: 0.6,
-          ease: 'power3.out',
+          ease: 'back.out',
           force3D: true,
         }
       );
     } else {
       gsap.to(el, {
-        z: 600,
+        z: -800,
         opacity: 0,
         scale: 0.8,
         duration: 0.6,
         ease: 'power2.inOut',
         force3D: true,
+        onComplete: () => {
+          el.classList.remove('is-visible');
+          el.classList.add('is-hidden');
+        },
       });
     }
 
-    return () => gsap.killTweensOf(el);
+    return () => {
+      gsap.killTweensOf(el);
+    };
   }, [showFloatingHamburger]);
 
   useEffect(() => {
     const navEl = navbarRef.current;
     if (!navEl) return;
 
-    let rafId = null;
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+      observerRef.current = null;
+    }
 
-    const checkNavbar = () => {
-      const bottom = navEl.getBoundingClientRect().bottom;
+    const io = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
 
-      const shouldShow = bottom < 0;
+        const shouldShowFloating = !entry.isIntersecting;
+        setShowFloatingHamburger((prev) => {
+          if (prev !== shouldShowFloating) return shouldShowFloating;
+          return prev;
+        });
+      },
+      {
+        root: null,
+        threshold: 0,
+      }
+    );
 
-      setShowFloatingHamburger((prev) => {
-        if (prev !== shouldShow) return shouldShow;
-        return prev;
-      });
-    };
-
-    const onScroll = () => {
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(checkNavbar);
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    checkNavbar();
+    io.observe(navEl);
+    observerRef.current = io;
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
-      if (rafId) cancelAnimationFrame(rafId);
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
     };
   }, []);
 
@@ -128,7 +143,6 @@ const Navbar = () => {
       document.body.style.overflowY = 'scroll';
       document.body.style.width = '100%';
     } else if (sidemenu) {
-      // If menu opened from main navbar (not floating hamburger)
       const scrollY = window.scrollY;
       document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollY}px`;
@@ -137,7 +151,6 @@ const Navbar = () => {
       document.body.style.overflowY = 'scroll';
       document.body.style.width = '100%';
     } else {
-      // Restore scroll
       const scrollY = document.body.style.top;
       document.body.style.position = '';
       document.body.style.top = '';
@@ -165,20 +178,24 @@ const Navbar = () => {
 
   return (
     <div>
-      {showFloatingHamburger && (
-        <div ref={floatRef} className="fixed top-5 right-5 z-[13000]">
-          <button
-            onClick={handleClick}
-            aria-expanded={sidemenu}
-            id="float"
-            className={`hamburger ${sidemenu ? 'active' : ''}`}
-          >
-            <span className="float-overlay" aria-hidden="true" />
-            <span className="bar" />
-            <span className="bar" />
-          </button>
-        </div>
-      )}
+      <div
+        ref={floatRef}
+        className={`fixed top-18 right-9 z-[13000] floating-wrapper is-hidden`}
+        aria-hidden={!showFloatingHamburger}
+      >
+        <button
+          onClick={handleClick}
+          aria-expanded={sidemenu}
+          id="float"
+          className={`hamburger ${sidemenu ? 'active' : ''}`}
+          type="button"
+        >
+          <span className="float-overlay" aria-hidden="true" />
+          <span className="bar" />
+          <span className="bar" />
+        </button>
+      </div>
+
       <nav ref={navbarRef}>
         <div
           className={`flex mobile-nav-box px-[1.2rem] pt-[1.7rem] items-center sm:px-[1.8rem] lg:px-[1.8rem] z-[1200] relative overflow-y-hidden transition-all duration-500 ${
