@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import mobilemenu from '../../constants/index.js';
+import { Mobilemenu } from '../../constants/index.js';
 import gsap from 'gsap';
 import { useLocation } from 'react-router-dom';
 
@@ -270,7 +270,7 @@ const Navbar = () => {
               <ul
                 className={`flex flex-col items-center mobile lg:flex-row lg:gap-[5rem] lg:mt-[13rem] mt-[8.5rem] ul ${menuClass}`}
               >
-                {mobilemenu.map((nav) => (
+                {Mobilemenu.map((nav) => (
                   <li key={nav.id} className="py-2 hover:cursor-pointer">
                     <a
                       className={`text-[1.5rem] [font-family:var(--font-nunito)] font-[700] hover:cursor-pointer hover:text-[#ffffff] lg:text-[1.7rem] transition duration-300 ${
