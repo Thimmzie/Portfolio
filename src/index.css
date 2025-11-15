@@ -6,8 +6,8 @@
 }
 
 @font-face {
-  font-family: Helvetica;
-  src: url('../src/assets/font/HelveticaNeueBold.otf');
+  font-family: 'StackSans';
+  src: url('../src/assets/font/StackSansText-Regular.ttf');
 }
 @font-face {
   font-family: 'FiraSans';
@@ -18,12 +18,12 @@
 @theme {
   /* --color-purple: #8a66f1; */
 
-  --font-helvetica: 'HelveticaNeue', sans-serif;
+  --font-stacksans: 'StackSans', sans-serif;
   --font-fira: 'FIraSans', sans-serif;
 }
 html,
 body {
-  font-family: var(--font-helvetica);
+  font-family: var(--font-stacksans);
   scroll-behavior: smooth;
   overflow-x: hidden !important;
   max-width: 100%;
@@ -707,4 +707,72 @@ body {
 .floating-wrapper.is-hidden {
   pointer-events: none;
   opacity: 0;
+}
+.view-btn {
+  background-color: #000000;
+  color: #fff;
+  border-radius: 2rem;
+  border: none;
+  height: 6.8vh;
+  width: 17rem;
+  font-size: 1.2rem;
+  margin: 0 auto;
+}
+@media (min-width: 1024px) {
+  .view-btn {
+    background-color: #000000;
+    color: #fff;
+    width: 17vw;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 3rem;
+    height: 8vh;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+      color 0.6s ease-in-out 0.15s, transform 0.5s ease-in-out;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .view-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #455ce9;
+    transform: translateY(100%);
+    transition: transform 0.25s ease-in-out;
+    border-radius: inherit;
+    z-index: 2;
+  }
+  .view-btn::after {
+    content: attr(data-hover);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transform: translateY(150%);
+    transition: transform 0.25s ease-in-out;
+    font-weight: 600;
+    font-size: inherit;
+    z-index: 2;
+  }
+  .view-btn:hover::before {
+    transform: translateY(0);
+  }
+  .view-btn:hover::after {
+    transform: translateY(0);
+  }
+  .view-btn span {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.5s ease, opacity 0.1s ease;
+  }
+
+  .view-btn:hover span {
+    transform: scale(0.1);
+    opacity: 0.2;
+  }
 }

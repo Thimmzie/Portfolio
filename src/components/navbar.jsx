@@ -295,7 +295,7 @@ const Navbar = () => {
       </nav>
       <div className="flex justify-center lg:hidden">
         {sidemenu ? (
-          <h1 className="text-[#ffff] [font-family:var(--font-fira)] text-[1.4rem] mt-[-2.5rem] z-[1200] ayo">
+          <h1 className="text-[#ffff] [font-family:var(--font-fira)]  text-[1.4rem] mt-[-2.5rem] z-[1200] ayo">
             Ayodeji!
           </h1>
         ) : (
