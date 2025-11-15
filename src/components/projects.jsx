@@ -12,20 +12,20 @@ const projects = () => {
           {Projects.map((detail) => {
             return (
               <div
-                className="bg-[#ffffff] w-[90%] rounded-[20px] border-1 border-[#c7c7c7] px-5 h-[47vh] flex flex-col justify-center"
+                className="bg-[#ffffff] w-[90%] rounded-[20px] border-1 border-[#c7c7c7] px-5 h-[50%] pt-[2rem] pb-[1rem]"
                 key={detail.id}
               >
                 <p className="text-[1.2rem] font-[600]">{detail.title}</p>
-                <p className="text-[0.9rem] font-light pt-3 ">{detail.about}</p>
+                <p className="text-[1rem] font-light pt-3 ">{detail.about}</p>
                 <a
                   href={detail.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#455ce9] mt-1 text-[0.8rem] mb-3"
+                  className="text-[#455ce9] mt-1 text-[0.8rem] mb-6"
                 >
                   View Project
                 </a>
-                <img className="rounded-[8px]" src={detail.img} />
+                <img className="rounded-[8px] mt-[1rem]" src={detail.img} />
               </div>
             );
           })}
