@@ -214,7 +214,7 @@ const hero = () => {
       <div className="flex flex-col gap-2 mt-[2rem] lg:flex-row lg:gap-[10rem] lg:mt-[2rem] xl:gap-[13rem]">
         <div className="px-[1.3rem] md:px-[3rem] lg:mt-[5rem]">
           <div className="title-container">
-            <h4 className="text-[black] pb-[0.6rem] text-[1.1rem] lg:text-[1.3rem] font-[500] founder">
+            <h4 className="text-[black] pb-[0.6rem] text-[1.1rem] lg:text-[1.3rem] font-[400] founder">
               Hi Founder,
             </h4>
             <h2 className="pb-[0.6rem] text-[black] text-[1.5rem] font-[900] lg:text-[2rem] [font-family:var(--font-fira)] title">
@@ -225,7 +225,7 @@ const hero = () => {
               </span>
               ?
             </h2>
-            <h4 className="text-[black] text-[1.1rem] lg:text-[1.3rem] leading-8 lg:text-justify font-[500] body">
+            <h4 className="text-[black] text-[1.1rem] lg:text-[1.3rem] leading-8 lg:text-justify font-[400] body">
               I help brands stand out in the digital era. Together, we will set{' '}
               <br className="hidden lg:block"></br>
               the pace for what's ahead with modern, and high speed{' '}

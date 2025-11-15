@@ -231,7 +231,7 @@ const Navbar = () => {
                 Ayodeji!
               </h1>
             ) : (
-              <p className="text-[1.2rem] text-[#1f1e1e] lg:text-[1rem] z-[1200] ayo-title">
+              <p className="text-[1.2rem] text-[#1f1e1e] lg:text-[1rem] font-[600] z-[1200] ayo-title">
                 Ayodeji Olupinla
               </p>
             )}
@@ -295,11 +295,11 @@ const Navbar = () => {
       </nav>
       <div className="flex justify-center lg:hidden">
         {sidemenu ? (
-          <h1 className="text-[#ffff] [font-family:var(--font-fira)]  text-[1.4rem] mt-[-2.5rem] z-[1200] ayo">
+          <h1 className="text-[#ffff] [font-family:var(--font-fira)] text-[1.4rem] mt-[-2.5rem] z-[1200] ayo">
             Ayodeji!
           </h1>
         ) : (
-          <p className="text-[1.2rem] text-[#1f1e1e] lg:text-[1rem] mt-[-2.5rem] z-[1200] ayo-title">
+          <p className="text-[1.2rem] text-[#1f1e1e] font-[600] mt-[-2.5rem] z-[1200] ayo-title">
             Ayodeji Olupinla
           </p>
         )}

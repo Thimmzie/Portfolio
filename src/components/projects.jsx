@@ -4,7 +4,7 @@ import { Projects } from '../../constants/index.js';
 const projects = () => {
   return (
     <div className="mb-[20rem] bg-[#e7e7e7] pt-[5rem] pb-[7rem] lg:mt-[4rem]">
-      <h1 className="text-[#000000] text-[1.5rem] pl-[2rem] lg:pl-[4.5rem]">
+      <h1 className="text-[#000000] text-[1.5rem] pl-[2rem] lg:pl-[4.5rem] font-[600]">
         Recent Projects
       </h1>
       <div>
@@ -16,7 +16,7 @@ const projects = () => {
                 key={detail.id}
               >
                 <p className="text-[1.2rem] font-[600]">{detail.title}</p>
-                <p className="text-[1rem] font-light pt-3 tracking-wide lg:text-[0.9rem] ">
+                <p className="text-[1rem] font-[400] pt-3 tracking-wide lg:text-[0.9rem] ">
                   {detail.about}
                 </p>
                 <a

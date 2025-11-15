@@ -24,7 +24,7 @@ const cloud = () => {
   }, {});
   return (
     <div className="mb-[1rem] flex flex-col md:mb-[-10rem]">
-      <h1 className="flex justify-center text-[1.5rem] text-center">
+      <h1 className="flex justify-center text-[1.5rem] text-center font-[600]">
         Before the Transformation
       </h1>
       <div className="relative mt-[2rem] flex flex-col items-center justify-center h-[100vh] w-full max-w-[900px] mx-auto cloud-container">
