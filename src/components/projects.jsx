@@ -50,24 +50,24 @@ const projects = () => {
       );
     });
 
-    gsap.fromTo(
-      '.view-btn',
-      {
-        opacity: 0,
-        y: 110,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-          trigger: '.view-btn',
-          start: 'top 120%',
-          toggleActions: 'play reverse play reverse',
-        },
-      }
-    );
+    // gsap.fromTo(
+    //   '.view-btn',
+    //   {
+    //     opacity: 0,
+    //     y: 130,
+    //   },
+    //   {
+    //     y: 0,
+    //     opacity: 1,
+    //     duration: 0.5,
+    //     ease: 'back.out(1.7)',
+    //     scrollTrigger: {
+    //       trigger: '.view-btn',
+    //       start: 'top 120%',
+    //       toggleActions: 'play reverse play reverse',
+    //     },
+    //   }
+    // );
 
     setTimeout(() => {
       ScrollTrigger.refresh();
@@ -76,10 +76,10 @@ const projects = () => {
     return () => mm.revert();
   }, []);
 
-  const colors = ['#e3e8ef', '#e3f2fd'];
+  const colors = ['#E5E7EB', '#e3f2fd'];
 
   return (
-    <div className="mb-[20rem] bg-[#ffffff] pt-[5rem] pb-[7rem] lg:mt-[4rem] flex flex-col items-center">
+    <div className="mb-[2rem] bg-[#ffffff] pt-[5rem] pb-[7rem] lg:mt-[4rem] flex flex-col items-center">
       <h1 className="text-[#000000] text-[1.5rem] font-[600]">
         Recent Projects
       </h1>
@@ -88,8 +88,8 @@ const projects = () => {
           {Projects.map((detail, i) => {
             return (
               <div
-                className=" bg-[#eeeeee] w-[90%] rounded-[20px] border-1 border-[#c7c7c7] px-5 h-[53%] pt-[2rem] pb-[1rem] lg:h-[85vh] project"
-                // style={{ backgroundColor: colors[i % colors.length] }}
+                className="  w-[90%] rounded-[20px] border-1 border-[#c7c7c7] px-5 h-[53%] pt-[2rem] pb-[1rem] lg:h-[85vh] project"
+                style={{ backgroundColor: colors[i % colors.length] }}
                 key={detail.id}
               >
                 <p className="text-[1.2rem] font-[600]">{detail.title}</p>
