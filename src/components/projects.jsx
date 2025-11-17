@@ -39,7 +39,7 @@ const projects = () => {
           opacity: 1,
           duration: 0.7,
           ease: 'power3.out',
-          stagger: 0.25, // second box animates slower
+          stagger: 0.25,
           scrollTrigger: {
             trigger: '.project',
             start: 'top 90%',
@@ -48,6 +48,29 @@ const projects = () => {
         }
       );
     });
+
+    gsap.fromTo(
+      '.view-btn',
+      {
+        opacity: 0,
+        y: 110,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.3,
+        ease: 'back.out(1.7)',
+        scrollTrigger: {
+          trigger: '.view-btn',
+          start: 'top 100%',
+          toggleActions: 'play reverse play reverse',
+        },
+      }
+    );
+
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 110);
 
     return () => mm.revert();
   }, []);
@@ -66,7 +89,7 @@ const projects = () => {
                 key={detail.id}
               >
                 <p className="text-[1.2rem] font-[600]">{detail.title}</p>
-                <p className="text-[0.9rem] font-[200] pt-3 tracking-wide lg:text-[0.9rem] line-clamp-2">
+                <p className="text-[0.9rem] text-[#202020] font-[200] pt-3 tracking-wide lg:text-[0.9rem] line-clamp-2">
                   {detail.about}
                 </p>
                 <a
