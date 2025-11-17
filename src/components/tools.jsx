@@ -18,7 +18,7 @@ const tools = () => {
       <div className="flex flex-col items-center text-[#000000] text-[1.5rem] font-[600] z-50">
         <h1>Tools & Technologies</h1>
       </div>
-      <div className="mt-[3rem] px-[2rem] grid grid-cols-3 md:grid-cols-4 gap-7 lg:px-[15rem]">
+      <div className="mt-[3rem] px-[2rem] grid grid-cols-3 md:grid-cols-4 gap-7 gap-y-[3.2rem] lg:grid-cols-6 lg:px-[15rem] place-items-center">
         <div className="flex flex-col items-center">
           <img className="w-[3rem] rounded-[7px]" src={Reactt} />
           <p className="text-[#2c2c2c] text-[1rem] mt-2">React JS</p>
