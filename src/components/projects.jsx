@@ -76,19 +76,19 @@ const projects = () => {
     return () => mm.revert();
   }, []);
 
-  // const colors = ['#e3e8ef', '#e3f2fd'];
+  const colors = ['#e3e8ef', '#e3f2fd'];
 
   return (
-    <div className="mb-[20rem] bg-[#ffffff] pt-[5rem] pb-[7rem] lg:mt-[4rem]">
-      <h1 className="text-[#000000] text-[1.5rem] pl-[2rem] lg:pl-[4.5rem] font-[600]">
+    <div className="mb-[20rem] bg-[#ffffff] pt-[5rem] pb-[7rem] lg:mt-[4rem] flex flex-col items-center">
+      <h1 className="text-[#000000] text-[1.5rem] font-[600]">
         Recent Projects
       </h1>
       <div>
-        <div className="flex flex-col mt-[2rem] items-center gap-[2rem] md:flex-row md:px-4 lg:px-[4rem]">
+        <div className="flex flex-col mt-[3rem] items-center gap-[2rem] md:flex-row md:px-4 lg:px-[4rem]">
           {Projects.map((detail, i) => {
             return (
               <div
-                className=" bg-[#f8f8f8] w-[90%] rounded-[20px] border-1 border-[#c7c7c7] px-5 h-[53%] pt-[2rem] pb-[1rem] lg:h-[85vh] project"
+                className=" bg-[#eeeeee] w-[90%] rounded-[20px] border-1 border-[#c7c7c7] px-5 h-[53%] pt-[2rem] pb-[1rem] lg:h-[85vh] project"
                 // style={{ backgroundColor: colors[i % colors.length] }}
                 key={detail.id}
               >

@@ -225,7 +225,7 @@ const hero = () => {
               </span>
               ?
             </h2>
-            <h4 className="text-[black] text-[1.1rem] lg:text-[1.3rem] leading-8 lg:text-justify font-[400] body">
+            <h4 className="text-[black] text-[1.1rem] lg:text-[1.3rem] leading-8 lg:text-justify font-[400] max-w-[800px] body">
               I help brands stand out in the digital era. Together, we will set{' '}
               <br className="hidden lg:block"></br>
               the pace for what's ahead with modern, and high speed{' '}

@@ -71,8 +71,8 @@ const Navbar = () => {
           rotationX: 0,
           opacity: 1,
           scale: 1,
-          duration: 0.6,
-          ease: 'back.out',
+          duration: 0.8,
+          ease: 'back.out(2.5)',
           force3D: true,
         }
       );
