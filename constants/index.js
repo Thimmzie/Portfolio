@@ -28,4 +28,37 @@ const Projects = [
   },
 ];
 
-export { Mobilemenu, Projects };
+const questions = [
+  {
+    id: 1,
+    question: 'Why do you combine software engineering and technical writing?',
+    answer:
+      'I believe good code deserves clear documentation. Writing helps me simplify technical concepts and bridge developers with the tools they use',
+  },
+  {
+    id: 2,
+    question: 'Why do you combine software engineering and technical writing?',
+    answer:
+      'I believe good code deserves clear documentation. Writing helps me simplify technical concepts and bridge developers with the tools they use',
+  },
+  {
+    id: 3,
+    question: 'Why do you combine software engineering and technical writing?',
+    answer:
+      'I believe good code deserves clear documentation. Writing helps me simplify technical concepts and bridge developers with the tools they use',
+  },
+  {
+    id: 4,
+    question: 'Why do you combine software engineering and technical writing?',
+    answer:
+      'I believe good code deserves clear documentation. Writing helps me simplify technical concepts and bridge developers with the tools they use',
+  },
+  {
+    id: 5,
+    question: 'Why do you combine software engineering and technical writing?',
+    answer:
+      'I believe good code deserves clear documentation. Writing helps me simplify technical concepts and bridge developers with the tools they use',
+  },
+];
+
+export { Mobilemenu, Projects, questions };

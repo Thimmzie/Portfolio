@@ -10,7 +10,7 @@ const projects = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    let mm = gsap.matchMedia();
+    const mm = gsap.matchMedia();
     mm.add('(max-width: 768px)', () => {
       gsap.utils.toArray('.project').forEach((card) => {
         gsap.fromTo(
@@ -50,33 +50,26 @@ const projects = () => {
       );
     });
 
-    // gsap.fromTo(
-    //   '.view-btn',
-    //   {
-    //     opacity: 0,
-    //     y: 130,
+    // gsap.from('.view-btn', {
+    //   y: 70,
+    //   opacity: 0,
+    //   duration: 0.5,
+    //   ease: 'back.out(1.7)',
+    //   scrollTrigger: {
+    //     trigger: '.view-btn',
+    //     start: 'top 95%',
+    //     toggleActions: 'play none none reverse',
     //   },
-    //   {
-    //     y: 0,
-    //     opacity: 1,
-    //     duration: 0.5,
-    //     ease: 'back.out(1.7)',
-    //     scrollTrigger: {
-    //       trigger: '.view-btn',
-    //       start: 'top 120%',
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //   }
-    // );
+    // });
 
-    setTimeout(() => {
+    window.addEventListener('load', () => {
       ScrollTrigger.refresh();
-    }, 110);
+    });
 
     return () => mm.revert();
   }, []);
 
-  const colors = ['#E5E7EB', '#e3f2fd'];
+  const colors = ['#e3f2fd', '#e3f2fd'];
 
   return (
     <div className="mb-[2rem] bg-[#ffffff] pt-[5rem] pb-[7rem] lg:mt-[4rem] flex flex-col items-center">
