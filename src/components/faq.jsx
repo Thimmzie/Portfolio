@@ -14,11 +14,11 @@ const faq = () => {
     <div className="mb-[20rem] flex flex-col items-center">
       <h1 className="text-[#000000] text-[1.5rem] font-[600] mb-[2rem]">FAQ</h1>
 
-      <div className="w-[92%] m-auto max-w-[1400px] bg-gray-300 px-6 py-7 shadow-md rounded-lg border-1 border-[#bbbbbb] faq-box">
+      <div className="w-[92%] m-auto max-w-[1400px] px-6 py-7  faq-box">
         {questions.map((qst) => (
           <div key={qst.id} className="mb-5 last:mb-0">
             <button
-              className="w-full text-left text-[1rem] focus:outline-none p-4 bg-[#f3f3f3] rounded-lg shadow-md flex justify-between items-center cursor-pointer"
+              className="w-full text-left text-[1rem] focus:outline-none p-4 bg-[#f3f3f3] rounded-lg shadow-sm border-1 border-[#bbbbbb] flex justify-between items-center cursor-pointer"
               onClick={() => handleclick(qst.id)}
             >
               <p className="text-[0.9rem] text-[#222222]">{qst.question}</p>

@@ -31,33 +31,33 @@ const Projects = [
 const questions = [
   {
     id: 1,
-    question: 'Why do you combine software engineering and technical writing?',
+    question: 'What is your typical project timeline?',
     answer:
-      'I believe good code deserves clear documentation. Writing helps me simplify technical concepts and bridge developers with the tools they use',
+      'Timeline depends on the scope of the project. Once I understand your requirements, I will give a clear timeline and milestone breakdown.',
   },
   {
     id: 2,
-    question: 'Why do you combine software engineering and technical writing?',
+    question: 'How do you handle scope changes mid-project?',
     answer:
-      'I believe good code deserves clear documentation. Writing helps me simplify technical concepts and bridge developers with the tools they use',
+      'Small changes are handled organically. Bigger changes are noted, costed, and added as new milestones so the original stays realistic.',
   },
   {
     id: 3,
-    question: 'Why do you combine software engineering and technical writing?',
+    question: 'What do you need from the client before commencement?',
     answer:
-      'I believe good code deserves clear documentation. Writing helps me simplify technical concepts and bridge developers with the tools they use',
+      'Clear product goals, required features, brand guidelines, and technical constraints (if any) ',
   },
   {
     id: 4,
-    question: 'Why do you combine software engineering and technical writing?',
+    question: 'Do you offer post-launch support or maintenance?',
     answer:
-      'I believe good code deserves clear documentation. Writing helps me simplify technical concepts and bridge developers with the tools they use',
+      'Yes, I provide maintenance plans, bug fixes, feature updates, and performance improvements after launch. ',
   },
   {
     id: 5,
     question: 'Why do you combine software engineering and technical writing?',
     answer:
-      'I believe good code deserves clear documentation. Writing helps me simplify technical concepts and bridge developers with the tools they use',
+      'I believe good code deserves clear documentation. Writing helps me to simplify technical concepts and bridge developers with the tools they use',
   },
 ];
 
