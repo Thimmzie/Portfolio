@@ -3,6 +3,7 @@ import { Projects } from '../../constants/index.js';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { MdArrowOutward } from 'react-icons/md';
+import { motion } from 'framer-motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -109,11 +110,18 @@ const projects = () => {
           })}
         </div>
         <div className="flex flex-col justify-center mt-[4rem]">
-          <button className="view-btn" data-hover="View all projects">
+          <motion.button
+            className="view-btn"
+            data-hover="View all projects"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: 'circOut' }}
+            viewport={{ amount: 0.3 }}
+          >
             <a href="#">
               <span>View all projects</span>
             </a>
-          </button>
+          </motion.button>
         </div>
       </div>
     </div>

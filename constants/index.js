@@ -31,7 +31,7 @@ const Projects = [
 const questions = [
   {
     id: 1,
-    question: 'What is your typical project timeline?',
+    question: 'What does your typical project timeline look like?',
     answer:
       'Timeline depends on the scope of the project. Once I understand your requirements, I will give a clear timeline and milestone breakdown.',
   },
