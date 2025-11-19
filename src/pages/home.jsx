@@ -5,6 +5,7 @@ import Cloud from '../components/cloud';
 import Project from '../components/projects';
 import Tool from '../components/tools';
 import Faq from '../components/faq';
+import Footer from '../components/footer';
 
 const home = () => {
   return (
@@ -15,6 +16,7 @@ const home = () => {
       <Project />
       <Tool />
       <Faq />
+      <Footer />
     </div>
   );
 };

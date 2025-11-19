@@ -1,5 +1,9 @@
 import Dong from '../src/assets/images/dong.png';
 import Moneva from '../src/assets/images/moneva.png';
+import { FaXTwitter, FaLinkedin, FaGithub, FaHashnode } from 'react-icons/fa6';
+// import { FaLinkedin } from 'react-icons/fa6';
+// import { FaGithub } from 'react-icons/fa6';
+// import { FaHashnode } from 'react-icons/fa6';
 
 const Mobilemenu = [
   { id: 'home', title: 'Homepage', path: '/' },
@@ -61,4 +65,11 @@ const questions = [
   },
 ];
 
-export { Mobilemenu, Projects, questions };
+const socials = [
+  { id: 1, media: FaXTwitter },
+  { id: 2, media: FaLinkedin },
+  { id: 3, media: FaGithub },
+  { id: 4, media: FaHashnode },
+];
+
+export { Mobilemenu, Projects, questions, socials };

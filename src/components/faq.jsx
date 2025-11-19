@@ -25,7 +25,7 @@ const Faq = () => {
   };
 
   return (
-    <div className="mb-[20rem] flex flex-col items-center">
+    <div className="mb-[5rem] flex flex-col items-center">
       <h1 className="text-[#000000] text-[1.5rem] font-[600] mb-[2rem]">FAQ</h1>
 
       <motion.div

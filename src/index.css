@@ -803,3 +803,25 @@ button {
   border-radius: 0.5rem;
   padding: 2rem; shadow-md rounded-lg border-1 border-[#bbbbbb]
 } */
+.footer-btn {
+  color: #0f0f0f;
+  background-color: #eff0f5;
+  border: none;
+  border-radius: 50rem;
+  width: 10rem;
+  height: 10rem;
+}
+.horizontal {
+  width: 100%;
+  background-color: #838383;
+  height: 0.1px;
+  margin-top: -5rem;
+}
+.mail-btn {
+  color: #0f0f0f;
+  background-color: #eff0f5;
+  border: none;
+  border-radius: 8rem;
+  width: 95%;
+  height: 9vh;
+}
