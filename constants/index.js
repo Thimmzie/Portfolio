@@ -3,10 +3,10 @@ import Moneva from '../src/assets/images/moneva.png';
 import { FaXTwitter, FaLinkedin, FaGithub, FaHashnode } from 'react-icons/fa6';
 
 const Mobilemenu = [
-  { id: 'home', title: 'Homepage', path: '/' },
-  { id: 'about', title: 'About Me', path: '/about' },
-  { id: 'project', title: 'Projects', path: '/project' },
-  { id: 'article', title: 'Articles', path: '/article' },
+  { id: 'home', title: 'Homepage', path: '' },
+  { id: 'about', title: 'About Me', path: 'about' },
+  { id: 'project', title: 'Projects', path: 'project' },
+  { id: 'article', title: 'Articles', path: 'article' },
   // { id: 'reachout', title: 'Reach out to me' },
 ];
 

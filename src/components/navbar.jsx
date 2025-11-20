@@ -270,7 +270,7 @@ const Navbar = () => {
               <ul
                 className={`flex flex-col items-center mobile lg:flex-row lg:gap-[5rem] lg:mt-[13rem] mt-[8.5rem] ul ${menuClass}`}
               >
-                {Mobilemenu.map((nav) => (
+                {/* {Mobilemenu.map((nav) => (
                   <li key={nav.id} className="py-2 hover:cursor-pointer">
                     <a
                       className={`text-[1.5rem] [font-family:var(--font-nunito)] font-[700] hover:cursor-pointer hover:text-[#ffffff] lg:text-[1.7rem] transition duration-300 ${
@@ -282,6 +282,21 @@ const Navbar = () => {
                     >
                       {nav.title}
                     </a>
+                  </li>
+                ))} */}
+
+                {Mobilemenu.map((nav) => (
+                  <li key={nav.id} className="py-2 hover:cursor-pointer">
+                    <Link
+                      className={`text-[1.5rem] [font-family:var(--font-nunito)] font-[700] hover:cursor-pointer hover:text-[#ffffff] lg:text-[1.7rem] transition duration-300 ${
+                        location.pathname === nav.path
+                          ? 'text-[#ffffff]'
+                          : 'text-[#818181]'
+                      }`}
+                      to={nav.path}
+                    >
+                      {nav.title}
+                    </Link>
                   </li>
                 ))}
 
