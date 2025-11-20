@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Mobilemenu } from '../../constants/index.js';
 import gsap from 'gsap';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
+  const location = useLocation();
   const [sidemenu, setSidemenu] = useState(false);
   const handleClick = () => setSidemenu(!sidemenu);
   const [showFloatingHamburger, setShowFloatingHamburger] = useState(false);
@@ -173,8 +174,6 @@ const Navbar = () => {
       document.body.style.paddingRight = '';
     }
   }, [sidemenu]);
-
-  const location = useLocation();
 
   return (
     <div>
