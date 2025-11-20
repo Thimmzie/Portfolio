@@ -84,7 +84,7 @@ const footer = () => {
 
   return (
     <div className="footer-wrapper">
-      <div className="h-full bg-[#1c1d20] pt-[3.5rem] px-[1.5rem] footer mb-0">
+      <div className="min-h-screen lg:h-screen bg-[#1c1d20] pt-[3.5rem] px-[1.5rem] footer mb-0">
         <div>
           <h2 className="text-[#ffffff] text-[2.3rem] tracking-wide pl-7 sm:pl-14 sm:text-[2.8rem] md:pl-35 lg:text-[3.2rem] lg:pl-78">
             Let's work{' '}
