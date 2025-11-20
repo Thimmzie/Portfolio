@@ -104,7 +104,7 @@ const footer = () => {
             </a>
           </button>
         </div>
-        <div className=" flex flex-col pb-[2rem] lg:flex-row-reverse lg:justify-between lg:pb-[1.5rem]">
+        <div className=" flex flex-col lg:flex-row-reverse lg:justify-between ">
           <div className="flex gap-7 mt-[6rem]">
             {socials.map((med) => (
               <div key={med.id}>
