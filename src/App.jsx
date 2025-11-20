@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/home';
 import Greetings from './components/greetings';
 import Nopage from './pages/nopage';
+import About from './pages/about';
 import './App.css';
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="*" element={<Nopage />} />
-          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/about" element={<About />} />
         </Routes>
       </Router>
     </>

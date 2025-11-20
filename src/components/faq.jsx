@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaPlus, FaMinus } from 'react-icons/fa6';
 import { questions } from '../../constants';
 import { AnimatePresence, motion } from 'framer-motion';
