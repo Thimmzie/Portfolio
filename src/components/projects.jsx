@@ -50,17 +50,25 @@ const projects = () => {
       );
     });
 
-    // gsap.from('.view-btn', {
-    //   y: 70,
-    //   opacity: 0,
-    //   duration: 0.5,
-    //   ease: 'back.out(1.7)',
-    //   scrollTrigger: {
-    //     trigger: '.view-btn',
-    //     start: 'top 95%',
-    //     toggleActions: 'play none none reverse',
-    //   },
-    // });
+    gsap.fromTo(
+      '.view-btn',
+      {
+        y: 110,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        ease: 'back.out(1.7)',
+        duration: 0.7,
+        scrollTrigger: {
+          trigger: '.view-btn',
+          start: 'top 90%',
+          toggleActions: 'play none none reverse',
+          // scrub: false  // enable if you want scroll-controlled motion
+        },
+      }
+    );
 
     window.addEventListener('load', () => {
       ScrollTrigger.refresh();

@@ -746,8 +746,6 @@ button {
     border: none;
     border-radius: 3rem;
     height: 8vh;
-    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
-      color 0.6s ease-in-out 0.15s, transform 0.5s ease-in-out;
     position: relative;
     display: inline-block;
     overflow: hidden;
@@ -824,4 +822,154 @@ button {
   border-radius: 8rem;
   width: 95%;
   height: 8vh;
+}
+@media (min-width: 640px) {
+  .horizontal {
+    width: 90%;
+    background-color: gray;
+    height: 1px;
+    margin-top: -5rem;
+  }
+  .mail-btn {
+    color: #ffffff;
+    background-color: #1c1d20;
+    border: solid 1px gray;
+    border-radius: 8rem;
+    width: 75%;
+    height: 8vh;
+  }
+}
+@media (min-width: 768px) {
+  .horizontal {
+    width: 80%;
+    background-color: gray;
+    height: 1px;
+    margin-top: -5rem;
+  }
+  .mail-btn {
+    color: #ffffff;
+    background-color: #1c1d20;
+    border: solid 1px gray;
+    border-radius: 8rem;
+    width: 45%;
+    height: 8vh;
+  }
+}
+@media (min-width: 1024px) {
+  .horizontal {
+    width: 60%;
+    background-color: gray;
+    height: 1px;
+    margin-top: -5rem;
+  }
+
+  .mail-btn {
+    color: #ffffff;
+    background-color: #1c1d20;
+    border: solid 1px gray;
+    border-radius: 8rem;
+    width: 30%;
+    height: 10vh;
+
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .mail-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #455ce9;
+    transform: translateY(100%);
+    transition: transform 0.25s ease-in-out;
+    border-radius: inherit;
+    z-index: 2;
+  }
+  .mail-btn::after {
+    content: attr(data-hover);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transform: translateY(150%);
+    transition: transform 0.25s ease-in-out;
+    font-weight: 600;
+    font-size: inherit;
+    z-index: 2;
+  }
+  .mail-btn:hover::before {
+    transform: translateY(0);
+  }
+  .mail-btn:hover::after {
+    transform: translateY(0);
+  }
+  .mail-btn span {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.5s ease, opacity 0.1s ease;
+  }
+
+  .mail-btn:hover span {
+    transform: scale(0.1);
+    opacity: 0.2;
+  }
+  .footer-btn {
+    color: #0f0f0f;
+    background-color: #eff0f5;
+    border: none;
+    border-radius: 50rem;
+    width: 10rem;
+    height: 10rem;
+    /* transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+      color 0.6s ease-in-out 0.15s, transform 0.5s ease-in-out; */
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .footer-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #455ce9;
+    transform: translateY(100%);
+    transition: transform 0.55s ease-in-out;
+    border-radius: inherit;
+    z-index: 2;
+  }
+  .footer-btn::after {
+    content: attr(data-hover);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transform: translateY(150%);
+    transition: transform 0.75s ease-in-out;
+    font-weight: 600;
+    font-size: inherit;
+    z-index: 2;
+  }
+  .footer-btn:hover::before {
+    transform: translateY(0);
+  }
+  .footer-btn:hover::after {
+    transform: translateY(0);
+  }
+  .footer-btn span {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.5s ease, opacity 0.1s ease;
+  }
+
+  .footer-btn:hover span {
+    transform: scale(0.1);
+    opacity: 0.2;
+  }
 }
