@@ -72,7 +72,7 @@ const footer = () => {
         opacity: 1,
         duration: 0.7,
         ease: 'back.out(1.7)',
-        delay: 2.5,
+        delay: 2,
         scrollTrigger: {
           trigger: '.footer-btn',
           start: 'top 90%',
