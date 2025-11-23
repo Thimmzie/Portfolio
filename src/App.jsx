@@ -5,6 +5,7 @@ import Home from './pages/home';
 import Greetings from './components/greetings';
 import Nopage from './pages/nopage';
 import About from './pages/about';
+import Contact from './pages/contact';
 import './App.css';
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="*" element={<Nopage />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
     </>

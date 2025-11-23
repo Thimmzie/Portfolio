@@ -973,6 +973,99 @@ button {
     opacity: 0.2;
   }
 }
-/* .card-img-container {
-  perspective: 1000px;
-} */
+.submit-btn {
+  background-color: #fff;
+  color: #020202;
+  border-radius: 2rem;
+  border: none;
+  height: 6.8vh;
+  width: 100%;
+  font-size: 1rem;
+  margin: 0 auto;
+}
+@media (min-width: 1024px) {
+  .submit-btn {
+    background-color: #fff;
+    color: #020202;
+    border-radius: 2rem;
+    border: none;
+    height: 8vh;
+    width: 40%;
+    font-size: 1rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+  }
+  .submit-btn:hover {
+    background-color: #455ce9;
+    color: #fff;
+    border-radius: 2rem;
+    border: none;
+    height: 8vh;
+    width: 40%;
+    font-size: 1rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+.okay-btn {
+  background-color: #020202;
+  color: #ffffff;
+  border-radius: 2rem;
+  border: none;
+  height: 6.8vh;
+  width: 100%;
+  font-size: 1rem;
+  margin: 3.5rem auto 0.5rem;
+}
+@media (min-width: 640px) {
+  .okay-btn {
+    background-color: #020202;
+    color: #ffff;
+    border-radius: 2rem;
+    border: none;
+    height: 8vh;
+    width: 69%;
+    font-size: 1rem;
+    margin: 3.5rem auto 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+  }
+}
+@media (min-width: 1024px) {
+  .okay-btn {
+    background-color: #020202;
+    color: #ffff;
+    border-radius: 2rem;
+    border: none;
+    height: 8vh;
+    width: 70%;
+    font-size: 1rem;
+    margin: 3.5rem auto 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+  }
+  .okay-btn:hover {
+    background-color: #455ce9;
+    color: #fff;
+    border-radius: 2rem;
+    border: none;
+    height: 8vh;
+    width: 70%;
+    font-size: 1rem;
+       margin: 3.5rem auto 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}

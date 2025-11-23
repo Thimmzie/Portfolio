@@ -241,18 +241,18 @@ const Navbar = () => {
                 className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] ctatwo-btn"
                 data-hover="Get in touch"
               >
-                <a href="#">
+                <Link to="contact">
                   <span>Get in touch</span>
-                </a>
+                </Link>
               </button>
             ) : (
               <button
                 className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] cta-btn"
                 data-hover="Get in touch"
               >
-                <a href="#">
+                <Link to="contact">
                   <span>Get in touch</span>
-                </a>
+                </Link>
               </button>
             )}
           </div>
