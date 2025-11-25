@@ -3,7 +3,7 @@ import { FullProjects } from '../../constants/index.js';
 import { MdArrowOutward } from 'react-icons/md';
 
 const pojectdeji = () => {
-  const colors = ['#e6f9ff', '#fffce6', '#f0e6ff', '#e6fff9'];
+  const colors = ['#e6f9ff', '#e9e9e9', '#e6fff9', '#e9e9e9'];
   return (
     <div className="mt-[3rem] mb-[50rem]">
       <h2 className="text-center text-[1.5rem] font-[600]">
@@ -12,7 +12,7 @@ const pojectdeji = () => {
       <div className="mt-[4rem] flex flex-col gap-12">
         {FullProjects.map((detail, i) => (
           <div
-            className=" px-6 py-8 rounded-[10px] w-[90%] mx-auto flex flex-col border-1 border-[#dddddd]"
+            className=" px-6 py-8 rounded-[10px] w-[90%] mx-auto flex flex-col border-1 border-[#dddddd] bg-[#e9e9e9]"
             style={{ backgroundColor: colors[i % colors.length] }}
             key={detail.id}
           >
