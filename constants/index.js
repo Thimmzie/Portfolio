@@ -1,5 +1,7 @@
 import Dong from '../src/assets/images/dong.png';
 import Moneva from '../src/assets/images/moneva.png';
+import Porfolio from '../src/assets/images/portfolio.png';
+import Guessy from '../src/assets/images/guessy.png';
 import { FaXTwitter, FaLinkedin, FaGithub, FaHashnode } from 'react-icons/fa6';
 
 const Mobilemenu = [
@@ -63,10 +65,49 @@ const questions = [
 ];
 
 const socials = [
-  { id: 1, media: FaXTwitter },
-  { id: 2, media: FaLinkedin },
-  { id: 3, media: FaGithub },
-  { id: 4, media: FaHashnode },
+  { id: 1, media: FaXTwitter, username: 'rushhour435' },
+  { id: 2, media: FaLinkedin, username: 'Ayodeji Olupinla' },
+  { id: 3, media: FaGithub, username: 'Thimmzie' },
+  { id: 4, media: FaHashnode, username: 'Thimmzie435' },
 ];
 
-export { Mobilemenu, Projects, questions, socials };
+const FullProjects = [
+  {
+    id: 1,
+    title: 'Dong',
+    about:
+      'Dong is a Web3-powered platform built on blockchain technology. I worked on integrating MetaMask wallet connectivity and interacting with the smart contract directly from the frontend, also built the frontend. The project focuses on enabling users to connect their wallets, view on-chain data, and perform secure transactions in a simple, user-friendly interface.',
+    link: 'https://thimmzie.github.io/-Dong/',
+    img: Dong,
+    stack: 'JavaScript • CSS • Ether.JS',
+  },
+  {
+    id: 2,
+    title: 'Moneva',
+    about:
+      'Moneva is a personal expense-tracking app designed to help users manage their daily spending with clarity and ease. It’s an ongoing project, with a minor frontend and major backend features still in development. This project focuses on a clean UI, smooth interactions, and real-time expense tracking.',
+    link: 'https://moneva.pxxl.click/',
+    img: Moneva,
+    stack: 'React • Tailwind CSS • Gsap',
+  },
+  {
+    id: 3,
+    title: 'Ayodeji"s portfolio',
+    about:
+      'This project is a fully responsive portfolio website built to highlight my skills, personality, and approach to modern frontend development. It features smooth animations, clean UI patterns, and a carefully structured layout optimized for both desktop and mobile experiences.',
+    link: 'https://thimmzie.github.io/Portfolio/',
+    img: Porfolio,
+    stack: 'React • Tailwind CSS • Motion • Gsap • Express • Node.JS',
+  },
+  {
+    id: 4,
+    title: 'Guessy',
+    about:
+      'This project is a lightweight number-guessing game where users attempt to guess a randomly generated number within a defined range. It features simple validation, instant feedback, and a smooth user flow',
+    link: 'https://thimmzie.github.io/Guessy/',
+    img: Guessy,
+    stack: 'Javascript • CSS',
+  },
+];
+
+export { Mobilemenu, Projects, questions, socials, FullProjects };

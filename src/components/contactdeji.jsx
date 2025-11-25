@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
+import { socials } from '../../constants/index.js';
 
 const contactdeji = () => {
   const [formData, setFormData] = useState({
@@ -140,105 +141,122 @@ const contactdeji = () => {
         className={`${showPopup ? 'blur-sm pointer-events-none' : ''}`}
       ></div>
       <div className="px-[1.5rem]">
-        <h2 className="mt-[4rem] font-bold text-[1.2rem] lg:pl-[17.5rem]">
+        <h2 className="mt-[4rem] font-[600] text-[1.4rem] lg:pl-[9rem]">
           Ready to Build Something?
         </h2>
-        <p className="pt-3 text-[1.1rem] lg:text-[1rem] lg:pl-[17.5rem]">
-          Whether you're planning a new feature, exploring a fresh idea,{' '}
-          <span className="lg:block">
-            {' '}
-            or need technical insight, I am open to it. Send a message today.
-          </span>
-        </p>
-        <form
-          onSubmit={handleSubmit}
-          className=" w-[100%] lg:w-[60%] mx-auto px-4 py-12 lg:px-[2rem] bg-[#1c1d20] rounded-[12px] shadow-md mb-[8rem] mt-[3rem]"
-        >
-          <h2 className="text-2xl mb-[3rem] text-white">Work With Me</h2>
-
-          <div className="relative w-full mb-4">
-            <label className={getLabelClass('name')}>What's your name?</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="John Doe"
-              required
-              className={getInputClass('name')}
-            />
-          </div>
-
-          <div className="relative w-full mb-4">
-            <label className={getLabelClass('email')}>What's your email?</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="John@Doe.com"
-              required
-              className={getInputClass('email')}
-            />
-          </div>
-
-          <div className="relative w-full mb-4">
-            <label className={getLabelClass('projectType')}>Project Type</label>
-            <input
-              type="text"
-              name="projectType"
-              value={formData.projectType}
-              onChange={handleChange}
-              placeholder="Ecommerce, Web app/ dashboard"
-              className={getInputClass('projectType')}
-            />
-          </div>
-
-          <div className="relative w-full mb-4">
-            <label className={getLabelClass('message')}>Your Message</label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Hello Ayodeji, can you help me with..."
-              rows="5"
-              required
-              className={getInputClass('message') + ' resize-none'}
-            ></textarea>
-          </div>
-
-          <input
-            type="text"
-            name="honeypot"
-            value={formData.honeypot}
-            onChange={handleChange}
-            style={{ display: 'none' }}
-            autoComplete="off"
-          />
-
-          <button
-            type="submit"
-            disabled={loading}
-            className={`submit-btn w-full transition-colors ${
-              loading ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-            onClick={handleClosePopup}
-          >
-            {loading ? 'Sending...' : 'Send Message'}
-          </button>
-          {errorMsg && (
-            <div className="flex items-center justify-center gap-3 p-4 rounded-md mb-4">
-              <IoMdCloseCircleOutline size={40} className="text-red-600" />
-
-              <div className="flex flex-col ">
-                <p className="text-[1rem] font-semibold text-white">
-                  Something went wrong
-                </p>
-                <p className="text-[0.9rem] text-white">{errorMsg}</p>
-              </div>
+        <div className="flex flex-col lg:flex-row-reverse lg:justify-center gap-[5rem]">
+          <div>
+            <div className="lg:mt-[4rem]">
+              {socials.map((med) => (
+                <div
+                  className="flex pt-[1.5rem] lg:pt-[2rem] gap-5"
+                  key={med.id}
+                >
+                  <a href="#">
+                    {' '}
+                    <med.media size={27} className=" text-[#1d1d1d]" />
+                  </a>
+                  <p className="text-[1rem] text-[#1d1d1d] font-semibold">
+                    {med.username}
+                  </p>
+                </div>
+              ))}
             </div>
-          )}
-        </form>
+          </div>
+          <form
+            onSubmit={handleSubmit}
+            className=" w-[100%] lg:w-[40rem] px-4 py-12 lg:px-[2rem] lg:-ml-[7rem] bg-[#1c1d20] rounded-[12px] shadow-md mb-[8rem] mt-[3rem]"
+          >
+            <h2 className="text-2xl mb-[3rem] text-white">Work With Me</h2>
+
+            <div className="relative w-full mb-4">
+              <label className={getLabelClass('name')}>What's your name?</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="John Doe"
+                required
+                className={getInputClass('name')}
+              />
+            </div>
+
+            <div className="relative w-full mb-4">
+              <label className={getLabelClass('email')}>
+                What's your email?
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="John@Doe.com"
+                required
+                className={getInputClass('email')}
+              />
+            </div>
+
+            <div className="relative w-full mb-4">
+              <label className={getLabelClass('projectType')}>
+                Project Type
+              </label>
+              <input
+                type="text"
+                name="projectType"
+                value={formData.projectType}
+                onChange={handleChange}
+                placeholder="Ecommerce, Web app/ dashboard"
+                className={getInputClass('projectType')}
+              />
+            </div>
+
+            <div className="relative w-full mb-4">
+              <label className={getLabelClass('message')}>Your Message</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Hello Ayodeji, can you help me with..."
+                rows="5"
+                required
+                className={getInputClass('message') + ' resize-none'}
+              ></textarea>
+            </div>
+
+            <input
+              type="text"
+              name="honeypot"
+              value={formData.honeypot}
+              onChange={handleChange}
+              style={{ display: 'none' }}
+              autoComplete="off"
+            />
+
+            <button
+              type="submit"
+              disabled={loading}
+              className={`submit-btn w-full transition-colors ${
+                loading ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+              onClick={handleClosePopup}
+            >
+              {loading ? 'Sending...' : 'Send Message'}
+            </button>
+            {errorMsg && (
+              <div className="flex items-center justify-center gap-3 p-4 rounded-md mb-4">
+                <IoMdCloseCircleOutline size={40} className="text-red-600" />
+
+                <div className="flex flex-col ">
+                  <p className="text-[1rem] font-semibold text-white">
+                    Something went wrong
+                  </p>
+                  <p className="text-[0.9rem] text-white">{errorMsg}</p>
+                </div>
+              </div>
+            )}
+          </form>
+        </div>
       </div>
     </div>
   );

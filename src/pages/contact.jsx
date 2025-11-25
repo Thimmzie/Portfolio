@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../components/navbar';
-import Footer from '../components/footer';
+import Navbar from '../components/contact-navbar';
+import Footer from '../components/contact-footer';
 import Contact from '../components/contactdeji';
 
 const contact = () => {

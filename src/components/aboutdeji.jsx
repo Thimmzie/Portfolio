@@ -27,7 +27,7 @@ const aboutdeji = () => {
   }, []);
 
   return (
-    <div className="mb-[3rem] mt-[3rem] ">
+    <div className="mb-[3rem] mt-[3rem]">
       <p className="px-[1.5rem] tracking-wide lg:px-[14.5rem]">
         I’m Ayodeji Olupinla, a Software Developer passionate about building
         smooth and cutting-edge digital experiences. I specialize in React and
