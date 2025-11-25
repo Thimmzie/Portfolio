@@ -11,12 +11,12 @@ const pojectdeji = () => {
       <div className="mt-[4rem] flex flex-col gap-8">
         {FullProjects.map((detail) => (
           <div
-            className=" px-4 py-8 rounded-[10px] w-[90%] bg-[#e6f9ff] mx-auto flex flex-col"
+            className=" px-6 py-8 rounded-[10px] w-[90%] bg-[#e6f9ff] mx-auto flex flex-col border-1 border-[#dddddd]"
             key={detail.id}
           >
             <div>
               <h2 className="text-[1.3rem] font-[600]">{detail.title}</h2>
-              <p className="py-4 text-[1.1rem] text-[#535353] font-[400] leading-7">
+              <p className="py-4 text-[0.9rem] text-[#535353] font-[400] leading-7">
                 {detail.about}
               </p>
               <p className="text-[1rem] text-[#6d6d6d]">{detail.stack}</p>
