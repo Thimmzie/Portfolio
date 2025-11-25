@@ -20,7 +20,7 @@ const pojectdeji = () => {
           scrollTrigger: {
             trigger: item,
             start: 'top 80%',
-            toggleActions: 'play reverse play reverse',
+            toggleActions: 'play none none reverse',
           },
         }
       );
