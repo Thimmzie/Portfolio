@@ -3,15 +3,17 @@ import { FullProjects } from '../../constants/index.js';
 import { MdArrowOutward } from 'react-icons/md';
 
 const pojectdeji = () => {
+  const colors = ['#e6f9ff', '#fffce6', '#f0e6ff', '#e6fff9'];
   return (
     <div className="mt-[3rem] mb-[50rem]">
       <h2 className="text-center text-[1.5rem] font-[600]">
         A collection of my work
       </h2>
-      <div className="mt-[4rem] flex flex-col gap-8">
-        {FullProjects.map((detail) => (
+      <div className="mt-[4rem] flex flex-col gap-12">
+        {FullProjects.map((detail, i) => (
           <div
-            className=" px-6 py-8 rounded-[10px] w-[90%] bg-[#e6f9ff] mx-auto flex flex-col border-1 border-[#dddddd]"
+            className=" px-6 py-8 rounded-[10px] w-[90%] mx-auto flex flex-col border-1 border-[#dddddd]"
+            style={{ backgroundColor: colors[i % colors.length] }}
             key={detail.id}
           >
             <div>
