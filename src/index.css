@@ -1070,3 +1070,14 @@ button {
   perspective: 1000px;
   transform-style: preserve-3d;
 }
+.project img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.project {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity; 
+}

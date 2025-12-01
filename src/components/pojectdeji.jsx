@@ -8,23 +8,31 @@ gsap.registerPlugin(ScrollTrigger);
 
 const pojectdeji = () => {
   useEffect(() => {
-    gsap.utils.toArray('.project').forEach((item) => {
+    const cards = gsap.utils.toArray('.project');
+
+    cards.forEach((card, i) => {
+      const depth = 200 + i * 40;
+      const isLast = i === cards.length - 1;
+
+      gsap.set(card, {
+        opacity: 0,
+        z: depth,
+        willChange: 'transform, opacity',
+      });
+
       gsap.fromTo(
-        item,
+        card,
+        { opacity: 0, z: depth },
         {
-          z: 300,
-          opacity: 0,
-          // scale: 0.94,
-        },
-        {
-          z: 0,
           opacity: 1,
-          scale: 1,
-          duration: 0.7,
+          z: 0,
+          duration: isLast ? 0.6 : 0.7,
           ease: 'power2.out',
+          immediateRender: false,
           scrollTrigger: {
-            trigger: item,
-            start: 'top 65%',
+            trigger: card,
+            start: isLast ? 'top 125%' : 'top 90%',
+            end: 'bottom 20%',
             toggleActions: 'play none none reverse',
             invalidateOnRefresh: true,
           },
@@ -32,6 +40,7 @@ const pojectdeji = () => {
       );
     });
   }, []);
+
   const colors = ['#e6f9ff', '#f5f5f5', '#e6fff9', '#f5f5f5'];
   return (
     <div className="mt-[3rem] mb-[5rem]">
@@ -66,7 +75,11 @@ const pojectdeji = () => {
               </button>
             </div>
             <div className="lg:mt-[2rem]">
-              <img className="rounded-[8px] " src={detail.img} />
+              <img
+                className="rounded-[8px] "
+                src={detail.img}
+                onLoad={() => ScrollTrigger.refresh()}
+              />
             </div>
           </div>
         ))}
