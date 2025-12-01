@@ -11,16 +11,22 @@ const pojectdeji = () => {
     gsap.utils.toArray('.project').forEach((item) => {
       gsap.fromTo(
         item,
-        { y: 100, opacity: 0 },
         {
-          y: 0,
+          z: 300,
+          opacity: 0,
+          // scale: 0.94,
+        },
+        {
+          z: 0,
           opacity: 1,
-          duration: 0.45,
-          ease: 'power4.out',
+          scale: 1,
+          duration: 0.7,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: item,
-            start: 'top 80%',
+            start: 'top 65%',
             toggleActions: 'play none none reverse',
+            invalidateOnRefresh: true,
           },
         }
       );
@@ -32,7 +38,7 @@ const pojectdeji = () => {
       <h2 className="text-center text-[1.5rem] font-[600]">
         A collection of my work
       </h2>
-      <div className="mt-[4rem] flex flex-col gap-12">
+      <div className="mt-[4rem] flex flex-col gap-12 project-container">
         {FullProjects.map((detail, i) => (
           <div
             className=" px-6 py-8 rounded-[10px] w-[90%] lg:w-[70%] mx-auto flex flex-col lg:flex-row lg:gap-4 border-1 border-[#dddddd] project"

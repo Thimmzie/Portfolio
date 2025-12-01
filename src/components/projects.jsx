@@ -65,7 +65,6 @@ const projects = () => {
           trigger: '.view-btn',
           start: 'top 90%',
           toggleActions: 'play none none reverse',
-          // scrub: false  // enable if you want scroll-controlled motion
         },
       }
     );
