@@ -224,7 +224,7 @@ const Navbar = () => {
               </button>
             )}
           </div>
-          <div className="hidden lg:block ">
+          <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2">
             {sidemenu ? (
               <h1 className="text-[#ffff] [font-family:var(--font-fira)] text-[1.4rem] z-[1200] ayo">
                 Ayodeji!

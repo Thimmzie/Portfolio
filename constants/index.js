@@ -3,6 +3,7 @@ import Moneva from '../src/assets/images/moneva.png';
 import Porfolio from '../src/assets/images/portfolio.png';
 import Guessy from '../src/assets/images/guessy.png';
 import { FaXTwitter, FaLinkedin, FaGithub, FaHashnode } from 'react-icons/fa6';
+import Api from '../src/assets/images/apicover.jpg';
 
 const Mobilemenu = [
   { id: 'home', title: 'Homepage', path: '' },
@@ -110,4 +111,17 @@ const FullProjects = [
   },
 ];
 
-export { Mobilemenu, Projects, questions, socials, FullProjects };
+const Writing = [
+  {
+    id: 1,
+    img: Api,
+    title: 'APIs: The Bridge Between Frontend and Real Data',
+    excerpt:
+      'Behind every smooth digital experience is a system quietly exchanging information. ',
+    date: 'Nov 17, 2025',
+    time: '📖 10 min read',
+    link: '#',
+  },
+];
+
+export { Mobilemenu, Projects, questions, socials, FullProjects, Writing };

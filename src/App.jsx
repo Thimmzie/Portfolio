@@ -7,6 +7,7 @@ import Nopage from './pages/nopage';
 import About from './pages/about';
 import Contact from './pages/contact';
 import Project from './pages/projectfull';
+import Article from './pages/article';
 import './App.css';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/project" element={<Project />} />
+          <Route path="/article" element={<Article />} />
         </Routes>
       </Router>
     </>
