@@ -9,7 +9,7 @@ const myarticle = () => {
           {' '}
           Welcome to my collection of articles!
         </p>
-        <p className="px-[1.3rem] md:w-[60%] lg:w-[45%] text-center text-[1rem] lg:text-[0.9rem]">
+        <p className="px-[1.3rem] md:w-[60%] lg:w-[40%] text-center text-[1rem] lg:text-[0.9rem]">
           Here, I share insights, tutorials, and deep dives into the science of
           innovation, technology, and modern software development.
         </p>
@@ -42,7 +42,7 @@ const myarticle = () => {
                     rel="noopener noreferrer"
                     className="text-[#1f0f79] text-[0.8rem] tracking-wider "
                   >
-                    Read more...
+                    Read article...
                   </a>
                 </button>
               </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
-const Greetings = () => {
+const Greetings = ({ isExiting }) => {
   const pleasantries = [
     'Hello 👋',
     'Hola 👋',
@@ -13,15 +13,14 @@ const Greetings = () => {
     'Olá 👋',
     'Enle 👋',
     'Ndewo 👋',
-    'こんにちは 👋',
     'Sannu 👋',
-    '안녕하세요 👋',
   ];
   const [index, setIndex] = useState(0);
   const textRef = useRef(null);
   const containerRef = useRef(null);
 
   useEffect(() => {
+    if (isExiting) return;
     const el = textRef.current;
     const interval = setInterval(() => {
       gsap.to(el, {
@@ -32,9 +31,9 @@ const Greetings = () => {
           gsap.to(el, { opacity: 1, duration: 0.1 });
         },
       });
-    }, 250);
+    }, 180);
     return () => clearInterval(interval);
-  }, []);
+  }, [isExiting]);
 
   useEffect(() => {
     return () => {
@@ -49,13 +48,15 @@ const Greetings = () => {
     };
   }, []);
   return (
-    <div
-      className="bg-[#000000] h-[100vh] flex flex-col items-center justify-center text-[2rem] md:text-[2.5rem] text-[white] lg:text-[3.5arem] greeting-container"
-      ref={containerRef}
-    >
-      <span ref={textRef} className="pleasantries-text">
-        {pleasantries[index]}
-      </span>
+    <div className="perspective-wrapper">
+      <div
+        className="bg-[#000000] h-[100vh] flex flex-col items-center justify-center text-[2rem] md:text-[2.5rem] text-[white] lg:text-[3.5arem] greeting-container"
+        ref={containerRef}
+      >
+        <span ref={textRef} className="pleasantries-text">
+          {pleasantries[index]}
+        </span>
+      </div>
     </div>
   );
 };

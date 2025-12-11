@@ -120,7 +120,7 @@ const Writing = [
       'Behind every smooth digital experience is a system quietly exchanging information. ',
     date: 'Nov 17, 2025',
     time: '📖 10 min read',
-    link: '#',
+    link: 'https://ayodeji435.hashnode.dev/apis-the-bridge-between-frontend-and-real-data',
   },
 ];
 

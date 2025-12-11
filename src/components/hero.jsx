@@ -99,6 +99,7 @@ const hero = () => {
     gsap.set([imgWrap1.current, imgWrap2.current, imgWrap3.current], {
       position: 'absolute',
       transformStyle: 'preserve-3d',
+      opacity: 0,
     });
 
     gsap.fromTo(

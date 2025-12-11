@@ -12,23 +12,34 @@ import './App.css';
 
 function App() {
   const [showGreetings, setShowGreetings] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => {
-      gsap.from('.greeting-container', {
-        z: '10',
-        scale: 0.2,
-        opacity: 0,
-        ease: 'back.inOut',
-        duration: 0.8,
-        onComplete: () => setShowGreetings(false),
-      });
-      // setShowGreetings(false);
-    }, 2700);
+      setIsExiting(true);
+      gsap.fromTo(
+        '.greeting-container',
+        {
+          z: -200,
+          opacity: 0,
+          // rotateY: 15,
+          scale: 0.6,
+          transformOrigin: 'center center',
+        },
+        {
+          scale: 1,
+          opacity: 0,
+          ease: 'back.inOut',
+          rotateY: 0,
+          duration: 0.6,
+          onComplete: () => setShowGreetings(false),
+        }
+      );
+    }, 1900);
     return () => clearTimeout(timer);
   }, []);
 
   if (showGreetings) {
-    return <Greetings />;
+    return <Greetings isExiting={isExiting} />;
   }
   return (
     <>
