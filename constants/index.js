@@ -6,11 +6,10 @@ import { FaXTwitter, FaLinkedin, FaGithub, FaHashnode } from 'react-icons/fa6';
 import Api from '../src/assets/images/apicover.jpg';
 
 const Mobilemenu = [
-  { id: 'home', title: 'Homepage', path: '' },
-  { id: 'about', title: 'About Me', path: 'about' },
-  { id: 'project', title: 'Projects', path: 'project' },
-  { id: 'article', title: 'Articles', path: 'article' },
-  // { id: 'reachout', title: 'Reach out to me' },
+  { id: 'home', title: 'Homepage', path: '/' },
+  { id: 'about', title: 'About Me', path: '/about' },
+  { id: 'project', title: 'Projects', path: '/project' },
+  { id: 'article', title: 'Articles', path: '/article' },
 ];
 
 const Projects = [
@@ -66,10 +65,30 @@ const questions = [
 ];
 
 const socials = [
-  { id: 1, media: FaXTwitter, username: 'rushhour435' },
-  { id: 2, media: FaLinkedin, username: 'Ayodeji Olupinla' },
-  { id: 3, media: FaGithub, username: 'Thimmzie' },
-  { id: 4, media: FaHashnode, username: 'Thimmzie435' },
+  {
+    id: 1,
+    media: FaXTwitter,
+    username: 'rushhour435',
+    url: 'https://x.com/rushhour435?s=21  ',
+  },
+  {
+    id: 2,
+    media: FaLinkedin,
+    username: 'Ayodeji Olupinla',
+    url: 'https://www.linkedin.com/in/ayodeji-olupinla-60875b205?',
+  },
+  {
+    id: 3,
+    media: FaGithub,
+    username: 'Thimmzie',
+    url: 'https://github.com/Thimmzie',
+  },
+  {
+    id: 4,
+    media: FaHashnode,
+    username: 'Thimmzie435',
+    url: 'https://hashnode.com/@Thimmzie435',
+  },
 ];
 
 const FullProjects = [

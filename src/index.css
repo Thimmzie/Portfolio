@@ -49,33 +49,6 @@ body {
 button {
   font-weight: 600;
 }
-/* .gradient {
-  background: linear-gradient(
-    to right,
-    rgb(255, 255, 255),
-    rgb(207, 205, 205),
-    rgb(255, 255, 255)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: 1rem;
-} */
-/* .hamburger {
-  color: #e7e7e7;
-  background-color: #000000;
-  border-radius: 50%;
-  padding: 0.8rem;
-  width: 3rem;
-  height: 3rem;
-}
-.hamburger-close {
-  color: #e7e7e7;
-  background-color: #383838;
-  border-radius: 50%;
-  padding: 0.8rem;
-  width: 3rem;
-  height: 3rem;
-} */
 .bar {
   display: block;
   width: 20px;
@@ -101,7 +74,8 @@ button {
   height: 3rem;
   outline: none;
 }
-.hamburger:hover {
+@media (hover: hover) {
+ .hamburger:hover {
   background-color: #ececec;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
@@ -114,6 +88,7 @@ button {
   transition: all 0.3s ease-in-out;
   background-color: #252525;
   transform-origin: center;
+}
 }
 .hamburger-side {
   z-index: 1000;
@@ -153,7 +128,8 @@ button {
 .hamburger-side.active .bar-side:nth-child(2) {
   transform: translateY(-8px) rotate(-45deg);
 }
-.hamburger-side:hover {
+@media (hover: hover) {
+ .hamburger-side:hover {
   background-color: #ececec;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
@@ -162,10 +138,12 @@ button {
 .hamburger-side.active:hover .bar-side:nth-child(2) {
   background-color: black;
 }
-@media (hover: hover) and (pointer: fine) {
-  .hamburger-side.active:hover .bar-side:nth-child(1),
-  .hamburger-side.active:hover .bar-side:nth-child(2) {
-    background-color: black;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hamburger:active,
+  .hamburger-side:active {
+    background-color: #ececec;
   }
 }
 .menu-div {
@@ -232,62 +210,6 @@ button {
   height: 7vh;
   transition: background-color 0.2s ease-in-out 0.1s, transform 0.3s ease-in-out;
 }
-/* @media (min-width: 1024px) {
-  .cta-btn {
-    position: relative;
-    background: #252525;
-    color: #fff;
-    overflow: hidden;
-    border: solid 1px black;
-  }
-  .cta-btn::before {
-    width: 0;
-    height: 4.5px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: #000000;
-    transition: all 0.35s;
-    content: '';
-    z-index: 2;
-  }
-
-  .cta-btn::after {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 0.5rem;
-    background-color: #ececec;
-    transform: translate(0, -100%);
-    transition: all 0.35s;
-    content: attr(data-hover);
-    color: #0a0a0a;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .cta-btn:hover::before {
-    width: 100%;
-  }
-
-  .cta-btn:hover::after {
-    transform: translate(0, 0);
-  }
-  .cta-btn:active {
-    transform: scale(0.96);
-  }
-  .cta-btn.active {
-    position: relative;
-    background: #ffff;
-    color: #252525;
-    overflow: hidden;
-  }
-} */
  .perspective-wrapper {
   perspective: 1200px;
   transform-style: preserve-3d;
@@ -929,8 +851,6 @@ button {
     border-radius: 50rem;
     width: 10rem;
     height: 10rem;
-    /* transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
-      color 0.6s ease-in-out 0.15s, transform 0.5s ease-in-out; */
     position: relative;
     display: inline-block;
     overflow: hidden;

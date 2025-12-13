@@ -117,9 +117,9 @@ const projects = () => {
         </div>
         <div className="flex flex-col justify-center mt-[4rem]">
           <button className="view-btn" data-hover="View all projects">
-            <a href="#">
+            <Link to="/project">
               <span>View all projects</span>
-            </a>
+            </Link>
           </button>
         </div>
       </div>

@@ -1,8 +1,7 @@
-import React from 'react';
-import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
+import React, { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
 
-const Greetings = ({ isExiting }) => {
+const Greetings = ({ onFinish }) => {
   const pleasantries = [
     'Hello 👋',
     'Hola 👋',
@@ -15,13 +14,15 @@ const Greetings = ({ isExiting }) => {
     'Ndewo 👋',
     'Sannu 👋',
   ];
+
   const [index, setIndex] = useState(0);
   const textRef = useRef(null);
   const containerRef = useRef(null);
 
   useEffect(() => {
-    if (isExiting) return;
     const el = textRef.current;
+    if (!el) return;
+
     const interval = setInterval(() => {
       gsap.to(el, {
         opacity: 0,
@@ -31,28 +32,43 @@ const Greetings = ({ isExiting }) => {
           gsap.to(el, { opacity: 1, duration: 0.1 });
         },
       });
-    }, 180);
+    }, 230);
+
     return () => clearInterval(interval);
-  }, [isExiting]);
+  }, []);
 
   useEffect(() => {
-    return () => {
-      const container = containerRef.current;
-      gsap.to(container, {
-        y: '0',
-        scaleY: 0.1,
-        borderRadius: '0 0 0 0',
-        ease: 'power2.inOut',
-        duration: 0.5,
-      });
-    };
-  }, []);
+    const timer = setTimeout(() => {
+      const container = containerRef.current; // <-- IMPORTANT
+      if (!container) return;
+
+      gsap.fromTo(
+        container, // <-- NO MORE SELECTOR
+        {
+          z: -200,
+          opacity: 0,
+          scale: 0.6,
+          transformOrigin: 'center center',
+        },
+        {
+          scale: 1,
+          opacity: 0,
+          ease: 'back.inOut',
+          rotateY: 0,
+          duration: 0.6,
+          onComplete: () => {
+            if (typeof onFinish === 'function') onFinish();
+          },
+        }
+      );
+    }, 2300);
+
+    return () => clearTimeout(timer);
+  }, [onFinish]);
+
   return (
-    <div className="perspective-wrapper">
-      <div
-        className="bg-[#000000] h-[100vh] flex flex-col items-center justify-center text-[2rem] md:text-[2.5rem] text-[white] lg:text-[3.5arem] greeting-container"
-        ref={containerRef}
-      >
+    <div ref={containerRef} className="perspective-wrapper">
+      <div className="bg-[#000000] h-[100vh] flex flex-col items-center justify-center text-[2rem] md:text-[2.5rem] text-[white] lg:text-[2rem] greeting-container">
         <span ref={textRef} className="pleasantries-text">
           {pleasantries[index]}
         </span>

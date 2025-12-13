@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { Mobilemenu } from '../../constants/index.js';
 import gsap from 'gsap';
 import { Link, useLocation } from 'react-router-dom';
@@ -13,6 +13,8 @@ const Navbar = () => {
   const navbarRef = useRef(null);
   const floatRef = useRef(null);
   const observerRef = useRef(null);
+
+  const nameRef = useRef(null);
 
   useEffect(() => {
     let timer;
@@ -32,6 +34,12 @@ const Navbar = () => {
   }, [sidemenu]);
 
   useEffect(() => {
+    gsap.set(nameRef.current, { opacity: 0 });
+  }, []);
+
+  useLayoutEffect(() => {
+    gsap.to(nameRef.current, { opacity: 1, duration: 0.01 });
+
     if (sidemenu) {
       gsap.fromTo(
         '.ayo',
@@ -224,7 +232,10 @@ const Navbar = () => {
               </button>
             )}
           </div>
-          <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2">
+          <div
+            ref={nameRef}
+            className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2"
+          >
             {sidemenu ? (
               <h1 className="text-[#ffff] [font-family:var(--font-fira)] text-[1.4rem] z-[1200] ayo">
                 Ayodeji!
@@ -241,7 +252,7 @@ const Navbar = () => {
                 className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] ctatwo-btn"
                 data-hover="Get in touch"
               >
-                <Link to="contact">
+                <Link to="/contact">
                   <span>Get in touch</span>
                 </Link>
               </button>
@@ -250,7 +261,7 @@ const Navbar = () => {
                 className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] cta-btn"
                 data-hover="Get in touch"
               >
-                <Link to="contact">
+                <Link to="/contact">
                   <span>Get in touch</span>
                 </Link>
               </button>
@@ -269,21 +280,6 @@ const Navbar = () => {
               <ul
                 className={`flex flex-col items-center mobile lg:flex-row lg:gap-[5rem] lg:mt-[13rem] mt-[8.5rem] ul ${menuClass}`}
               >
-                {/* {Mobilemenu.map((nav) => (
-                  <li key={nav.id} className="py-2 hover:cursor-pointer">
-                    <a
-                      className={`text-[1.5rem] [font-family:var(--font-nunito)] font-[700] hover:cursor-pointer hover:text-[#ffffff] lg:text-[1.7rem] transition duration-300 ${
-                        location.pathname === nav.path
-                          ? 'text-[#ffffff]'
-                          : 'text-[#818181]'
-                      }`}
-                      href={nav.path}
-                    >
-                      {nav.title}
-                    </a>
-                  </li>
-                ))} */}
-
                 {Mobilemenu.map((nav) => (
                   <li key={nav.id} className="py-2 hover:cursor-pointer">
                     <Link
@@ -300,14 +296,14 @@ const Navbar = () => {
                 ))}
 
                 <button className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-full mt-[2rem] text-[1.1rem] sm:hidden lg:hidden reach-btn">
-                  Get in touch
+                  <Link to="/contact">Get in touch</Link>
                 </button>
               </ul>
             </div>
           </div>
         </div>
       </nav>
-      <div className="flex justify-center lg:hidden">
+      <div ref={nameRef} className="flex justify-center lg:hidden">
         {sidemenu ? (
           <h1 className="text-[#ffff] [font-family:var(--font-fira)] text-[1.4rem] mt-[-2.5rem] z-[1200] ayo">
             Ayodeji!

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { gsap } from 'gsap';
 import Navbar from '../components/navbar';
 import Hero from '../components/hero';
 import Cloud from '../components/cloud';

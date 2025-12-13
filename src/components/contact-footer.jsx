@@ -24,27 +24,6 @@ const footer = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // useEffect(() => {
-  //   const tl = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: '.footer-btn',
-  //       start: 'top 90%',
-  //       toggleActions: 'restart none none reverse',
-  //     },
-  //   });
-
-  //   tl.fromTo(
-  //     '.footer-btn',
-  //     { x: -100, opacity: 1 },
-  //     { x: 0, opacity: 1, duration: 1.2, ease: 'none', scrub: true }
-  //   ).fromTo(
-  //     '.mail-btn',
-  //     { y: 110, opacity: 0 },
-  //     { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)' },
-  //     '+=0.2'
-  //   );
-  // }, []);
-
   useEffect(() => {
     gsap.fromTo(
       '.footer-btn',
@@ -93,27 +72,33 @@ const footer = () => {
         </div>
         <div className="flex justify-end pr-[1.3rem] -mt-2 sm:pr-[6rem] md:pr-[15rem] lg:pr-[21rem]">
           <button className="footer-btn" data-hover="Home">
-            <a href="#">Home</a>
+            <Link to="/home">Home</Link>
           </button>
         </div>
         <div className="horizontal mx-auto"></div>
         <div className="mt-[10rem] flex justify-center">
           <button className="mail-btn" data-hover="thimmzieayodeji@gmail.com">
-            <a href="#">
+            <a href="mailto:thimmzieayodeji@gmail.com">
               <span>thimmzieayodeji@gmail.com</span>
             </a>
           </button>
         </div>
         <div className=" flex flex-col lg:flex-row-reverse lg:justify-between ">
           <div className="flex gap-7 mt-[6rem]">
-            {socials.map((med) => (
-              <div key={med.id}>
-                <a href="#">
-                  {' '}
-                  <med.media size={27} className=" text-[white]" />
-                </a>
-              </div>
-            ))}
+            {socials.map((med) => {
+              return (
+                <div key={med.id}>
+                  <a
+                    href={med.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white"
+                  >
+                    <med.media size={27} />
+                  </a>
+                </div>
+              );
+            })}
           </div>
           <div className="flex justify-between mt-23 lg:gap-10">
             <p className="text-[#eff0f5] text-[0.9rem]">

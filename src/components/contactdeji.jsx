@@ -152,8 +152,7 @@ const contactdeji = () => {
                   className="flex pt-[1.5rem] lg:pt-[2rem] gap-5"
                   key={med.id}
                 >
-                  <a href="#">
-                    {' '}
+                  <a href={med.url} target="_blank" rel="noopener noreferrer">
                     <med.media size={27} className=" text-[#1d1d1d]" />
                   </a>
                   <p className="text-[1rem] text-[#1d1d1d] font-semibold">

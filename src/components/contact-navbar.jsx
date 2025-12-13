@@ -271,7 +271,7 @@ const Navbar = () => {
                 className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] ctatwo-btn"
                 data-hover="Home"
               >
-                <Link to="contact">
+                <Link to="/home">
                   <span>Home</span>
                 </Link>
               </button>
@@ -280,7 +280,7 @@ const Navbar = () => {
                 className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] cta-btn"
                 data-hover="Home"
               >
-                <Link to="contact">
+                <Link to="/home">
                   <span>Home</span>
                 </Link>
               </button>
@@ -299,21 +299,6 @@ const Navbar = () => {
               <ul
                 className={`flex flex-col items-center mobile lg:flex-row lg:gap-[5rem] lg:mt-[13rem] mt-[8.5rem] ul ${menuClass}`}
               >
-                {/* {Mobilemenu.map((nav) => (
-                  <li key={nav.id} className="py-2 hover:cursor-pointer">
-                    <a
-                      className={`text-[1.5rem] [font-family:var(--font-nunito)] font-[700] hover:cursor-pointer hover:text-[#ffffff] lg:text-[1.7rem] transition duration-300 ${
-                        location.pathname === nav.path
-                          ? 'text-[#ffffff]'
-                          : 'text-[#818181]'
-                      }`}
-                      href={nav.path}
-                    >
-                      {nav.title}
-                    </a>
-                  </li>
-                ))} */}
-
                 {Mobilemenu.map((nav) => (
                   <li key={nav.id} className="py-2 hover:cursor-pointer">
                     <Link
@@ -330,7 +315,7 @@ const Navbar = () => {
                 ))}
 
                 <button className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-full mt-[2rem] text-[1.1rem] sm:hidden lg:hidden reach-btn">
-                  Home
+                  <Link to="/home">Home</Link>
                 </button>
               </ul>
             </div>
