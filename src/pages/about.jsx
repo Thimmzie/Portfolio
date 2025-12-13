@@ -5,7 +5,7 @@ import Aboutsection from '../components/aboutdeji';
 
 const about = () => {
   return (
-    <div>
+    <div className="page-content">
       <Navbar />
       <Aboutsection />
       <Footer />

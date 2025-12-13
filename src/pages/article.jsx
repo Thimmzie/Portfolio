@@ -5,7 +5,7 @@ import Footer from '../components/footer';
 
 const article = () => {
   return (
-    <div>
+    <div className="page-content">
       <Navbar />
       <Article />
       <Footer />

@@ -5,7 +5,7 @@ import Contact from '../components/contactdeji';
 
 const contact = () => {
   return (
-    <div>
+    <div className="page-content">
       <Navbar />
       <Contact />
       <Footer />
