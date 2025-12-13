@@ -2,7 +2,7 @@ import React from 'react';
 import { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-import Deji from '../assets/images/dejicpy.JPG';
+import Deji from '../assets/images/dejicpy.jpg';
 import Dejitwo from '../assets/images/dejji.JPG';
 import Dejithree from '../assets/images/ddeji.JPG';
 gsap.registerPlugin(ScrollTrigger);
