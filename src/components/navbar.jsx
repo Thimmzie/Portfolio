@@ -55,7 +55,7 @@ const Navbar = () => {
       gsap.fromTo(
         '.ayo-title',
         { y: -25, opacity: 0 },
-        { y: 0, opacity: 1, ease: 'back.inOut', duration: 0.4, delay: 0.8 }
+        { y: 0, opacity: 1, ease: 'back.inOut', duration: 0.4 } // remove delay
       );
     }
   }, [sidemenu]);
@@ -210,11 +210,13 @@ const Navbar = () => {
 
       <nav ref={navbarRef}>
         <div
-          className={`flex mobile-nav-box px-[1.2rem] pt-[1.7rem] items-center sm:px-[1.8rem] lg:px-[1.8rem] z-[1200] relative overflow-y-hidden transition-all duration-500 ${
-            sidemenu && showFloatingHamburger
-              ? 'opacity-0 pointer-events-none absolute -top-[6rem] -right-[5rem] scale-[0.98]'
-              : 'opacity-100 pointer-events-auto relative top-0 right-0 scale-[1]'
-          }`}
+          className={`flex mobile-nav-box px-[1.2rem] pt-[1.7rem] items-center sm:px-[1.8rem] lg:px-[1.8rem] z-[1200] relative overflow-y-hidden transition-all duration-500
+    ${
+      sidemenu
+        ? 'opacity-0 pointer-events-none absolute -top-[6rem] -right-[5rem] scale-[0.98]'
+        : 'opacity-100 pointer-events-auto relative top-0 right-0 scale-[1]'
+    }
+  `}
         >
           <div>
             {sidemenu ? (
