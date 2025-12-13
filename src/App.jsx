@@ -19,6 +19,10 @@ function SplashController() {
   const [showGreetings, setShowGreetings] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  useEffect(() => {
     const rawPath = location.pathname || '/';
     const path = rawPath.toLowerCase();
 

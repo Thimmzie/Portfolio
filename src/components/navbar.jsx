@@ -13,7 +13,7 @@ const Navbar = () => {
   const navbarRef = useRef(null);
   const floatRef = useRef(null);
   const observerRef = useRef(null);
-
+  const firstMount = useRef(true);
   const nameRef = useRef(null);
 
   useEffect(() => {
@@ -38,7 +38,12 @@ const Navbar = () => {
   }, []);
 
   useLayoutEffect(() => {
-    gsap.to(nameRef.current, { opacity: 1, duration: 0.01 });
+    if (firstMount.current) {
+      gsap.set('.ayo-title', { opacity: 1, y: 0 });
+      gsap.set('.ayo', { opacity: 1, y: 0 });
+      firstMount.current = false;
+      return;
+    }
 
     if (sidemenu) {
       gsap.fromTo(
