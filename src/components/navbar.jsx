@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { Mobilemenu } from '../../constants/index.js';
 import gsap from 'gsap';
 import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const location = useLocation();
@@ -182,6 +183,7 @@ const Navbar = () => {
     }
   }, [sidemenu]);
 
+  const navigate = useNavigate();
   return (
     <div>
       <div
@@ -250,19 +252,17 @@ const Navbar = () => {
               <button
                 className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] ctatwo-btn"
                 data-hover="Get in touch"
+                onClick={() => navigate('/contact')}
               >
-                <Link to="/contact">
-                  <span>Get in touch</span>
-                </Link>
+                <span>Get in touch</span>
               </button>
             ) : (
               <button
                 className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] cta-btn"
                 data-hover="Get in touch"
+                onClick={() => navigate('/contact')}
               >
-                <Link to="/contact">
-                  <span>Get in touch</span>
-                </Link>
+                <span>Get in touch</span>
               </button>
             )}
           </div>

@@ -164,7 +164,7 @@ const contactdeji = () => {
           </div>
           <form
             onSubmit={handleSubmit}
-            className=" w-[100%] lg:w-[40rem] px-4 py-12 lg:px-[2rem] lg:-ml-[7rem] bg-[#1c1d20] rounded-[12px] shadow-md mb-[8rem] mt-[3rem]"
+            className=" w-[100%] lg:w-[40rem] px-4 py-12 lg:px-[2rem] lg:-ml-[7rem] bg-[#1c1d20] rounded-[12px] shadow-md mb-[8rem] mt-[1.5rem] lg:mt-[3rem]"
           >
             <h2 className="text-2xl mb-[3rem] text-white">Work With Me</h2>
 

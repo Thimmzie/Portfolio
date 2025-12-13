@@ -120,10 +120,12 @@ const hero = () => {
               </Link>
             </button>
 
-            <button className="btn3" data-hover="My CV">
-              <a href="file:///C:/Users/hp/OneDrive/Documents/Ayodeji%20Olupinla%20CV.pdf">
-                <span>My CV</span>
-              </a>
+            <button
+              className="btn3"
+              data-hover="My CV"
+              onClick={() => window.open('/AyodejiCv.pdf', '_blank')}
+            >
+              <span>My CV</span>
             </button>
           </div>
         </div>
