@@ -19,7 +19,11 @@ function SplashController() {
   const [showGreetings, setShowGreetings] = useState(false);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const timeout = setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 50);
+
+    return () => clearTimeout(timeout);
   }, [location.pathname]);
 
   useEffect(() => {

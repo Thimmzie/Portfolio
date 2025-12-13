@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Mobilemenu } from '../../constants/index.js';
 import gsap from 'gsap';
 import { Link, useLocation } from 'react-router-dom';
@@ -36,7 +36,7 @@ const Navbar = () => {
     gsap.set(nameRef.current, { opacity: 0 });
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     gsap.to(nameRef.current, { opacity: 1, duration: 0.01 });
     if (sidemenu) {
       gsap.fromTo(
