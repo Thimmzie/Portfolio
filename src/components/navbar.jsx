@@ -13,7 +13,6 @@ const Navbar = () => {
   const navbarRef = useRef(null);
   const floatRef = useRef(null);
   const observerRef = useRef(null);
-  const firstMount = useRef(true);
   const nameRef = useRef(null);
 
   useEffect(() => {
@@ -38,13 +37,7 @@ const Navbar = () => {
   }, []);
 
   useLayoutEffect(() => {
-    if (firstMount.current) {
-      gsap.set('.ayo-title', { opacity: 1, y: 0 });
-      gsap.set('.ayo', { opacity: 1, y: 0 });
-      firstMount.current = false;
-      return;
-    }
-
+    gsap.to(nameRef.current, { opacity: 1, duration: 0.01 });
     if (sidemenu) {
       gsap.fromTo(
         '.ayo',
@@ -55,7 +48,7 @@ const Navbar = () => {
       gsap.fromTo(
         '.ayo-title',
         { y: -25, opacity: 0 },
-        { y: 0, opacity: 1, ease: 'back.inOut', duration: 0.4 } // remove delay
+        { y: 0, opacity: 1, ease: 'back.inOut', duration: 0.4, delay: 0.8 }
       );
     }
   }, [sidemenu]);
@@ -210,13 +203,11 @@ const Navbar = () => {
 
       <nav ref={navbarRef}>
         <div
-          className={`flex mobile-nav-box px-[1.2rem] pt-[1.7rem] items-center sm:px-[1.8rem] lg:px-[1.8rem] z-[1200] relative overflow-y-hidden transition-all duration-500
-    ${
-      sidemenu
-        ? 'opacity-0 pointer-events-none absolute -top-[6rem] -right-[5rem] scale-[0.98]'
-        : 'opacity-100 pointer-events-auto relative top-0 right-0 scale-[1]'
-    }
-  `}
+          className={`flex mobile-nav-box px-[1.2rem] pt-[1.7rem] items-center sm:px-[1.8rem] lg:px-[1.8rem] z-[1200] relative overflow-y-hidden transition-all duration-500 ${
+            sidemenu && showFloatingHamburger
+              ? 'opacity-0 pointer-events-none absolute -top-[6rem] -right-[5rem] scale-[0.98]'
+              : 'opacity-100 pointer-events-auto relative top-0 right-0 scale-[1]'
+          }`}
         >
           <div>
             {sidemenu ? (
