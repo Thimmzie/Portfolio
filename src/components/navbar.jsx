@@ -37,7 +37,10 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    gsap.to(nameRef.current, { opacity: 1, duration: 0.01 });
+    const timeout = setTimeout(() => {
+      gsap.to(nameRef.current, { opacity: 1, duration: 0.01 });
+    }, 800);
+
     if (sidemenu) {
       gsap.fromTo(
         '.ayo',
@@ -51,6 +54,8 @@ const Navbar = () => {
         { y: 0, opacity: 1, ease: 'back.inOut', duration: 0.4, delay: 0.8 }
       );
     }
+
+    return () => clearTimeout(timeout);
   }, [sidemenu]);
 
   useEffect(() => {
