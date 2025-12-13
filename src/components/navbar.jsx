@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { Mobilemenu } from '../../constants/index.js';
 import gsap from 'gsap';
 import { Link, useLocation } from 'react-router-dom';
@@ -32,11 +32,11 @@ const Navbar = () => {
     return () => clearTimeout(timer);
   }, [sidemenu]);
 
-  // useEffect(() => {
-  //   gsap.set(nameRef.current, { opacity: 0 });
-  // }, []);
+  useLayoutEffect(() => {
+    gsap.set(nameRef.current, { opacity: 0 });
+  }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.set(nameRef.current, { opacity: 1 });
 
     if (sidemenu) {
