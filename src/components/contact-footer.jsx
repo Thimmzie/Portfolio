@@ -3,6 +3,7 @@ import { socials } from '../../constants/index.js';
 import gsap from 'gsap/all';
 import { ScrollTrigger } from 'gsap/all';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,6 +63,7 @@ const footer = () => {
     );
   }, []);
 
+  const navigate = useNavigate();
   return (
     <div className="footer-wrapper">
       <div className="min-h-screen lg:h-screen bg-[#1c1d20] pt-[3.5rem] px-[1.5rem] footer mb-0">
@@ -72,8 +74,12 @@ const footer = () => {
           </h2>
         </div>
         <div className="flex justify-end pr-[1.3rem] -mt-2 sm:pr-[6rem] md:pr-[15rem] lg:pr-[21rem]">
-          <button className="footer-btn" data-hover="Home">
-            <Link to="/home">Home</Link>
+          <button
+            className="footer-btn"
+            data-hover="Home"
+            onClick={() => navigate('/home')}
+          >
+            Home
           </button>
         </div>
         <div className="horizontal mx-auto"></div>

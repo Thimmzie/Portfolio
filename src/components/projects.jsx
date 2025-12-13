@@ -3,7 +3,7 @@ import { Projects } from '../../constants/index.js';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { MdArrowOutward } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,6 +79,8 @@ const projects = () => {
 
   const colors = ['#e3f2fd', '#e3f2fd'];
 
+  const navigate = useNavigate();
+
   return (
     <div className="mb-[2rem] bg-[#ffffff] pt-[5rem] pb-[7rem] lg:mt-[4rem] flex flex-col items-center">
       <h1 className="text-[#000000] text-[1.5rem] font-[600]">
@@ -117,10 +119,12 @@ const projects = () => {
           })}
         </div>
         <div className="flex flex-col justify-center mt-[4rem]">
-          <button className="view-btn" data-hover="View all projects">
-            <Link to="/project">
-              <span>View all projects</span>
-            </Link>
+          <button
+            className="view-btn"
+            data-hover="View all projects"
+            onClick={() => navigate('/project')}
+          >
+            <span>View all projects</span>
           </button>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Mobilemenu } from '../../constants/index.js';
 import gsap from 'gsap';
 import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const location = useLocation();
@@ -205,6 +206,8 @@ const Navbar = () => {
     }
   }, [sidemenu]);
 
+  const navigate = useNavigate();
+
   return (
     <div>
       <div
@@ -270,19 +273,17 @@ const Navbar = () => {
               <button
                 className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] ctatwo-btn"
                 data-hover="Home"
+                onClick={() => navigate('/home')}
               >
-                <Link to="/home">
-                  <span>Home</span>
-                </Link>
+                <span>Home</span>
               </button>
             ) : (
               <button
                 className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] cta-btn"
                 data-hover="Home"
+                onClick={() => navigate('/home')}
               >
-                <Link to="/home">
-                  <span>Home</span>
-                </Link>
+                <span>Home</span>
               </button>
             )}
           </div>
@@ -314,8 +315,11 @@ const Navbar = () => {
                   </li>
                 ))}
 
-                <button className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-full mt-[2rem] text-[1.1rem] sm:hidden lg:hidden reach-btn">
-                  <Link to="/home">Home</Link>
+                <button
+                  className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-full mt-[2rem] text-[1.1rem] sm:hidden lg:hidden reach-btn"
+                  onClick={() => navigate('/home')}
+                >
+                  Home
                 </button>
               </ul>
             </div>

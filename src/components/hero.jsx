@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/all';
 import Deji from '../assets/images/dejicpy.jpg';
 import Dejitwo from '../assets/images/dejji.JPG';
 import Dejithree from '../assets/images/ddeji.JPG';
+import { useNavigate } from 'react-router-dom';
 gsap.registerPlugin(ScrollTrigger);
 
 const hero = () => {
@@ -86,6 +87,7 @@ const hero = () => {
     return () => ctx.revert();
   }, []);
 
+  const navigate = useNavigate();
   return (
     <div
       ref={heroRef}
@@ -114,10 +116,12 @@ const hero = () => {
             </h4>
           </div>
           <div className="flex flex-col items-center gap-[1.2rem] w-full max-w-[600px] mt-[2rem] md:mx-auto lg:flex-row button">
-            <button className="btn2" data-hover="Get in touch">
-              <Link to="/contact">
-                <span>Get in touch</span>
-              </Link>
+            <button
+              className="btn2"
+              data-hover="Get in touch"
+              onClick={() => navigate('/contact')}
+            >
+              <span>Get in touch</span>
             </button>
 
             <button

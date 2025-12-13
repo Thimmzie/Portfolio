@@ -294,8 +294,11 @@ const Navbar = () => {
                   </li>
                 ))}
 
-                <button className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-full mt-[2rem] text-[1.1rem] sm:hidden lg:hidden reach-btn">
-                  <Link to="/contact">Get in touch</Link>
+                <button
+                  className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-full mt-[2rem] text-[1.1rem] sm:hidden lg:hidden reach-btn"
+                  onClick={() => navigate('/contact')}
+                >
+                  Get in touch
                 </button>
               </ul>
             </div>
