@@ -3,6 +3,7 @@ import { Projects } from '../../constants/index.js';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { MdArrowOutward } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { socials } from '../../constants/index.js';
 import gsap from 'gsap/all';
 import { ScrollTrigger } from 'gsap/all';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 

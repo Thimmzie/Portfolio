@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRef, useLayoutEffect } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import Deji from '../assets/images/dejicpy.jpg';
