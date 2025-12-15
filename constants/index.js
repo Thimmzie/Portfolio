@@ -97,7 +97,7 @@ const FullProjects = [
     title: 'Dong',
     about:
       'Dong is a Web3-powered platform built on blockchain technology. I worked on integrating MetaMask wallet connectivity and interacting with the smart contract directly from the frontend, also built the frontend. The project focuses on enabling users to connect their wallets, view on-chain data, and perform secure transactions in a simple, user-friendly interface.',
-    link: 'https://thimmzie.github.io/-Dong/',
+    link: 'https://dong-khaki.vercel.app/',
     img: Dong,
     stack: 'JavaScript • CSS • Ether.JS',
   },
@@ -115,7 +115,7 @@ const FullProjects = [
     title: 'Ayodeji"s portfolio',
     about:
       'This project is a fully responsive portfolio website built to highlight my skills, personality, and approach to modern frontend development. It features smooth animations, clean UI patterns, and a carefully structured layout optimized for both desktop and mobile experiences.',
-    link: 'https://thimmzie.github.io/Portfolio/',
+    link: 'https://ayodeji435.netlify.app/',
     img: Porfolio,
     stack: 'React • Tailwind CSS • Motion • Gsap • Express • Node.JS',
   },
@@ -124,7 +124,7 @@ const FullProjects = [
     title: 'Guessy',
     about:
       'This project is a lightweight number-guessing game where users attempt to guess a randomly generated number within a defined range. It features simple validation, instant feedback, and a smooth user flow',
-    link: 'https://thimmzie.github.io/Guessy/',
+    link: 'https://guessy-vert.vercel.app/',
     img: Guessy,
     stack: 'Javascript • CSS',
   },
