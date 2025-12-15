@@ -32,6 +32,44 @@ const contactdeji = () => {
     setSuccessMsg('');
     setErrorMsg('');
 
+    //   try {
+    //     const res = await fetch('/.netlify/functions/contact', {
+    //       method: 'POST',
+    //       headers: { 'Content-Type': 'application/json' },
+    //       body: JSON.stringify(formData),
+    //     });
+
+    //     const data = await res.json();
+
+    //     if (res.ok) {
+    //       setSuccessMsg(data.message || 'success');
+
+    //       setShowPopup(true);
+
+    //       setTimeout(() => setPopupAnimating(true), 20);
+
+    //       setFormData({
+    //         name: '',
+    //         email: '',
+    //         projectType: '',
+    //         message: '',
+    //         honeypot: '',
+    //       });
+    //     } else {
+    //       setErrorMsg(
+    //         data.error ||
+    //           (data.errors && data.errors.map((err) => err.msg).join(', ')) ||
+    //           'Something went wrong.'
+    //       );
+    //     }
+    //   } catch (err) {
+    //     setErrorMsg('Network error. Please try again later.');
+    //     console.error(err);
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // };
+
     try {
       const res = await fetch('/.netlify/functions/contact', {
         method: 'POST',
@@ -39,32 +77,35 @@ const contactdeji = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await res.json();
+      let data;
+      try {
+        data = await res.json();
+      } catch {
+        throw new Error('Invalid server response');
+      }
 
-      if (res.ok) {
-        setSuccessMsg(data.message || 'success');
-
-        setShowPopup(true);
-
-        setTimeout(() => setPopupAnimating(true), 20);
-
-        setFormData({
-          name: '',
-          email: '',
-          projectType: '',
-          message: '',
-          honeypot: '',
-        });
-      } else {
-        setErrorMsg(
-          data.error ||
-            (data.errors && data.errors.map((err) => err.msg).join(', ')) ||
+      if (!res.ok) {
+        throw new Error(
+          data?.error ||
+            (data?.errors && data.errors.map((err) => err.msg).join(', ')) ||
             'Something went wrong.'
         );
       }
+
+      setSuccessMsg(data.message || 'success');
+      setShowPopup(true);
+      setTimeout(() => setPopupAnimating(true), 20);
+
+      setFormData({
+        name: '',
+        email: '',
+        projectType: '',
+        message: '',
+        honeypot: '',
+      });
     } catch (err) {
-      setErrorMsg('Network error. Please try again later.');
       console.error(err);
+      setErrorMsg(err.message || 'Network error. Please try again later.');
     } finally {
       setLoading(false);
     }

@@ -1,6 +1,6 @@
-import nodemailer from 'nodemailer';
+const nodemailer = require('nodemailer');
 
-export async function handler(event, context) {
+exports.handler = async (event) => {
   try {
     const { name, email, projectType, message } = JSON.parse(event.body);
 
@@ -14,7 +14,7 @@ export async function handler(event, context) {
       },
     });
 
-    const mailOptions = {
+    await transporter.sendMail({
       from: process.env.SMTP_FROM,
       to: process.env.CONTACT_TO,
       subject: `New Contact Form Message from ${name}`,
@@ -26,26 +26,22 @@ Project Type: ${projectType || 'Not specified'}
 Message:
 ${message}
       `,
-    };
-
-    await transporter.sendMail(mailOptions);
+    });
 
     return {
       statusCode: 200,
       body: JSON.stringify({
-        success: true,
         message: 'Message sent successfully.',
       }),
     };
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Email error:', error);
+
     return {
       statusCode: 500,
       body: JSON.stringify({
-        success: false,
-        message: 'Failed to send message.',
-        error: error.message,
+        error: 'Failed to send message.',
       }),
     };
   }
-}
+};
