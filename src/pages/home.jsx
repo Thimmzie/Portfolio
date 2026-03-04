@@ -359,7 +359,6 @@ const home = () => {
       )}
 
       <Hero />
-      {/* <Scroll /> */}
       <Cloud />
       <Project />
       <Tool />
