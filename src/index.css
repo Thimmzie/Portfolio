@@ -30,12 +30,18 @@
   font-family: 'FiraSans';
   src: url('../src/assets/font/FiraSans-BoldItalic.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'BebasNeue';
+  src: url('../src/assets/font/BebasNeue-Regular.ttf');
+  font-style: normal;
+}
 @import 'tailwindcss';
 
 @theme {
  
   --font-stacksans: 'StackSans', sans-serif;
   --font-fira: 'FIraSans', sans-serif;
+  --font-bebas: 'BebasNeue', sans-serif;
 }
 html,
 body {
@@ -44,21 +50,84 @@ body {
   overflow-x: hidden !important;
   max-width: 100%;
   overflow-y: auto;
- 
-}
-.page-content {
-  animation: fadeIn 0.4s ease-out;
-}
+  box-sizing: border-box;
+  background-color: #000000;
 
-@keyframes fadeIn {
+}
+/* .page-content {
+  animation: fadeIn 0.4s ease-out;
+} */
+
+/* @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px); /* optional: slide slightly up */
+    transform: translateY(20px); 
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
+} */
+
+/* @keyframes move-out {
+  from{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to{
+     opacity: 0.5;
+     transform: translateY(-35%);
+  }
+}
+
+@keyframes move-in {
+  from{
+    clip-path: polygon(0% 100% 100% 100% 100% 100% 0% 100% );
+  }
+
+  to{
+    clip-path: polygon(0% 100% 100% 100% 100% 0% 0% 0%);
+  }
+} */
+
+/* ::view-transition-old(root){
+  animation: 1.5s cubic-bezier(0.87, 0, 0.13, 1) both move-out ;
+}
+
+::view-transition-new(root) {
+  animation: 1.5s cubic-bezier(0.87, 0, 0.13, 1) both move-in;
+} */
+
+.slide-in{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #0f0f0f;
+  transform-origin: bottom;
+  z-index: 99999999;
+}
+.slide-out{
+  position: fixed;
+   top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #0f0f0f;
+  transform-origin: top;
+   z-index: 99999999;
+}
+.splash-transition{
+   position: fixed;
+   top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #0f0f0f;
+  transform-origin: top;
+   z-index: 99999999;
 }
 button {
   font-weight: 600;
@@ -81,7 +150,7 @@ button {
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  background-color: #252525;
+  background-color: #000000;
   border-radius: 50%;
   padding: 0.8rem;
   width: 3rem;
@@ -165,9 +234,10 @@ button {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
-  perspective: 1000px;
+  /* background-attachment: fixed;
+  perspective: 1000px; */
   overflow: hidden;
+  
 }
 
 .cont {
@@ -1022,4 +1092,119 @@ button {
   transform-style: preserve-3d;
   backface-visibility: hidden;
   will-change: transform, opacity; 
+}
+
+:root {
+  --base-100: #000000;
+  --base-200: #ffffff;
+}
+body{
+  background-color: var(--base-100);
+  color: var(--base-200);
+}
+.my-key{
+  width: 100%;
+  height: 100%;
+}
+/* .navbar-img{
+  background-color: #ffffff;
+} */
+.navbar-backdrop, .navbar-img{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100svh;
+  pointer-events: none;
+  overflow: hidden;
+}
+.navbar-wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2000;
+}
+
+.navbar-bg, .navbar-items{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  min-width: 330px;
+  aspect-ratio: 6 / 7;
+  will-change: width, height;
+}
+@media (min-width:768px) {
+  .navbar-bg, .navbar-items{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  min-width: 720px;
+  aspect-ratio: 16/9;
+  will-change: width, height;
+}
+}
+
+.navbar-bg{
+  background-color: var(--base-100);
+  pointer-events: none;
+  z-index: 0;
+}
+.navbar-items{
+  z-index: 2;
+}
+.navbar-logo{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  padding-bottom: 5rem;
+  pointer-events: all;
+  z-index: 2;
+  padding-top: 1.2rem;
+}
+
+.navbar-logo.navbar-logo-pinned{
+  bottom: unset;
+  top: -0.25rem;
+}
+/* section{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+} */
+.hero {
+  padding: 2.5rem 0;
+  margin-top: 170svh;
+
+}
+.nav-top-row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (min-width:768px) {
+ .nav-top-row{
+   padding: 0.5rem 1.4rem;
+ } 
+}
+.swiper-wrapper {
+  transition-timing-function: ease-in-out !important;
 }

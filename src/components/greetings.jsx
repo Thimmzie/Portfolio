@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import { motion } from 'framer-motion';
+import transition from './transition';
 
 const Greetings = ({ onFinish }) => {
   const pleasantries = [
@@ -39,11 +41,11 @@ const Greetings = ({ onFinish }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      const container = containerRef.current; // <-- IMPORTANT
+      const container = containerRef.current;
       if (!container) return;
 
       gsap.fromTo(
-        container, // <-- NO MORE SELECTOR
+        container,
         {
           z: -200,
           opacity: 0,
@@ -59,7 +61,7 @@ const Greetings = ({ onFinish }) => {
           onComplete: () => {
             if (typeof onFinish === 'function') onFinish();
           },
-        }
+        },
       );
     }, 2300);
 
