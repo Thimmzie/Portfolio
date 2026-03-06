@@ -8,7 +8,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { Flip } from 'gsap/all';
 import Lenis from 'lenis';
-// import Navbar from '../components/navbar';
 import Hero from '../components/hero';
 import Cloud from '../components/cloud';
 import Project from '../components/projects';
@@ -22,12 +21,11 @@ import 'swiper/css/pagination';
 import { Autoplay } from 'swiper/modules';
 import { LuDot } from 'react-icons/lu';
 
-// import Scroll from '../components/scroll';
-
 gsap.registerPlugin(ScrollTrigger, Flip);
 
 const home = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [sidemenu, setSidemenu] = useState(false);
   const handleClick = () => setSidemenu(!sidemenu);
   const [showFloatingHamburger, setShowFloatingHamburger] = useState(false);
@@ -40,6 +38,7 @@ const home = () => {
   const navbarLogoRef = useRef(null);
   const [navbarReady, setNavbarReady] = useState(false);
   const swiperRef = useRef(null);
+  const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
 
   useEffect(() => {
     let timer;
@@ -81,14 +80,13 @@ const home = () => {
   }, [sidemenu]);
 
   useEffect(() => {
+    if (!isDesktop) return;
+
     lenisRef.current = new Lenis();
-
     lenisRef.current.on('scroll', ScrollTrigger.update);
-
     gsap.ticker.add((time) => {
       lenisRef.current.raf(time * 1000);
     });
-
     gsap.ticker.lagSmoothing(0);
 
     const initNavbarAnimations = () => {
@@ -107,7 +105,6 @@ const home = () => {
       const state = Flip.getState(navbarLogo);
 
       navbarLogo.classList.add('navbar-logo-pinned');
-
       gsap.set(navbarLogo, { width: 550 });
 
       const flip = Flip.from(state, {
@@ -139,11 +136,8 @@ const home = () => {
 
           flip.progress(progress);
 
-          if (progress > 0.99) {
-            setNavbarReady(true);
-          } else {
-            setNavbarReady(false);
-          }
+          if (progress > 0.99) setNavbarReady(true);
+          else setNavbarReady(false);
 
           if (swiperRef.current) {
             gsap.set(swiperRef.current, {
@@ -158,11 +152,11 @@ const home = () => {
     initNavbarAnimations();
 
     let timer;
-
     const handleResize = () => {
       clearTimeout(timer);
-
       timer = setTimeout(() => {
+        if (!window.matchMedia('(min-width: 1024px)').matches) return;
+
         ScrollTrigger.getAll().forEach((t) => t.kill());
 
         gsap.set(
@@ -189,62 +183,29 @@ const home = () => {
   useEffect(() => {
     if (!lenisRef.current) return;
 
-    if (sidemenu) {
-      lenisRef.current.stop();
-    } else {
-      lenisRef.current.start();
-    }
+    if (sidemenu) lenisRef.current.stop();
+    else lenisRef.current.start();
   }, [sidemenu]);
 
   useEffect(() => {
-    if (sidemenu) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    if (sidemenu) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = '';
   }, [sidemenu]);
 
   return (
     <div>
-      {/* <Navbar /> */}
       <div className="navbar-backdrop">
         <div className="navbar-img">
           <img className="my-key" src={Keys} />
         </div>
-        <div ref={navbarBgRef} className="navbar-bg">
-          <div
-            ref={swiperRef}
-            className="absolute bottom-0 bg-[#455ce9] w-full h-10 flex items-center"
-          >
-            <Swiper
-              modules={[Autoplay]}
-              speed={2000}
-              slidesPerView={8}
-              loop={true}
-              autoplay={{ delay: 1, disableOnInteraction: false }}
-              freemodemomentum="false"
-            >
-              {[...Array(20)].map((_, i) => (
-                <SwiperSlide key={i}>
-                  {i % 2 === 0 ? (
-                    <p className="text-[0.6rem] md:text-[0.8rem] text-[#d1d1d1]">
-                      scroll up
-                    </p>
-                  ) : (
-                    <LuDot className="text-[#d1d1d1]" size={17} />
-                  )}
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
+        <div ref={navbarBgRef} className="navbar-bg "></div>
       </div>
+
       <div className="navbar-wrapper">
         <div ref={navbarItemsRef} className="navbar-items">
-          {/* <Navbar /> */}
           <div className="nav-top-row relative">
-            {navbarReady && !sidemenu && (
-              <div className="absolute inset-0 bg-gray-800/60 backdrop-blur-md z-0 " />
+            {!sidemenu && (!isDesktop || navbarReady) && (
+              <div className="absolute inset-0 bg-gray-800/60 backdrop-blur-md z-0" />
             )}
             <div className="relative z-10">
               <div
@@ -257,7 +218,7 @@ const home = () => {
                 {sidemenu ? (
                   <button
                     onClick={() => {
-                      if (!navbarReady) return;
+                      if (isDesktop && !navbarReady) return;
                       handleClick();
                     }}
                     aria-expanded={sidemenu}
@@ -269,7 +230,7 @@ const home = () => {
                 ) : (
                   <button
                     onClick={() => {
-                      if (!navbarReady) return;
+                      if (isDesktop && !navbarReady) return;
                       handleClick();
                     }}
                     aria-expanded={sidemenu}
@@ -318,13 +279,37 @@ const home = () => {
               )}
             </div>
           </div>
+          <div
+            ref={swiperRef}
+            className="absolute bottom-0 bg-[#455ce9] w-full h-10 hidden lg:flex lg:items-center"
+          >
+            <Swiper
+              modules={[Autoplay]}
+              speed={2000}
+              slidesPerView={8}
+              loop={true}
+              autoplay={{ delay: 1, disableOnInteraction: false }}
+              freemodemomentum="false"
+            >
+              {[...Array(20)].map((_, i) => (
+                <SwiperSlide key={i}>
+                  {i % 2 === 0 ? (
+                    <p className="text-[0.6rem] md:text-[0.8rem] text-[#d1d1d1]">
+                      scroll up
+                    </p>
+                  ) : (
+                    <LuDot className="text-[#d1d1d1]" size={17} />
+                  )}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       </div>
+
       {menuVisible && (
         <div
-          className={`fixed inset-0 z-[1000] transition-opacity duration-300 ${
-            menuVisible ? 'opacity-100' : 'opacity-0'
-          } bg-black`}
+          className={`fixed inset-0 z-[1000] transition-opacity duration-300 ${menuVisible ? 'opacity-100' : 'opacity-0'} bg-black`}
         >
           <div className="flex flex-col items-center">
             <div className="cont">
@@ -334,7 +319,7 @@ const home = () => {
                 {Mobilemenu.map((nav) => (
                   <li key={nav.id} className="py-2 hover:cursor-pointer">
                     <Link
-                      className={`text-[2.8rem] [font-family:var(--font-bebas)] font-[700] hover:cursor-pointer hover:text-[#ffffff] lg:text-[1.7rem] transition duration-300 ${
+                      className={`text-[2.8rem] [font-family:var(--font-fira)] font-[700] hover:cursor-pointer hover:text-[#ffffff] lg:text-[1.7rem] transition duration-300 ${
                         location.pathname === nav.path
                           ? 'text-[#ffffff]'
                           : 'text-[#818181]'
