@@ -38,7 +38,21 @@ const home = () => {
   const navbarLogoRef = useRef(null);
   const [navbarReady, setNavbarReady] = useState(false);
   const swiperRef = useRef(null);
-  const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
+
+  // useEffect(() => {
+  //   const mediaQuery = window.matchMedia('(min-width: 1024px)');
+
+  //   const handleChange = (e) => {
+  //     setIsDesktop(e.matches);
+  //   };
+
+  //   mediaQuery.addEventListener('change', handleChange);
+
+  //   return () => {
+  //     mediaQuery.removeEventListener('change', handleChange);
+  //   };
+  // }, []);
 
   useEffect(() => {
     let timer;
@@ -177,6 +191,7 @@ const home = () => {
       window.removeEventListener('resize', handleResize);
       ScrollTrigger.getAll().forEach((t) => t.kill());
       lenisRef.current?.destroy();
+      // gsap.ticker.remove(raf);
     };
   }, []);
 
@@ -194,154 +209,156 @@ const home = () => {
 
   return (
     <div>
-      <div className="navbar-backdrop">
-        <div className="navbar-img">
-          <img className="my-key" src={Keys} />
+      <div>
+        <div className="navbar-backdrop">
+          <div className="navbar-img">
+            <img className="my-key" src={Keys} />
+          </div>
+          <div ref={navbarBgRef} className="navbar-bg "></div>
         </div>
-        <div ref={navbarBgRef} className="navbar-bg "></div>
-      </div>
 
-      <div className="navbar-wrapper">
-        <div ref={navbarItemsRef} className="navbar-items">
-          <div className="nav-top-row relative">
-            {!sidemenu && (!isDesktop || navbarReady) && (
-              <div className="absolute inset-0 bg-gray-800/60 backdrop-blur-md z-0" />
-            )}
-            <div className="relative z-10">
-              <div
-                className={`flex mobile-nav-box px-[1.2rem] items-center sm:px-[1.8rem] lg:px-[0.2rem] z-[1200] relative overflow-y-hidden transition-all duration-500 ${
-                  sidemenu && showFloatingHamburger
-                    ? 'opacity-0 pointer-events-none absolute -top-[6rem] -right-[5rem] scale-[0.98]'
-                    : 'opacity-100 pointer-events-auto relative top-0 right-0 scale-[1]'
-                }`}
-              >
+        <div className="navbar-wrapper">
+          <div ref={navbarItemsRef} className="navbar-items">
+            <div className="nav-top-row relative">
+              {!sidemenu && (!isDesktop || navbarReady) && (
+                <div className="absolute inset-0 bg-gray-800/60 backdrop-blur-md z-0" />
+              )}
+              <div className="relative z-10">
+                <div
+                  className={`flex mobile-nav-box px-[1.2rem] items-center sm:px-[1.8rem] lg:px-[0.2rem] z-[1200] relative overflow-y-hidden transition-all duration-500 ${
+                    sidemenu && showFloatingHamburger
+                      ? 'opacity-0 pointer-events-none absolute -top-[6rem] -right-[5rem] scale-[0.98]'
+                      : 'opacity-100 pointer-events-auto relative top-0 right-0 scale-[1]'
+                  }`}
+                >
+                  {sidemenu ? (
+                    <button
+                      onClick={() => {
+                        if (isDesktop && !navbarReady) return;
+                        handleClick();
+                      }}
+                      aria-expanded={sidemenu}
+                      className={`hamburger-side ${sidemenu ? 'active' : ''}`}
+                    >
+                      <span className="bar-side" />
+                      <span className="bar-side" />
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        if (isDesktop && !navbarReady) return;
+                        handleClick();
+                      }}
+                      aria-expanded={sidemenu}
+                      className={`hamburger ${sidemenu ? 'active' : ''}`}
+                    >
+                      <span className="bar" />
+                      <span className="bar" />
+                    </button>
+                  )}
+                </div>
+              </div>
+              <div>
                 {sidemenu ? (
                   <button
-                    onClick={() => {
-                      if (isDesktop && !navbarReady) return;
-                      handleClick();
-                    }}
-                    aria-expanded={sidemenu}
-                    className={`hamburger-side ${sidemenu ? 'active' : ''}`}
+                    className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] ctatwo-btn "
+                    data-hover="Get in touch"
+                    onClick={() => navigate('/contact')}
                   >
-                    <span className="bar-side" />
-                    <span className="bar-side" />
+                    <span>Get in touch</span>
                   </button>
                 ) : (
                   <button
-                    onClick={() => {
-                      if (isDesktop && !navbarReady) return;
-                      handleClick();
-                    }}
-                    aria-expanded={sidemenu}
-                    className={`hamburger ${sidemenu ? 'active' : ''}`}
+                    className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer sm:z-[1100000000000] cta-btn "
+                    data-hover="Get in touch"
+                    onClick={() => navigate('/contact')}
                   >
-                    <span className="bar" />
-                    <span className="bar" />
+                    <span>Get in touch</span>
                   </button>
                 )}
               </div>
             </div>
-            <div>
-              {sidemenu ? (
-                <button
-                  className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] ctatwo-btn"
-                  data-hover="Get in touch"
-                  onClick={() => navigate('/contact')}
-                >
-                  <span>Get in touch</span>
-                </button>
-              ) : (
-                <button
-                  className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] cta-btn"
-                  data-hover="Get in touch"
-                  onClick={() => navigate('/contact')}
-                >
-                  <span>Get in touch</span>
-                </button>
-              )}
-            </div>
-          </div>
 
-          <div ref={navbarLogoRef} className="navbar-logo">
-            <div
-              ref={nameRef}
-              className="block lg:flex absolute left-1/2 transform -translate-x-1/2"
-            >
-              {sidemenu ? (
-                <h1 className="text-[#ffff] [font-family:var(--font-fira)] text-[1.4rem] z-[1200] ayo">
-                  Ayodeji!
-                </h1>
-              ) : (
-                <p className="text-[1.4rem] text-[#ffff] [font-family:var(--font-bebas)] lg:text-[1.6rem] font-[600] z-[100] ayo-title">
-                  Ayodeji Olupinla
-                </p>
-              )}
-            </div>
-          </div>
-          <div
-            ref={swiperRef}
-            className="absolute bottom-0 bg-[#455ce9] w-full h-10 hidden lg:flex lg:items-center"
-          >
-            <Swiper
-              modules={[Autoplay]}
-              speed={2000}
-              slidesPerView={8}
-              loop={true}
-              autoplay={{ delay: 1, disableOnInteraction: false }}
-              freemodemomentum="false"
-            >
-              {[...Array(20)].map((_, i) => (
-                <SwiperSlide key={i}>
-                  {i % 2 === 0 ? (
-                    <p className="text-[0.6rem] md:text-[0.8rem] text-[#d1d1d1]">
-                      scroll up
-                    </p>
-                  ) : (
-                    <LuDot className="text-[#d1d1d1]" size={17} />
-                  )}
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
-      </div>
-
-      {menuVisible && (
-        <div
-          className={`fixed inset-0 z-[1000] transition-opacity duration-300 ${menuVisible ? 'opacity-100' : 'opacity-0'} bg-black`}
-        >
-          <div className="flex flex-col items-center">
-            <div className="cont">
-              <ul
-                className={`flex flex-col items-center mobile lg:flex-row lg:gap-[5rem] lg:mt-[13rem] mt-[8.5rem] ul ${menuClass}`}
+            <div ref={navbarLogoRef} className="navbar-logo">
+              <div
+                ref={nameRef}
+                className="block lg:flex absolute left-1/2 transform -translate-x-1/2"
               >
-                {Mobilemenu.map((nav) => (
-                  <li key={nav.id} className="py-2 hover:cursor-pointer">
-                    <Link
-                      className={`text-[2.8rem] [font-family:var(--font-fira)] font-[700] hover:cursor-pointer hover:text-[#ffffff] lg:text-[1.7rem] transition duration-300 ${
-                        location.pathname === nav.path
-                          ? 'text-[#ffffff]'
-                          : 'text-[#818181]'
-                      }`}
-                      to={nav.path}
-                    >
-                      {nav.title}
-                    </Link>
-                  </li>
+                {sidemenu ? (
+                  <h1 className="text-[#ffff] [font-family:var(--font-fira)] text-[1.4rem] z-[1200] ayo">
+                    Ayodeji!
+                  </h1>
+                ) : (
+                  <p className="text-[1.4rem] text-[#ffff] [font-family:var(--font-bebas)] lg:text-[1.6rem] font-[600] z-[100] ayo-title">
+                    Ayodeji Olupinla
+                  </p>
+                )}
+              </div>
+            </div>
+            <div
+              ref={swiperRef}
+              className="absolute bottom-0 bg-[#455ce9] w-full h-10 hidden lg:flex lg:items-center"
+            >
+              <Swiper
+                modules={[Autoplay]}
+                speed={2000}
+                slidesPerView={8}
+                loop={true}
+                autoplay={{ delay: 1, disableOnInteraction: false }}
+                freemodemomentum="false"
+              >
+                {[...Array(20)].map((_, i) => (
+                  <SwiperSlide key={i}>
+                    {i % 2 === 0 ? (
+                      <p className="text-[0.6rem] md:text-[0.8rem] text-[#d1d1d1]">
+                        scroll up
+                      </p>
+                    ) : (
+                      <LuDot className="text-[#d1d1d1]" size={17} />
+                    )}
+                  </SwiperSlide>
                 ))}
-
-                <button
-                  className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-full mt-[2rem] text-[1.5rem] sm:hidden lg:hidden reach-btn [font-family:var(--font-bebas)] tracking-wider"
-                  onClick={() => navigate('/contact')}
-                >
-                  Get in touch
-                </button>
-              </ul>
+              </Swiper>
             </div>
           </div>
         </div>
-      )}
+
+        {menuVisible && (
+          <div
+            className={`fixed inset-0 z-[1000] transition-opacity duration-300 ${menuVisible ? 'opacity-100' : 'opacity-0'} bg-black`}
+          >
+            <div className="flex flex-col items-center">
+              <div className="cont">
+                <ul
+                  className={`flex flex-col items-center mobile lg:flex-row lg:gap-[5rem] lg:mt-[13rem] mt-[8.5rem] ul ${menuClass}`}
+                >
+                  {Mobilemenu.map((nav) => (
+                    <li key={nav.id} className="py-2 hover:cursor-pointer">
+                      <Link
+                        className={`text-[2.8rem] [font-family:var(--font-bebas)] font-[700] hover:cursor-pointer hover:text-[#ffffff] lg:text-[1.7rem] transition duration-300 ${
+                          location.pathname === nav.path
+                            ? 'text-[#ffffff]'
+                            : 'text-[#818181]'
+                        }`}
+                        to={nav.path}
+                      >
+                        {nav.title}
+                      </Link>
+                    </li>
+                  ))}
+
+                  <button
+                    className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-full mt-[2rem] text-[1.5rem] sm:hidden lg:hidden reach-btn [font-family:var(--font-bebas)] tracking-wider"
+                    onClick={() => navigate('/contact')}
+                  >
+                    Get in touch
+                  </button>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
 
       <Hero />
       <Cloud />

@@ -37,7 +37,7 @@ const hero = () => {
           duration: 0.4,
           ease: 'power2.out',
           delay: 0.8,
-        }
+        },
       );
       gsap.fromTo(
         imgWrap2.current,
@@ -49,7 +49,7 @@ const hero = () => {
           duration: 0.4,
           ease: 'power2.out',
           delay: 1.2,
-        }
+        },
       );
       gsap.fromTo(
         imgWrap1.current,
@@ -61,27 +61,27 @@ const hero = () => {
           duration: 0.4,
           ease: 'power2.out',
           delay: 1.6,
-        }
+        },
       );
       gsap.fromTo(
         '.founder',
         { y: -80, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 0.2 }
+        { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 0.2 },
       );
       gsap.fromTo(
         '.title',
         { z: 700, opacity: 0 },
-        { z: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 0.5 }
+        { z: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 0.5 },
       );
       gsap.fromTo(
         '.body',
         { y: 110, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 0.8 }
+        { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 0.8 },
       );
       gsap.fromTo(
         '.button',
         { y: 110, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 2.2 }
+        { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 2.2 },
       );
     }, heroRef);
     return () => ctx.revert();
@@ -96,10 +96,10 @@ const hero = () => {
       <div className="flex flex-col gap-2 mt-[2rem] lg:flex-row lg:gap-[10rem] lg:mt-[2rem] xl:gap-[13rem]">
         <div className="px-[1.3rem] md:px-[3rem] lg:mt-[5rem]">
           <div className="title-container">
-            <h4 className="text-[black] pb-[0.6rem] text-[1.1rem] lg:text-[1.3rem] font-[400] founder">
+            <h4 className="text-[#ffffff] pb-[0.6rem] text-[1.1rem] lg:text-[1.3rem] font-[400] founder">
               Hi Founder,
             </h4>
-            <h2 className="pb-[0.6rem] text-[black] text-[1.5rem] font-[900] lg:text-[2rem] [font-family:var(--font-fira)] title">
+            <h2 className="pb-[0.6rem] text-[#ffffff] text-[1.5rem] font-[900] lg:text-[2rem] [font-family:var(--font-fira)] title">
               Looking to take your brand <br className="hidden lg:block"></br>{' '}
               or project to the{' '}
               <span className="text-[#455ce9] [font-family:var(--font-nunito)] tracking-wider font-extrabold">
@@ -107,7 +107,7 @@ const hero = () => {
               </span>
               ?
             </h2>
-            <h4 className="text-[black] text-[1.1rem] lg:text-[1.3rem] leading-9 lg:text-justify font-[400] max-w-[900px] body">
+            <h4 className="text-[#ffffff] text-[1.1rem] lg:text-[1.3rem] leading-9 lg:text-justify font-[400] max-w-[900px] body">
               I help brands stand out in the digital era. Together, we will set{' '}
               <br className="hidden lg:block"></br>
               the pace for what's ahead with modern, and high speed{' '}
