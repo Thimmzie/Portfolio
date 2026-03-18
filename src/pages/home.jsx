@@ -221,7 +221,7 @@ const home = () => {
           <div ref={navbarItemsRef} className="navbar-items">
             <div className="nav-top-row relative">
               {!sidemenu && (!isDesktop || navbarReady) && (
-                <div className="absolute inset-0 bg-gray-800/60 backdrop-blur-md z-0" />
+                <div className="absolute inset-0 bg-gray-800/60 backdrop-blur-md z-0 pointer-events-none" />
               )}
               <div className="relative z-10">
                 <div

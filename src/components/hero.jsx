@@ -66,17 +66,17 @@ const hero = () => {
       gsap.fromTo(
         '.founder',
         { y: -80, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 0.2 },
+        { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 1.2 },
       );
       gsap.fromTo(
         '.title',
         { z: 700, opacity: 0 },
-        { z: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 0.5 },
+        { z: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 1.5 },
       );
       gsap.fromTo(
         '.body',
         { y: 110, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 0.8 },
+        { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 1.8 },
       );
       gsap.fromTo(
         '.button',
@@ -84,6 +84,52 @@ const hero = () => {
         { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 2.2 },
       );
     }, heroRef);
+
+    const tl = gsap.timeline({
+      delay: 2.2,
+    });
+
+    tl.fromTo(
+      '.grey-bg',
+      {
+        scaleX: 0,
+        opacity: 1,
+        transformOrigin: 'left',
+      },
+      {
+        scaleX: 1,
+        duration: 0.8,
+        ease: 'power2.out',
+      },
+    )
+
+      .fromTo(
+        '.white-bg',
+        {
+          scaleX: 0,
+          transformOrigin: 'left',
+        },
+        {
+          scaleX: 1,
+          duration: 1,
+
+          ease: 'power2.out',
+        },
+      );
+
+    // .fromTo(
+    //   '.blue-text',
+    //   {
+    //     scaleX: 0,
+    //     transformOrigin: 'left',
+    //   },
+    //   {
+    //     scaleX: 1,
+    //     duration: 0.4,
+    //     ease: 'power2.out',
+    //   },
+    // );
+
     return () => ctx.revert();
   }, []);
 
@@ -102,8 +148,12 @@ const hero = () => {
             <h2 className="pb-[0.6rem] text-[#ffffff] text-[1.5rem] font-[900] lg:text-[2rem] [font-family:var(--font-fira)] title">
               Looking to take your brand <br className="hidden lg:block"></br>{' '}
               or project to the{' '}
-              <span className="text-[#455ce9] [font-family:var(--font-nunito)] tracking-wider font-extrabold">
-                next level
+              <span className="bg-[#505050] grey-bg">
+                <span className="bg-[#ffffff] white-bg">
+                  <span className="text-[#455ce9] [font-family:var(--font-nunito)] tracking-wider font-extrabold px-2 white-bg">
+                    next level
+                  </span>
+                </span>
               </span>
               ?
             </h2>
