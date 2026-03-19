@@ -335,7 +335,7 @@ const home = () => {
                   {Mobilemenu.map((nav) => (
                     <li key={nav.id} className="py-2 hover:cursor-pointer">
                       <Link
-                        className={`text-[2.8rem] [font-family:var(--font-bebas)] font-[700] hover:cursor-pointer hover:text-[#ffffff] lg:text-[1.7rem] transition duration-300 ${
+                        className={`text-[2.8rem] [font-family:var(--font-bebas)] font-[700] hover:cursor-pointer hover:text-[#ffffff] lg:text-[2.7rem] transition duration-300 ${
                           location.pathname === nav.path
                             ? 'text-[#ffffff]'
                             : 'text-[#818181]'

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { Mobilemenu } from '../../constants/index.js';
 import gsap from 'gsap';
 import { Link, useLocation } from 'react-router-dom';
@@ -8,12 +8,9 @@ const Navbar = () => {
   const location = useLocation();
   const [sidemenu, setSidemenu] = useState(false);
   const handleClick = () => setSidemenu(!sidemenu);
-  const [showFloatingHamburger, setShowFloatingHamburger] = useState(false);
   const [menuClass, setMenuClass] = useState('fly-out');
   const [menuVisible, setMenuVisible] = useState(false);
-  const navbarRef = useRef(null);
-  const floatRef = useRef(null);
-  const observerRef = useRef(null);
+  const nameRef = useRef(null);
 
   useEffect(() => {
     let timer;
@@ -32,270 +29,107 @@ const Navbar = () => {
     return () => clearTimeout(timer);
   }, [sidemenu]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    gsap.set(nameRef.current, { opacity: 0 });
+  }, []);
+
+  useLayoutEffect(() => {
+    gsap.set(nameRef.current, { opacity: 1 });
+
     if (sidemenu) {
       gsap.fromTo(
         '.ayo',
         { y: 25, opacity: 0 },
-        { y: 0, opacity: 1, ease: 'back.inOut', duration: 0.4 }
+        { y: 0, opacity: 1, ease: 'back.inOut', duration: 0.4 },
       );
     } else {
       gsap.fromTo(
         '.ayo-title',
         { y: -25, opacity: 0 },
-        { y: 0, opacity: 1, ease: 'back.inOut', duration: 0.4, delay: 0.8 }
+        { y: 0, opacity: 1, ease: 'back.inOut', duration: 0.4, delay: 0.8 },
       );
     }
   }, [sidemenu]);
 
   useEffect(() => {
-    const el = floatRef.current;
-    if (!el) return;
-
-    gsap.killTweensOf(el);
-
-    if (showFloatingHamburger) {
-      el.classList.remove('is-hidden');
-      el.classList.add('is-visible');
-
-      gsap.fromTo(
-        el,
-        {
-          z: -800,
-          opacity: 0,
-          scale: 0.8,
-          transformPerspective: 1500,
-          transformOrigin: 'center',
-        },
-        {
-          z: 0,
-          rotationY: 0,
-          rotationX: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          ease: 'back.out(2.5)',
-          force3D: true,
-        }
-      );
-    } else {
-      gsap.to(el, {
-        z: -800,
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.6,
-        ease: 'power2.inOut',
-        force3D: true,
-        onComplete: () => {
-          el.classList.remove('is-visible');
-          el.classList.add('is-hidden');
-        },
-      });
-    }
-
-    return () => {
-      gsap.killTweensOf(el);
-    };
-  }, [showFloatingHamburger]);
-
-  useEffect(() => {
-    const navEl = navbarRef.current;
-    if (!navEl) return;
-
-    if (observerRef.current) {
-      observerRef.current.disconnect();
-      observerRef.current = null;
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-
-        const shouldShowFloating = !entry.isIntersecting;
-        setShowFloatingHamburger((prev) => {
-          if (prev !== shouldShowFloating) return shouldShowFloating;
-          return prev;
-        });
-      },
-      {
-        root: null,
-        threshold: 0,
-      }
-    );
-
-    io.observe(navEl);
-    observerRef.current = io;
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-        observerRef.current = null;
-      }
-    };
-  }, []);
-
-  // this for fixing the sidebar and balancing the width on both states. Ideally, we just locked scroll without removing the scrollbar
-  //   useEffect(() => {
-  //     if (sidemenu && showFloatingHamburger) {
-  //       const scrollY = window.scrollY;
-  //       document.body.style.position = 'fixed';
-  //       document.body.style.top = `-${scrollY}px`;
-  //       document.body.style.left = '0';
-  //       document.body.style.right = '0';
-  //       document.body.style.overflowY = 'scroll';
-  //       document.body.style.width = '100%';
-  //     } else if (sidemenu) {
-  //       const scrollY = window.scrollY;
-  //       document.body.style.position = 'fixed';
-  //       document.body.style.top = `-${scrollY}px`;
-  //       document.body.style.left = '0';
-  //       document.body.style.right = '0';
-  //       document.body.style.overflowY = 'scroll';
-  //       document.body.style.width = '100%';
-  //     } else {
-  //       const scrollY = document.body.style.top;
-  //       document.body.style.position = '';
-  //       document.body.style.top = '';
-  //       document.body.style.left = '';
-  //       document.body.style.right = '';
-  //       document.body.style.overflowY = '';
-  //       document.body.style.width = '';
-  //       if (scrollY) window.scrollTo(0, parseInt(scrollY || '0') * -1);
-  //     }
-  //   }, [sidemenu, showFloatingHamburger]);
-
-  //   useEffect(() => {
-  //     if (sidemenu) {
-  //       const scrollBarWidth =
-  //         window.innerWidth - document.documentElement.clientWidth;
-  //       document.body.style.overflow = 'hidden';
-  //       document.body.style.paddingRight = `${scrollBarWidth}px`;
-  //     } else {
-  //       document.body.style.overflow = '';
-  //       document.body.style.paddingRight = '';
-  //     }
-  //   }, [sidemenu]);
-
-  useEffect(() => {
     if (sidemenu) {
-      const scrollY = window.scrollY;
-
-      // Calculate scrollbar width
       const scrollbarWidth =
         window.innerWidth - document.documentElement.clientWidth;
 
-      // Lock body scroll
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.left = '0';
-      document.body.style.right = '0';
-
-      // Dynamically add padding to reserve scrollbar space
+      document.body.style.overflowY = 'hidden';
       document.body.style.paddingRight = `${scrollbarWidth}px`;
     } else {
-      // Restore scroll
-      const scrollY = -parseInt(document.body.style.top || '0');
-
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
+      document.body.style.overflowY = '';
       document.body.style.paddingRight = '';
-
-      window.scrollTo(0, scrollY);
     }
   }, [sidemenu]);
 
   const navigate = useNavigate();
 
   return (
-    <div>
+    <>
       <div
-        ref={floatRef}
-        className={`fixed top-18 right-9 z-[13000] floating-wrapper is-hidden`}
-        aria-hidden={!showFloatingHamburger}
+        className={`fixed top-0 left-0 w-full z-[2000] ${
+          sidemenu
+            ? 'bg-transparent backdrop-blur-0'
+            : 'bg-gray-800/60 backdrop-blur-md'
+        }`}
       >
-        <button
-          onClick={handleClick}
-          aria-expanded={sidemenu}
-          id="float"
-          className={`hamburger ${sidemenu ? 'active' : ''}`}
-          type="button"
-        >
-          <span className="float-overlay" aria-hidden="true" />
-          <span className="bar" />
-          <span className="bar" />
-        </button>
-      </div>
-
-      <nav ref={navbarRef}>
-        <div
-          className={`flex mobile-nav-box px-[1.2rem] pt-[1.7rem] items-center sm:px-[1.8rem] lg:px-[1.8rem] z-[1200] relative overflow-y-hidden transition-all duration-500 ${
-            sidemenu && showFloatingHamburger
-              ? 'opacity-0 pointer-events-none absolute -top-[6rem] -right-[5rem] scale-[0.98]'
-              : 'opacity-100 pointer-events-auto relative top-0 right-0 scale-[1]'
-          }`}
-        >
+        <div className="flex justify-between items-center  px-[1.2rem] sm:px-[1.8rem] lg:px-[1.4rem] py-[0.5rem] relative">
           <div>
-            {sidemenu ? (
-              <button
-                onClick={handleClick}
-                aria-expanded={sidemenu}
-                className={`hamburger-side ${sidemenu ? 'active' : ''}`}
-              >
-                <span className="bar-side" />
-                <span className="bar-side" />
-              </button>
-            ) : (
-              <button
-                onClick={handleClick}
-                aria-expanded={sidemenu}
-                className={`hamburger ${sidemenu ? 'active' : ''}`}
-              >
-                <span className="bar" />
-                <span className="bar" />
-              </button>
-            )}
+            <button
+              onClick={handleClick}
+              aria-expanded={sidemenu}
+              className={`hamburger ${sidemenu ? 'active' : ''}`}
+            >
+              <span className="bar" />
+              <span className="bar" />
+            </button>
           </div>
-          <div className="hidden lg:block ">
+
+          <div
+            ref={nameRef}
+            className="absolute left-1/2 transform -translate-x-1/2 text-center"
+          >
             {sidemenu ? (
-              <h1 className="text-[#ffff] [font-family:var(--font-fira)] text-[1.4rem] z-[1200] ayo">
+              <h1 className="text-white text-[1.4rem] [font-family:var(--font-fira)] ayo">
                 Ayodeji!
               </h1>
             ) : (
-              <p className="text-[1.2rem] text-[#1f1e1e] lg:text-[1rem] font-[600] z-[1200] ayo-title">
+              <p className="text-white text-[1.4rem] lg:text-[1.6rem] font-[600] [font-family:var(--font-bebas)] ayo-title">
                 Ayodeji Olupinla
               </p>
             )}
           </div>
+
           <div>
             {sidemenu ? (
               <button
-                className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] ctatwo-btn"
+                className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] ctatwo-btn "
                 data-hover="Home"
-                onClick={() => navigate('/home')}
+                onClick={() => navigate('/')}
               >
-                <span>Home</span>
+                <span> Home</span>
               </button>
             ) : (
               <button
-                className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] cta-btn"
+                className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer sm:z-[1100000000000] cta-btn "
                 data-hover="Home"
-                onClick={() => navigate('/home')}
+                onClick={() => navigate('/')}
               >
-                <span>Home</span>
+                <span> Home</span>
               </button>
             )}
           </div>
         </div>
+      </div>
+      <div className="h-[5.5rem]" />
+
+      {menuVisible && (
         <div
-          className={`fixed inset-0 h-[100vh] transition-opacity duration-300 menu-div ${
-            menuVisible
-              ? 'opacity-100 visible z-[1000]'
-              : 'opacity-0 invisible z-[1000]'
-          } ${sidemenu && showFloatingHamburger ? 'overflow-hidden' : ''}`}
+          className={`fixed inset-0 z-[1000] transition-opacity duration-300 ${menuVisible ? 'opacity-100' : 'opacity-0'} bg-black`}
         >
-          <div className="flex flex-col items-center sidebar">
+          <div className="flex flex-col items-center">
             <div className="cont">
               <ul
                 className={`flex flex-col items-center mobile lg:flex-row lg:gap-[5rem] lg:mt-[13rem] mt-[8.5rem] ul ${menuClass}`}
@@ -303,7 +137,7 @@ const Navbar = () => {
                 {Mobilemenu.map((nav) => (
                   <li key={nav.id} className="py-2 hover:cursor-pointer">
                     <Link
-                      className={`text-[1.5rem] [font-family:var(--font-nunito)] font-[700] hover:cursor-pointer hover:text-[#ffffff] lg:text-[1.7rem] transition duration-300 ${
+                      className={`text-[2.8rem] [font-family:var(--font-bebas)] font-[700] hover:cursor-pointer hover:text-[#ffffff] lg:text-[2.7rem] transition duration-300 ${
                         location.pathname === nav.path
                           ? 'text-[#ffffff]'
                           : 'text-[#818181]'
@@ -316,8 +150,8 @@ const Navbar = () => {
                 ))}
 
                 <button
-                  className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-full mt-[2rem] text-[1.1rem] sm:hidden lg:hidden reach-btn"
-                  onClick={() => navigate('/home')}
+                  className="bg-[white] w-[15rem] h-[7vh] text-[black] rounded-full mt-[2rem] text-[1.5rem] sm:hidden lg:hidden reach-btn [font-family:var(--font-bebas)] tracking-wider"
+                  onClick={() => navigate('/contact')}
                 >
                   Home
                 </button>
@@ -325,19 +159,8 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      </nav>
-      <div className="flex justify-center lg:hidden">
-        {sidemenu ? (
-          <h1 className="text-[#ffff] [font-family:var(--font-fira)] text-[1.4rem] mt-[-2.5rem] z-[1200] ayo">
-            Ayodeji!
-          </h1>
-        ) : (
-          <p className="text-[1.2rem] text-[#1f1e1e] font-[600] mt-[-2.5rem] z-[1200] ayo-title">
-            Ayodeji Olupinla
-          </p>
-        )}
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
