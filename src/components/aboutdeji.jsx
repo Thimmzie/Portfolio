@@ -4,6 +4,7 @@ import Twoimg from '../assets/images/imgfourr.png';
 import Threeimg from '../assets/images/imgthree.png';
 import Fourimg from '../assets/images/imgfour.png';
 import gsap from 'gsap/all';
+import transition from './transition';
 
 const aboutdeji = () => {
   useEffect(() => {
@@ -22,7 +23,7 @@ const aboutdeji = () => {
         duration: 0.5,
         ease: 'power4.out',
         stagger: 0.22,
-      }
+      },
     );
   }, []);
 
@@ -65,4 +66,4 @@ const aboutdeji = () => {
   );
 };
 
-export default aboutdeji;
+export default transition(aboutdeji);

@@ -3,6 +3,7 @@ import { FullProjects } from '../../constants/index.js';
 import { MdArrowOutward } from 'react-icons/md';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import transition from './transition.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,7 +37,7 @@ const pojectdeji = () => {
             toggleActions: 'play none none reverse',
             invalidateOnRefresh: true,
           },
-        }
+        },
       );
     });
   }, []);
@@ -55,7 +56,9 @@ const pojectdeji = () => {
             key={detail.id}
           >
             <div className="lg:w-[120%]">
-              <h2 className="text-[1.3rem] font-[600]">{detail.title}</h2>
+              <h2 className="text-[1.3rem] font-[600] text-black">
+                {detail.title}
+              </h2>
               <p className="py-4 text-[0.9rem] text-[#535353] font-[400] leading-7">
                 {detail.about}
               </p>
@@ -88,4 +91,4 @@ const pojectdeji = () => {
   );
 };
 
-export default pojectdeji;
+export default transition(pojectdeji);

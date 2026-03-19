@@ -27,7 +27,7 @@ const projects = () => {
               start: 'top 85%',
               toggleActions: 'play none none reverse',
             },
-          }
+          },
         );
       });
     });
@@ -47,7 +47,7 @@ const projects = () => {
             start: 'top 90%',
             toggleActions: 'play reverse play reverse',
           },
-        }
+        },
       );
     });
 
@@ -67,7 +67,7 @@ const projects = () => {
           start: 'top 90%',
           toggleActions: 'play none none reverse',
         },
-      }
+      },
     );
 
     window.addEventListener('load', () => {
@@ -95,7 +95,9 @@ const projects = () => {
                 style={{ backgroundColor: colors[i % colors.length] }}
                 key={detail.id}
               >
-                <p className="text-[1.2rem] font-[600]">{detail.title}</p>
+                <p className="text-[1.2rem] font-[600] text-black">
+                  {detail.title}
+                </p>
                 <p className="text-[0.9rem] text-[#313131] font-[200] pt-3 tracking-wider lg:tracking-wide lg:text-[0.9rem] line-clamp-2">
                   {detail.about}
                 </p>

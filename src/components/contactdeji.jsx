@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { socials } from '../../constants/index.js';
+import transition from './transition.jsx';
 
 const contactdeji = () => {
   const [formData, setFormData] = useState({
@@ -88,7 +89,7 @@ const contactdeji = () => {
         throw new Error(
           data?.error ||
             (data?.errors && data.errors.map((err) => err.msg).join(', ')) ||
-            'Something went wrong.'
+            'Something went wrong.',
         );
       }
 
@@ -302,4 +303,4 @@ const contactdeji = () => {
   );
 };
 
-export default contactdeji;
+export default transition(contactdeji);

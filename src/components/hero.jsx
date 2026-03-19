@@ -167,7 +167,7 @@ const hero = () => {
           </div>
           <div className="flex flex-col items-center gap-[1.2rem] w-full max-w-[600px] mt-[2rem] md:mx-auto lg:flex-row button">
             <button
-              className="btn2"
+              className="btn3"
               data-hover="Get in touch"
               onClick={() => navigate('/contact')}
             >

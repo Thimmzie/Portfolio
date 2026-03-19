@@ -1,5 +1,6 @@
 import React from 'react';
 import { Writing } from '../../constants/index.js';
+import transition from './transition.jsx';
 
 const myarticle = () => {
   return (
@@ -23,15 +24,17 @@ const myarticle = () => {
             >
               <img className="" src={art.img} />
               <div className="px-3 pt-4 ">
-                <h2 className=" text-[1rem] lg:text-[0.9rem]">{art.title}</h2>
-                <p className="text-[0.9rem] lg:text-[0.8rem] line-clamp-3 pt-3 font-[400]">
+                <h2 className=" text-[1rem] lg:text-[0.9rem] text-black">
+                  {art.title}
+                </h2>
+                <p className="text-[0.9rem] lg:text-[0.8rem] line-clamp-3 pt-3 font-[400] text-black">
                   {art.excerpt}
                 </p>
                 <div className="flex justify-between pr-[2rem] lg:pr-[5rem]">
-                  <p className="text-[0.9rem] lg:text-[0.7rem] pt-3">
+                  <p className="text-[0.9rem] lg:text-[0.7rem] pt-3 text-black">
                     {art.date}
                   </p>
-                  <p className="text-[0.9rem] lg:text-[0.7rem] pt-3">
+                  <p className="text-[0.9rem] lg:text-[0.7rem] pt-3 text-black">
                     {art.time}
                   </p>
                 </div>
@@ -54,4 +57,4 @@ const myarticle = () => {
   );
 };
 
-export default myarticle;
+export default transition(myarticle);
