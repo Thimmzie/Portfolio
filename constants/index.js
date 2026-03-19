@@ -2,6 +2,7 @@ import Dong from '../src/assets/images/dong.png';
 import Moneva from '../src/assets/images/moneva.png';
 import Porfolio from '../src/assets/images/portfolio.png';
 import Guessy from '../src/assets/images/guessy.png';
+import Valentine from '../src/assets/images/valentine.png';
 import { FaXTwitter, FaLinkedin, FaGithub, FaHashnode } from 'react-icons/fa6';
 import Api from '../src/assets/images/apicover.jpg';
 
@@ -110,14 +111,23 @@ const FullProjects = [
     img: Moneva,
     stack: 'React • Tailwind CSS • Gsap',
   },
+  // {
+  //   id: 3,
+  //   title: 'Ayodeji"s portfolio',
+  //   about:
+  //     'This project is a fully responsive portfolio website built to highlight my skills, personality, and approach to modern frontend development. It features smooth animations, clean UI patterns, and a carefully structured layout optimized for both desktop and mobile experiences.',
+  //   link: 'https://ayodeji435.netlify.app/',
+  //   img: Porfolio,
+  //   stack: 'React • Tailwind CSS • Motion • Gsap • Express • Node.JS',
+  // },
   {
     id: 3,
-    title: 'Ayodeji"s portfolio',
+    title: 'Val26',
     about:
-      'This project is a fully responsive portfolio website built to highlight my skills, personality, and approach to modern frontend development. It features smooth animations, clean UI patterns, and a carefully structured layout optimized for both desktop and mobile experiences.',
-    link: 'https://ayodeji435.netlify.app/',
-    img: Porfolio,
-    stack: 'React • Tailwind CSS • Motion • Gsap • Express • Node.JS',
+      'This project is a custom Valentine website designed to create a memorable and interactive experience for someone special. It blends smooth animations, playful UI interactions, and responsive design to deliver a visually engaging and emotionally driven product.',
+    link: 'https://for-my-racheal.netlify.app/',
+    img: Valentine,
+    stack: 'React • Tailwind CSS • Gsap ',
   },
   {
     id: 4,
