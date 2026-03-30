@@ -187,4 +187,30 @@ const Writing = [
   },
 ];
 
-export { Mobilemenu, Projects, questions, socials, FullProjects, Writing };
+const Skills = [
+  { id: 1, problem: "It's slow and unresponsive" },
+  { id: 2, problem: 'Poor mobile experience' },
+  { id: 3, problem: 'Poor SEO ranking' },
+  { id: 4, problem: 'It feels outdated' },
+  { id: 5, problem: 'Performance bottlenecks' },
+  { id: 6, problem: 'The site breaks in Safari or Edge' },
+  { id: 7, problem: 'Low conversion rate' },
+  { id: 8, problem: 'Confusing navigation' },
+  {
+    id: 9,
+    problem: 'We don’t have data on user behavior',
+  },
+  { id: 10, problem: 'Lack of automation' },
+  { id: 11, problem: 'Pages crash when traffic spikes.' },
+  { id: 12, problem: 'Poor or Bad documentation' },
+];
+
+export {
+  Mobilemenu,
+  Projects,
+  questions,
+  socials,
+  FullProjects,
+  Writing,
+  Skills,
+};

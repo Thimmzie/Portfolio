@@ -10,6 +10,7 @@ import { Flip } from 'gsap/all';
 import Lenis from 'lenis';
 import Hero from '../components/hero';
 import Cloud from '../components/cloud';
+import Skills from '../components/skills.jsx';
 import Project from '../components/projects';
 import Tool from '../components/tools';
 import Faq from '../components/faq';
@@ -361,6 +362,7 @@ const home = () => {
       </div>
 
       <Hero />
+      <Skills />
       <Cloud />
       <Project />
       <Tool />
