@@ -3,8 +3,10 @@ import Moneva from '../src/assets/images/moneva.png';
 import Porfolio from '../src/assets/images/portfolio.png';
 import Guessy from '../src/assets/images/guessy.png';
 import Valentine from '../src/assets/images/valentine.png';
+import Highlife from '../src/assets/images/high-life-banner.png';
 import { FaXTwitter, FaLinkedin, FaGithub, FaHashnode } from 'react-icons/fa6';
 import Api from '../src/assets/images/apicover.jpg';
+import { Construction, CheckCircle } from 'lucide-react';
 
 const Mobilemenu = [
   { id: 'home', title: 'Homepage', path: '/' },
@@ -19,16 +21,28 @@ const Projects = [
     title: 'Dong',
     about:
       'Dong is a Web3-powered reward and engagement platform built on blockchain technology. I worked on integrating MetaMask wallet connectivity and interacting with the smart contract directly from the frontend, also built the frontend. The project focuses on enabling users to connect their wallets, view on-chain data, and perform secure transactions in a simple, user-friendly interface.',
+    status: 'Completed',
+    lucid: CheckCircle,
     link: 'https://thimmzie.github.io/-Dong/',
     img: Dong,
   },
+  // {
+  //   id: 2,
+  //   title: 'Moneva',
+  //   about:
+  //     'Moneva is a personal expense-tracking app designed to help users manage their daily spending with clarity and ease. It’s an ongoing project, with a minor frontend and major backend features still in development. This project focuses on a clean UI, smooth interactions, and real-time expense tracking.',
+  //   link: 'https://moneva.pxxl.click/',
+  //   img: Moneva,
+  // },
   {
-    id: 2,
-    title: 'Moneva',
+    id: 3,
+    title: 'High Life',
     about:
-      'Moneva is a personal expense-tracking app designed to help users manage their daily spending with clarity and ease. It’s an ongoing project, with a minor frontend and major backend features still in development. This project focuses on a clean UI, smooth interactions, and real-time expense tracking.',
-    link: 'https://moneva.pxxl.click/',
-    img: Moneva,
+      'High life is an interactive health intelligence dashboard that analyzes your daily habits, nutrition, and activity to show how your lifestyle affects your energy, productivity, and well-being.',
+    status: 'WIP',
+    lucid: Construction,
+    link: 'https://highlifee.netlify.app/',
+    img: Highlife,
   },
 ];
 
@@ -98,15 +112,31 @@ const FullProjects = [
     title: 'Dong',
     about:
       'Dong is a Web3-powered platform built on blockchain technology. I worked on integrating MetaMask wallet connectivity and interacting with the smart contract directly from the frontend, also built the frontend. The project focuses on enabling users to connect their wallets, view on-chain data, and perform secure transactions in a simple, user-friendly interface.',
+    status: 'Completed',
+    lucid: CheckCircle,
     link: 'https://dong-khaki.vercel.app/',
     img: Dong,
     stack: 'JavaScript • CSS • Ether.JS',
   },
   {
     id: 2,
+    title: 'High Life',
+    about:
+      'High life is an interactive health intelligence dashboard that analyzes your daily habits, nutrition, and activity to show how your lifestyle affects your energy, productivity, and well-being.',
+    status: 'WIP',
+    lucid: Construction,
+    link: 'https://highlifee.netlify.app/',
+    img: Highlife,
+    stack:
+      'React • Tailwind CSS • Zustand • Firebase • GSAP • Recharts • Framer motion',
+  },
+  {
+    id: 3,
     title: 'Moneva',
     about:
       'Moneva is a personal expense-tracking app designed to help users manage their daily spending with clarity and ease. It’s an ongoing project, with a minor frontend and major backend features still in development. This project focuses on a clean UI, smooth interactions, and real-time expense tracking.',
+    status: 'WIP',
+    lucid: Construction,
     link: 'https://moneva.pxxl.click/',
     img: Moneva,
     stack: 'React • Tailwind CSS • Gsap',
@@ -121,19 +151,23 @@ const FullProjects = [
   //   stack: 'React • Tailwind CSS • Motion • Gsap • Express • Node.JS',
   // },
   {
-    id: 3,
+    id: 4,
     title: 'Val26',
     about:
       'This project is a custom Valentine website designed to create a memorable and interactive experience for someone special. It blends smooth animations, playful UI interactions, and responsive design to deliver a visually engaging and emotionally driven product.',
+    status: 'Completed',
+    lucid: CheckCircle,
     link: 'https://for-my-racheal.netlify.app/',
     img: Valentine,
     stack: 'React • Tailwind CSS • Gsap ',
   },
   {
-    id: 4,
+    id: 5,
     title: 'Guessy',
     about:
       'This project is a lightweight number-guessing game where users attempt to guess a randomly generated number within a defined range. It features simple validation, instant feedback, and a smooth user flow',
+    status: 'Completed',
+    lucid: CheckCircle,
     link: 'https://guessy-vert.vercel.app/',
     img: Guessy,
     stack: 'Javascript • CSS',

@@ -105,7 +105,7 @@ body {
   left: 0;
   width: 100%;
   height: 100dvh;
-  background: #0f0f0f;
+  background: #090f1a;
   transform-origin: bottom;
   z-index: 99999999;
 }
@@ -115,7 +115,7 @@ body {
   left: 0;
   width: 100%;
   height: 100dvh;
-  background: #0f0f0f;
+  background: #090f1a;
   transform-origin: top;
    z-index: 99999999;
 }

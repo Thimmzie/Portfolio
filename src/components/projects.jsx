@@ -89,6 +89,7 @@ const projects = () => {
       <div>
         <div className="flex flex-col mt-[3rem] items-center gap-[2rem] md:flex-row md:px-4 lg:px-[4rem]">
           {Projects.map((detail, i) => {
+            const Icon = detail.lucid;
             return (
               <div
                 className="  w-[90%] rounded-[20px] border-1 border-[#c7c7c7] px-5 h-[53%] pt-[2rem] pb-[1rem] lg:h-[85vh] project"
@@ -101,6 +102,14 @@ const projects = () => {
                 <p className="text-[0.9rem] text-[#313131] font-[200] pt-3 tracking-wider lg:tracking-wide lg:text-[0.9rem] line-clamp-2">
                   {detail.about}
                 </p>
+                <div className="flex gap-2 items-center">
+                  {' '}
+                  <p className="text-[#636363] text-[0.8rem] pt-3">
+                    {detail.status}
+                  </p>
+                  <Icon className="text-slate-800 mt-2" size={20} />
+                </div>
+
                 <button className="flex gap-1 bg-[white] border-1  mt-4 mb-6 text-[0.8rem] tracking-wider rounded-[30px] py-2 px-4 border-[#aaaaaa] hover:bg-[#f3f3f3] cursor-pointer transition-all duration-300">
                   <a
                     href={detail.link}
