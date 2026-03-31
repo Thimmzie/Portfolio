@@ -82,8 +82,8 @@ const projects = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="mb-[2rem] bg-[#ffffff] pt-[5rem] pb-[7rem] lg:mt-[4rem] flex flex-col items-center">
-      <h1 className="text-[#000000] text-[1.5rem] font-[600]">
+    <div className="mb-[2rem] bg-[#000000] pt-[2rem] lg:pt-[5rem] pb-[7rem] lg:mt-[4rem] flex flex-col items-center">
+      <h1 className="text-[#ffffff] text-[1.5rem] font-[600]">
         Recent Projects
       </h1>
       <div>

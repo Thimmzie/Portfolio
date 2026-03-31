@@ -4,17 +4,25 @@ import { questions } from '../../constants';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const containerVariants = {
-  hidden: {},
+  hidden: { opacity: 1 },
   show: {
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.06,
     },
   },
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: -20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 300,
+      damping: 20,
+    },
+  },
 };
 
 const Faq = () => {
@@ -26,8 +34,8 @@ const Faq = () => {
 
   return (
     <div className="faq-footer-wrapper">
-      <div className="mb-[5rem] flex flex-col items-center bg-[white] faq-section">
-        <h1 className="text-[#000000] text-[1.5rem] font-[600] mb-[2rem]">
+      <div className="mb-[5rem] flex flex-col items-center bg-[#000000] faq-section">
+        <h1 className="text-[#ffffff] text-[1.5rem] font-[600] mb-[2rem]">
           FAQ
         </h1>
 
@@ -35,8 +43,8 @@ const Faq = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ amount: 0.2 }}
-          className="w-[92%] m-auto max-w-[1400px] bg-gray-300 px-6 py-7 shadow-md rounded-lg border border-[#bbbbbb] lg:w-[60%]"
+          viewport={{ once: 'true' }}
+          className="w-[92%] m-auto max-w-[1400px] bg-black px-6 py-7 shadow-md rounded-lg border border-[#bbbbbb] lg:w-[60%]"
         >
           {questions.map((qst) => (
             <motion.div
@@ -51,7 +59,11 @@ const Faq = () => {
                 <p className="text-[0.9rem] text-[#222222] leading-5">
                   {qst.question}
                 </p>
-                {activeQuestion === qst.id ? <FaMinus /> : <FaPlus />}
+                {activeQuestion === qst.id ? (
+                  <FaMinus className="text-black" />
+                ) : (
+                  <FaPlus className="text-black" />
+                )}
               </button>
 
               <AnimatePresence>
@@ -61,7 +73,7 @@ const Faq = () => {
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                   >
-                    <p className="text-[0.9rem] text-[#3d3d3d] leading-7 max-w-full p-4">
+                    <p className="text-[0.9rem] text-[#f1f1f1] leading-7 max-w-full p-4">
                       {qst.answer}
                     </p>
                   </motion.div>
