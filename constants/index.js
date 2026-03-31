@@ -189,7 +189,7 @@ const Writing = [
 
 const Skills = [
   { id: 1, problem: "It's slow and unresponsive" },
-  { id: 2, problem: 'Poor mobile experience' },
+  { id: 2, problem: 'Lack of automation' },
   { id: 3, problem: 'Poor SEO ranking' },
   { id: 4, problem: 'It feels outdated' },
   { id: 5, problem: 'Performance bottlenecks' },
@@ -200,9 +200,9 @@ const Skills = [
     id: 9,
     problem: 'We don’t have data on user behavior',
   },
-  { id: 10, problem: 'Lack of automation' },
-  { id: 11, problem: 'Pages crash when traffic spikes.' },
-  { id: 12, problem: 'Poor or Bad documentation' },
+  { id: 10, problem: 'Poor mobile experience' },
+  { id: 11, problem: 'Poor documentation' },
+  { id: 12, problem: 'Pages crash when traffic spikes' },
 ];
 
 export {
