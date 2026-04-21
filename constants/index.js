@@ -7,6 +7,7 @@ import Highlife from '../src/assets/images/high-life-banner.png';
 import { FaXTwitter, FaLinkedin, FaGithub, FaHashnode } from 'react-icons/fa6';
 import Api from '../src/assets/images/apicover.jpg';
 import { Construction, CheckCircle } from 'lucide-react';
+import Talent from '../src/assets/images/talent.png';
 
 const Mobilemenu = [
   { id: 'home', title: 'Homepage', path: '/' },
@@ -132,6 +133,17 @@ const FullProjects = [
   },
   {
     id: 3,
+    title: 'Talent Flow',
+    about:
+      'A collaborative EdTech platform for delivering courses in engineering, product design, data and other tracks. Built as part of a team-based development project.',
+    status: 'WIP',
+    lucid: Construction,
+    link: 'https://talent-flow-kappa-six.vercel.app/',
+    img: Talent,
+    stack: 'React • Tailwind CSS • Framer motion • Recharts • .NET(C#)',
+  },
+  {
+    id: 4,
     title: 'Moneva',
     about:
       'Moneva is a personal expense-tracking app designed to help users manage their daily spending with clarity and ease. It’s an ongoing project, with a minor frontend and major backend features still in development. This project focuses on a clean UI, smooth interactions, and real-time expense tracking.',
@@ -151,7 +163,7 @@ const FullProjects = [
   //   stack: 'React • Tailwind CSS • Motion • Gsap • Express • Node.JS',
   // },
   {
-    id: 4,
+    id: 5,
     title: 'Val26',
     about:
       'This project is a custom Valentine website designed to create a memorable and interactive experience for someone special. It blends smooth animations, playful UI interactions, and responsive design to deliver a visually engaging and emotionally driven product.',
@@ -162,7 +174,7 @@ const FullProjects = [
     stack: 'React • Tailwind CSS • Gsap ',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Guessy',
     about:
       'This project is a lightweight number-guessing game where users attempt to guess a randomly generated number within a defined range. It features simple validation, instant feedback, and a smooth user flow',
