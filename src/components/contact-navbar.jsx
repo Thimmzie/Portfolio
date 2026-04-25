@@ -105,7 +105,7 @@ const Navbar = () => {
           <div>
             {sidemenu ? (
               <button
-                className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] ctatwo-btn "
+                className="bg-[#192781] w-[10rem] h-[8vh] hidden sm:block lg:block hover:cursor-pointer lg:z-[1100] ctatwo-btn "
                 data-hover="Home"
                 onClick={() => navigate('/')}
               >
@@ -113,7 +113,7 @@ const Navbar = () => {
               </button>
             ) : (
               <button
-                className="bg-[#192781] w-[10rem] h-[8vh] rounded-3xl hidden sm:block lg:block hover:cursor-pointer sm:z-[1100000000000] cta-btn "
+                className="bg-[#192781] w-[10rem] h-[8vh] hidden sm:block lg:block hover:cursor-pointer sm:z-[1100000000000] cta-btn "
                 data-hover="Home"
                 onClick={() => navigate('/')}
               >

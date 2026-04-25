@@ -195,9 +195,9 @@ const contactdeji = () => {
                   key={med.id}
                 >
                   <a href={med.url} target="_blank" rel="noopener noreferrer">
-                    <med.media size={27} className=" text-[#1d1d1d]" />
+                    <med.media size={27} className=" text-[#dfdfdf]" />
                   </a>
-                  <p className="text-[1rem] text-[#1d1d1d] font-semibold">
+                  <p className="text-[1rem] text-[#dfdfdf] font-semibold">
                     {med.username}
                   </p>
                 </div>

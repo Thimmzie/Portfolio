@@ -44,7 +44,7 @@ const Faq = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: 'true' }}
-          className="w-[92%] m-auto max-w-[1400px] bg-black px-6 py-7 shadow-md rounded-lg border border-[#bbbbbb] lg:w-[60%]"
+          className="w-[92%] m-auto max-w-[1400px] bg-black px-6 py-7 shadow-md lg:w-[60%]"
         >
           {questions.map((qst) => (
             <motion.div
@@ -53,16 +53,16 @@ const Faq = () => {
               className="mb-5 last:mb-0"
             >
               <button
-                className="w-full text-left text-[1rem] focus:outline-none p-4 bg-[#f3f3f3] rounded-lg border border-[#bbbbbb] flex justify-between items-center cursor-pointer"
+                className="w-full text-left text-[1rem] focus:outline-none p-4 bg-[#16161a] rounded-lg border border-[#bbbbbb] flex justify-between items-center cursor-pointer"
                 onClick={() => handleclick(qst.id)}
               >
-                <p className="text-[0.9rem] text-[#222222] leading-5">
+                <p className="text-[0.9rem] text-[#e0e0e0] leading-5">
                   {qst.question}
                 </p>
                 {activeQuestion === qst.id ? (
-                  <FaMinus className="text-black" />
+                  <FaMinus className="text-white" />
                 ) : (
-                  <FaPlus className="text-black" />
+                  <FaPlus className="text-white" />
                 )}
               </button>
 

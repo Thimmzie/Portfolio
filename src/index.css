@@ -279,7 +279,6 @@ button {
   width: 19vw;
   font-size: 0.9rem;
   border: none;
-  border-radius: 3rem;
   height: 7vh;
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
     color 0.6s ease-in-out 0.15s, transform 0.5s ease-in-out;
@@ -291,7 +290,6 @@ button {
   width: 19vw;
   font-size: 0.9rem;
   border: none;
-  border-radius: 3rem;
   height: 7vh;
   transition: background-color 0.2s ease-in-out 0.1s, transform 0.3s ease-in-out;
 }
@@ -326,10 +324,9 @@ button {
 }
 .btn3 {
   border: solid 2px#888888;
-  border-radius: 2rem;
-  height: 6.8vh;
+  height: 6.5vh;
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 @media (min-width: 768px) {
   .btn2 {
@@ -337,16 +334,15 @@ button {
     color: #fff;
     border-radius: 2rem;
     border: none;
-    height: 8vh;
+    height: 7vh;
     width: 100%;
     font-size: 1.2rem;
   }
   .btn3 {
     border: solid 2px#888888;
-    border-radius: 2rem;
     height: 8vh;
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
 }
 @media (min-width: 1024px) {
@@ -408,18 +404,16 @@ button {
   }
   .btn3 {
     border: solid 2px#888888;
-    border-radius: 2rem;
     height: 8vh;
     width: 18vw;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
   .btn3 {
-    background-color: #ffffff;
-    color: #020202;
+    background-color: #000000;
+    color: #ffffff;
     width: 18vw;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     border: solid 2px#888888;
-    border-radius: 2rem;
     height: 8vh;
     transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
       color 0.6s ease-in-out 0.15s, transform 0.5s ease-in-out;
@@ -472,11 +466,10 @@ button {
   .cta-btn {
     background-color: #000000;
     color: #fff;
-    width: 12vw;
-    font-size: 0.9rem;
+    width: 10vw;
+    font-size: 0.7rem;
     border: none;
-    border-radius: 3rem;
-    height: 8vh;
+    height: 7vh;
     transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
       color 0.6s ease-in-out 0.15s, transform 0.5s ease-in-out;
     position: relative;
@@ -528,11 +521,10 @@ button {
   .ctatwo-btn {
     background-color: #ffff;
     color: #000000;
-    width: 12vw;
-    font-size: 0.9rem;
+    width: 10vw;
+    font-size: 0.7rem;
     border: none;
-    border-radius: 3rem;
-    height: 8vh;
+    height: 7vh;
     transition: background-color 0.2s ease-in-out 0.1s,
       transform 0.3s ease-in-out;
     position: relative;
@@ -742,11 +734,10 @@ button {
 .view-btn {
   background-color: #ffffff;
   color: #000000;
-  border-radius: 2rem;
   border: none;
   height: 6.8vh;
   width: 17rem;
-  font-size: 1rem;
+  font-size: 0.7rem;
   margin: 0 auto;
 }
 @media (min-width: 1024px) {
@@ -754,9 +745,8 @@ button {
     background-color: #ffffff;
   color: #000000;
     width: 17vw;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     border: none;
-    border-radius: 3rem;
     height: 8vh;
     position: relative;
     display: inline-block;
@@ -986,9 +976,8 @@ button {
 .submit-btn {
   background-color: #fff;
   color: #020202;
-  border-radius: 2rem;
   border: none;
-  height: 6.8vh;
+  height: 6vh;
   width: 100%;
   font-size: 1rem;
   margin: 0 auto;
@@ -997,11 +986,10 @@ button {
   .submit-btn {
     background-color: #fff;
     color: #020202;
-    border-radius: 2rem;
     border: none;
-    height: 8vh;
-    width: 40%;
-    font-size: 1rem;
+    height: 7vh;
+    width: 35%;
+    font-size: 0.8rem;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -1009,13 +997,12 @@ button {
     transition: 0.5s;
   }
   .submit-btn:hover {
-    background-color: #455ce9;
+    background-color: #363636;
     color: #fff;
-    border-radius: 2rem;
     border: none;
-    height: 8vh;
-    width: 40%;
-    font-size: 1rem;
+    height: 7vh;
+    width: 35%;
+    font-size: 0.8rem;
     margin: 0 auto;
     display: flex;
     justify-content: center;

@@ -50,27 +50,27 @@ const Projects = [
 const questions = [
   {
     id: 1,
-    question: 'What does your typical project timeline look like?',
+    question: 'What drives your approach to building software?',
     answer:
-      'Timeline depends on the scope of the project. Once I understand your requirements, I will give a clear timeline and milestone breakdown.',
+      'I care about how systems performs, scales, and holds up over time.',
   },
   {
     id: 2,
-    question: 'How do you handle scope changes mid-project?',
+    question: 'What is your current area of focus?',
     answer:
-      'Small changes are handled organically. Bigger changes are noted, costed, and added as new milestones so the original stays realistic.',
+      'I have a strong foundation in frontend engineering and I am currently expanding into backend development, system design, and core computer science fundamentals.',
   },
   {
     id: 3,
-    question: 'What do you need from the client before commencement?',
+    question: 'How do you approach building software?',
     answer:
-      'Clear product goals, required features, brand guidelines, and technical constraints (if any) ',
+      'I focus on writing clean, maintainable code with performance in mind. I pay close attention to structure, scalability, and the overall user experience.',
   },
   {
     id: 4,
-    question: 'Do you offer post-launch support or maintenance?',
+    question: 'Are you available for freelance work?',
     answer:
-      'Yes, I provide maintenance plans, bug fixes, feature updates, and performance improvements after launch. ',
+      'Yes, I am open to select freelance opportunities, especially projects that involve building scalable and high-performance applications.',
   },
   {
     id: 5,

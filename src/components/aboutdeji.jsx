@@ -31,15 +31,15 @@ const aboutdeji = () => {
     <div className="mb-[3rem] mt-[3rem]">
       <p className="px-[1.5rem] tracking-wide lg:px-[14.5rem]">
         I’m Ayodeji Olupinla, a Software Developer passionate about building
-        smooth and cutting-edge digital experiences. I specialize in React and
-        Next.js, building fast, scalable products that convert and solve actual
-        problems.
+        smooth, high-performance digital experiences. I specialize in React and
+        Next.js, creating fast, scalable products that solve real problems.
         <span className="block pt-3.5">
-          Alongside development, I’m a technical writer, creating guides,
-          articles, and content that help developers and tech enthusiasts
-          understand technology, science, and everyday tech concepts. I’m
-          currently open to Frontend Engineering roles and freelance
-          opportunities.
+          Alongside development, I’m a technical writer, creating guides and
+          content that simplify technology, science, and everyday tech concepts.
+          I’m currently expanding into backend engineering, system design, and
+          core computer science fundamentals—focused on building systems that
+          are not just functional, but reliable and built to scale. I’m open to
+          Frontend Engineering roles and select freelance opportunities.
         </span>{' '}
         <span className="block pt-3.5">
           {' '}

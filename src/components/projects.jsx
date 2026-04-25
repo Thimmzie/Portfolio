@@ -99,7 +99,7 @@ const projects = () => {
                 <p className="text-[1.2rem] font-[600] text-black">
                   {detail.title}
                 </p>
-                <p className="text-[0.9rem] text-[#313131] font-[200] pt-3 tracking-wider lg:tracking-wide lg:text-[0.9rem] line-clamp-2">
+                <p className="text-[0.9rem] text-[#313131] font-[200] pt-3 tracking-wider lg:tracking-wide lg:text-[0.8rem] line-clamp-2">
                   {detail.about}
                 </p>
                 <div className="flex gap-2 items-center">
