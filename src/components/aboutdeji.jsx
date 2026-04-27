@@ -29,7 +29,7 @@ const aboutdeji = () => {
 
   return (
     <div className="mb-[3rem] mt-[3rem]">
-      <p className="px-[1.5rem] tracking-wide lg:px-[14.5rem]">
+      <p className="px-[1.5rem] tracking-wide lg:px-[14.5rem] leading-8">
         I’m Ayodeji Olupinla, a Software Developer passionate about building
         smooth, high-performance digital experiences. I specialize in React and
         Next.js, creating fast, scalable products that solve real problems.

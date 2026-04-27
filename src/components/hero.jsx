@@ -17,6 +17,39 @@ const hero = () => {
   const imgWrap3 = useRef(null);
   const heroRef = useRef(null);
 
+  // useLayoutEffect(() => {
+  //   const heroContainer = {
+  //     hidden: {
+  //       opacity: 0,
+  //       y: 0,
+  //     },
+  //     show: {
+  //       opacity: 1,
+  //       transition: {
+  //         delayChildren: 0.55,
+  //         staggerChildren: 0.18,
+  //         duration: 0.7,
+  //         y: 50,
+  //       },
+  //     },
+  //   };
+
+  //   const heroContent = {
+  //     hidden: {
+  //       opacity: 0,
+  //       y: 40,
+  //     },
+  //     show: {
+  //       opacity: 1,
+  //       y: 0,
+  //       transition: {
+  //         duration: 0.6,
+  //         ease: [0.22, 1, 0.36, 1],
+  //       },
+  //     },
+  //   };
+  // });
+
   const heroContainer = {
     hidden: {
       opacity: 0,
@@ -127,7 +160,7 @@ const hero = () => {
     <motion.div
       variants={heroContainer}
       initial="hidden"
-      whileInView="show"
+      animate="show"
       viewport={{ once: true }}
       ref={heroRef}
       className="mb-[7rem] lg:mb-[5rem] mt-[3.5rem] lg:mt-[2.5rem] hero"

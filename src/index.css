@@ -736,7 +736,7 @@ button {
   color: #000000;
   border: none;
   height: 6.8vh;
-  width: 17rem;
+  width: 10rem;
   font-size: 0.7rem;
   margin: 0 auto;
 }
@@ -744,7 +744,7 @@ button {
   .view-btn {
     background-color: #ffffff;
   color: #000000;
-    width: 17vw;
+    width: 13vw;
     font-size: 0.8rem;
     border: none;
     height: 8vh;
