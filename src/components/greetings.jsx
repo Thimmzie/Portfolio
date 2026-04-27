@@ -69,8 +69,8 @@ const Greetings = ({ onFinish }) => {
   }, [onFinish]);
 
   return (
-    <div ref={containerRef} className="perspective-wrapper">
-      <div className="bg-[#000000] h-[100vh] flex flex-col items-center justify-center text-[2rem] md:text-[2.5rem] text-[white] lg:text-[2rem] greeting-container">
+    <div ref={containerRef} className="perspective-wrapper overflow-hidden">
+      <div className="bg-[#000000] h-screen overflow-y-hidden flex flex-col items-center justify-center text-[2rem] md:text-[2.5rem] text-[white] lg:text-[2rem] greeting-container">
         <span ref={textRef} className="pleasantries-text">
           {pleasantries[index]}
         </span>
