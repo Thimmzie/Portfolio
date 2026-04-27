@@ -79,76 +79,27 @@ const hero = () => {
 
   //   return () => ctx.revert();
   // }, []);
-
   useLayoutEffect(() => {
+    if (!heroRef.current) return;
+
     const ctx = gsap.context(() => {
-      // Initial states
-      gsap.set(heroRef.current, { opacity: 0 });
+      const q = gsap.utils.selector(heroRef);
 
-      gsap.set(['.founder', '.body', '.button'], {
+      gsap.set(q('.founder, .body, .button, .img'), {
         opacity: 0,
-        y: 80,
+        y: 40,
       });
 
-      gsap.set('.img', {
-        opacity: 0,
-        scale: 0.95,
+      const tl = gsap.timeline({
+        defaults: { ease: 'power3.out' },
+        delay: 0.2, // 👈 small delay helps mobile stabilize
       });
 
-      const tl = gsap.timeline();
-
-      // Show container instantly (prevents flash stacking)
-      tl.to(heroRef.current, {
-        opacity: 1,
-        duration: 0.01,
-      });
-
-      // Image enters first (clean + modern)
-      tl.to(
-        '.img',
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          ease: 'power3.out',
-        },
-        '+=0.3',
-      );
-
-      // Then text (staggered like your Framer version)
-      tl.to(
-        '.founder',
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: 'back.out(1.4)',
-        },
-        '-=0.2',
-      );
-
-      tl.to(
-        '.body',
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: 'power3.out',
-          stagger: 0.15,
-        },
-        '-=0.4',
-      );
-
-      tl.to(
-        '.button',
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: 'power3.out',
-        },
-        '-=0.4',
-      );
+      tl.to(heroRef.current, { opacity: 1, duration: 0.6 })
+        .to(q('.founder'), { opacity: 1, y: 0 }, '-=0.3')
+        .to(q('.body'), { opacity: 1, y: 0, stagger: 0.15 }, '-=0.3')
+        .to(q('.button'), { opacity: 1, y: 0 }, '-=0.3')
+        .to(q('.img'), { opacity: 1, y: 0 }, '-=0.4');
     }, heroRef);
 
     return () => ctx.revert();
