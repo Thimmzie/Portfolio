@@ -21,11 +21,11 @@ function SplashController() {
   const [appReady, setAppReady] = useState(false);
 
   useEffect(() => {
-    const timer = requestAnimationFrame(() => {
-      setTimeout(() => setAppReady(true), 200);
-    });
+    const handleLoad = (() => setAppReady(true), 300);
 
-    return () => cancelAnimationFrame(timer);
+    window.addEventListener('load', handleLoad);
+
+    return () => window.removeEventListener('load', handleLoad);
   }, []);
 
   useEffect(() => {

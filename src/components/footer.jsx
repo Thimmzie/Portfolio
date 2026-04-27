@@ -68,39 +68,43 @@ const footer = ({ appReady }) => {
   useLayoutEffect(() => {
     if (!appReady) return;
 
-    const ctx = gsap.context(() => {
-      gsap.set(btnRef.current, { x: -120 });
-      gsap.set(mailRef.current, { y: 110, opacity: 0 });
+    const timer = setTimeout(() => {
+      if (!btnRef.current || !mailRef.current) return;
 
-      ScrollTrigger.create({
-        trigger: btnRef.current,
-        start: 'top 85%',
-        end: () => `+=${window.innerHeight * 0.8}`, // 🔥 key fix
-        scrub: 1.2,
-        animation: gsap.to(btnRef.current, {
+      const ctx = gsap.context(() => {
+        gsap.set(btnRef.current, { x: -120 });
+        gsap.set(mailRef.current, { y: 110, opacity: 0 });
+
+        gsap.to(btnRef.current, {
           x: 0,
           ease: 'none',
-        }),
-      });
+          scrollTrigger: {
+            trigger: btnRef.current,
+            start: 'top 85%',
+            end: `+=${window.innerHeight * 0.8}`,
+            scrub: 1.2,
+          },
+        });
 
-      gsap.to(mailRef.current, {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-          trigger: mailRef.current,
-          start: 'top 90%',
-          toggleActions: 'play none none reverse',
-        },
-      });
-    }, footerRef);
+        gsap.to(mailRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          ease: 'back.out(1.7)',
+          scrollTrigger: {
+            trigger: mailRef.current,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+          },
+        });
+      }, footerRef);
 
-    setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 100);
 
-    return () => ctx.revert();
+      return () => ctx.revert();
+    }, 150); // 👈 sweet spot for mobile
+
+    return () => clearTimeout(timer);
   }, [appReady]);
 
   // useLayoutEffect(() => {
@@ -163,7 +167,7 @@ const footer = ({ appReady }) => {
             data-hover="Get in touch"
             onClick={() => navigate('/contact')}
           >
-            Get in touchnow
+            Get in touchway
           </button>
         </div>
         <div className="horizontal mx-auto"></div>
