@@ -21,7 +21,11 @@ function SplashController() {
   const [appReady, setAppReady] = useState(false);
 
   useEffect(() => {
-    const handleLoad = (() => setAppReady(true), 300);
+    const handleLoad = () => {
+      setTimeout(() => {
+        setAppReady(true);
+      }, 300);
+    };
 
     window.addEventListener('load', handleLoad);
 
