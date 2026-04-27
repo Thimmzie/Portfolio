@@ -39,6 +39,7 @@ const home = ({ appReady }) => {
   const [navbarReady, setNavbarReady] = useState(false);
   const swiperRef = useRef(null);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
+  const navbarTriggers = useRef([]);
 
   // useEffect(() => {
   //   const mediaQuery = window.matchMedia('(min-width: 1024px)');
@@ -126,8 +127,7 @@ const home = ({ appReady }) => {
         ease: 'none',
         paused: true,
       });
-
-      ScrollTrigger.create({
+      const trigger = ScrollTrigger.create({
         trigger: '.navbar-backdrop',
         start: 'top top',
         end: `+=${viewportHeight}`,
@@ -161,6 +161,42 @@ const home = ({ appReady }) => {
           }
         },
       });
+
+      navbarTriggers.current.push(trigger);
+      // ScrollTrigger.create({
+      //   trigger: '.navbar-backdrop',
+      //   start: 'top top',
+      //   end: `+=${viewportHeight}`,
+      //   scrub: 1,
+      //   onUpdate: (self) => {
+      //     const progress = self.progress;
+
+      //     gsap.set([navbarBg, navbarItems], {
+      //       width: gsap.utils.interpolate(
+      //         initialWidth,
+      //         viewportWidth,
+      //         progress,
+      //       ),
+      //       height: gsap.utils.interpolate(
+      //         initialHeight,
+      //         viewportHeight,
+      //         progress,
+      //       ),
+      //     });
+
+      //     flip.progress(progress);
+
+      //     if (progress > 0.99) setNavbarReady(true);
+      //     else setNavbarReady(false);
+
+      //     if (swiperRef.current) {
+      //       gsap.set(swiperRef.current, {
+      //         y: 2 * progress,
+      //         opacity: 1 - progress,
+      //       });
+      //     }
+      //   },
+      // });
     };
 
     initNavbarAnimations();
@@ -171,7 +207,10 @@ const home = ({ appReady }) => {
       timer = setTimeout(() => {
         if (!window.matchMedia('(min-width: 1024px)').matches) return;
 
-        ScrollTrigger.getAll().forEach((t) => t.kill());
+        // ScrollTrigger.getAll().forEach((t) => t.kill());
+
+        navbarTriggers.forEach((t) => t.kill());
+        navbarTriggers = [];
 
         gsap.set(
           [navbarBgRef.current, navbarItemsRef.current, navbarLogoRef.current],
@@ -187,11 +226,20 @@ const home = ({ appReady }) => {
 
     window.addEventListener('resize', handleResize);
 
+    // return () => {
+    //   window.removeEventListener('resize', handleResize);
+    //   ScrollTrigger.getAll().forEach((t) => t.kill());
+    //   lenisRef.current?.destroy();
+    //   // gsap.ticker.remove(raf);
+    // };
+
     return () => {
       window.removeEventListener('resize', handleResize);
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+
+      navbarTriggers.current.forEach((t) => t.kill());
+      navbarTriggers.current = [];
+
       lenisRef.current?.destroy();
-      // gsap.ticker.remove(raf);
     };
   }, []);
 
