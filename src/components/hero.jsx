@@ -79,31 +79,32 @@ const hero = () => {
 
   //   return () => ctx.revert();
   // }, []);
-  useLayoutEffect(() => {
-    if (!heroRef.current) return;
 
-    const ctx = gsap.context(() => {
-      const q = gsap.utils.selector(heroRef);
+  // useLayoutEffect(() => {
+  //   if (!heroRef.current) return;
 
-      gsap.set(q('.founder, .body, .button, .img'), {
-        opacity: 0,
-        y: 40,
-      });
+  //   const ctx = gsap.context(() => {
+  //     const q = gsap.utils.selector(heroRef);
 
-      const tl = gsap.timeline({
-        defaults: { ease: 'power3.out' },
-        delay: 0.2, // 👈 small delay helps mobile stabilize
-      });
+  //     gsap.set(q('.founder, .body, .button, .img'), {
+  //       opacity: 0,
+  //       y: 40,
+  //     });
 
-      tl.to(heroRef.current, { opacity: 1, duration: 0.6 })
-        .to(q('.founder'), { opacity: 1, y: 0 }, '-=0.3')
-        .to(q('.body'), { opacity: 1, y: 0, stagger: 0.15 }, '-=0.3')
-        .to(q('.button'), { opacity: 1, y: 0 }, '-=0.3')
-        .to(q('.img'), { opacity: 1, y: 0 }, '-=0.4');
-    }, heroRef);
+  //     const tl = gsap.timeline({
+  //       defaults: { ease: 'power3.out' },
+  //       delay: 0.2, // 👈 small delay helps mobile stabilize
+  //     });
 
-    return () => ctx.revert();
-  }, []);
+  //     tl.to(heroRef.current, { opacity: 1, duration: 0.6 })
+  //       .to(q('.founder'), { opacity: 1, y: 0 }, '-=0.3')
+  //       .to(q('.body'), { opacity: 1, y: 0, stagger: 0.15 }, '-=0.3')
+  //       .to(q('.button'), { opacity: 1, y: 0 }, '-=0.3')
+  //       .to(q('.img'), { opacity: 1, y: 0 }, '-=0.4');
+  //   }, heroRef);
+
+  //   return () => ctx.revert();
+  // }, []);
 
   // useLayoutEffect(() => {
   //   const ctx = gsap.context(() => {
