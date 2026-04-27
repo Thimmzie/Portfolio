@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { socials } from '../../constants/index.js';
 import gsap from 'gsap/all';
 import { ScrollTrigger } from 'gsap/all';
@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const footer = ({ appReady }) => {
   const [time, setTime] = useState('');
+  const footerRef = useRef(null);
 
   useEffect(() => {
     const update = () => {
@@ -26,14 +27,16 @@ const footer = ({ appReady }) => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!appReady) return;
-    gsap.fromTo(
-      '.footer-btn',
-      { x: -120, opacity: 1 },
-      {
+
+    const ctx = gsap.context(() => {
+      // IMPORTANT: kill old triggers to prevent duplication bugs
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+
+      // Footer button scrub animation
+      gsap.to('.footer-btn', {
         x: 0,
-        opacity: 1,
         ease: 'none',
         scrollTrigger: {
           trigger: '.footer-btn',
@@ -41,34 +44,33 @@ const footer = ({ appReady }) => {
           end: '+=600',
           scrub: 1.5,
         },
-      },
-    );
-  }, [appReady]);
+      });
 
-  useEffect(() => {
-    if (!appReady) return;
-    gsap.fromTo(
-      '.mail-btn',
-      { y: 110, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
+      // Mail button entrance animation (NOT scrubbed)
+      gsap.from('.mail-btn', {
+        y: 110,
+        opacity: 0,
         duration: 0.7,
         ease: 'back.out(1.7)',
-        delay: 2,
+        delay: 0.2,
         scrollTrigger: {
-          trigger: '.footer-btn',
+          trigger: '.mail-btn',
           start: 'top 90%',
-          toggleActions: 'restart none none reverse',
+          toggleActions: 'play none none reverse',
         },
-      },
-    );
+      });
+    }, footerRef);
+
+    // VERY IMPORTANT: fix layout calculation
+    ScrollTrigger.refresh();
+
+    return () => ctx.revert();
   }, [appReady]);
 
   const navigate = useNavigate();
 
   return (
-    <div className="footer-wrapper">
+    <div ref={footerRef} className="footer-wrapper">
       <div className="min-h-screen lg:h-screen bg-[#1c1d20] pt-[3.5rem] px-[1.5rem] footer mb-0">
         <div>
           <h2 className="text-[#ffffff] text-[2.3rem] tracking-wide pl-7 sm:pl-14 sm:text-[2.8rem] md:pl-35 lg:text-[3.2rem] lg:pl-78">
