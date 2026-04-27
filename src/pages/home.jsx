@@ -23,7 +23,7 @@ import { LuDot } from 'react-icons/lu';
 
 gsap.registerPlugin(ScrollTrigger, Flip);
 
-const home = () => {
+const home = ({ appReady }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [sidemenu, setSidemenu] = useState(false);
@@ -365,7 +365,7 @@ const home = () => {
       <Project />
       <Tool />
       <Faq />
-      <Footer />
+      <Footer appReady={appReady} />
     </div>
   );
 };

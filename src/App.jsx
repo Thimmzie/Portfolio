@@ -18,6 +18,15 @@ import './App.css';
 function SplashController() {
   const location = useLocation();
   const [showGreetings, setShowGreetings] = useState(false);
+  const [appReady, setAppReady] = useState(false);
+
+  useEffect(() => {
+    const timer = requestAnimationFrame(() => {
+      setTimeout(() => setAppReady(true), 200);
+    });
+
+    return () => cancelAnimationFrame(timer);
+  }, []);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -62,8 +71,8 @@ function SplashController() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route index element={<Home />} />
-        <Route path="/home" element={<Home />} />
+        <Route index element={<Home appReady={appReady} />} />
+        <Route path="/home" element={<Home appReady={appReady} />} />
         <Route path="*" element={<Nopage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

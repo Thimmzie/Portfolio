@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const footer = () => {
+const footer = ({ appReady }) => {
   const [time, setTime] = useState('');
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const footer = () => {
   }, []);
 
   useEffect(() => {
+    if (!appReady) return;
     gsap.fromTo(
       '.footer-btn',
       { x: -120, opacity: 1 },
@@ -40,11 +41,12 @@ const footer = () => {
           end: '+=600',
           scrub: 1.5,
         },
-      }
+      },
     );
-  }, []);
+  }, [appReady]);
 
   useEffect(() => {
+    if (!appReady) return;
     gsap.fromTo(
       '.mail-btn',
       { y: 110, opacity: 0 },
@@ -59,9 +61,9 @@ const footer = () => {
           start: 'top 90%',
           toggleActions: 'restart none none reverse',
         },
-      }
+      },
     );
-  }, []);
+  }, [appReady]);
 
   const navigate = useNavigate();
 
