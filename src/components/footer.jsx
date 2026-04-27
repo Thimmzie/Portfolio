@@ -31,10 +31,9 @@ const footer = ({ appReady }) => {
     if (!appReady) return;
 
     const ctx = gsap.context(() => {
-      // IMPORTANT: kill old triggers to prevent duplication bugs
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      gsap.set('.footer-btn', { x: -120, opacity: 1 });
+      gsap.set('.mail-btn', { y: 110, opacity: 0 });
 
-      // Footer button scrub animation
       gsap.to('.footer-btn', {
         x: 0,
         ease: 'none',
@@ -46,13 +45,11 @@ const footer = ({ appReady }) => {
         },
       });
 
-      // Mail button entrance animation (NOT scrubbed)
-      gsap.from('.mail-btn', {
-        y: 110,
-        opacity: 0,
+      gsap.to('.mail-btn', {
+        y: 0,
+        opacity: 1,
         duration: 0.7,
         ease: 'back.out(1.7)',
-        delay: 0.2,
         scrollTrigger: {
           trigger: '.mail-btn',
           start: 'top 90%',
@@ -61,12 +58,10 @@ const footer = ({ appReady }) => {
       });
     }, footerRef);
 
-    // VERY IMPORTANT: fix layout calculation
     ScrollTrigger.refresh();
 
     return () => ctx.revert();
   }, [appReady]);
-
   const navigate = useNavigate();
 
   return (
