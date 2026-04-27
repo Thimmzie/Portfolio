@@ -9,7 +9,7 @@ import { ScrollTrigger } from 'gsap/all';
 import { Flip } from 'gsap/all';
 import Lenis from 'lenis';
 import Hero from '../components/hero';
-import Skills from '../components/skills.jsx';
+// import Skills from '../components/skills.jsx';
 import Project from '../components/projects';
 import Tool from '../components/tools';
 import Faq from '../components/faq';
@@ -361,7 +361,7 @@ const home = () => {
       </div>
 
       <Hero />
-      <Skills />
+      {/* <Skills /> */}
       <Project />
       <Tool />
       <Faq />
