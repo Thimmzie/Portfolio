@@ -129,7 +129,7 @@ const projects = () => {
             );
           })}
         </div>
-        <div className="flex flex-col justify-center mt-[4rem]">
+        <div className="flex flex-col justify-center mt-[2rem] lg:mt-[4rem]">
           <button
             className="view-btn"
             data-hover="View all projects"
