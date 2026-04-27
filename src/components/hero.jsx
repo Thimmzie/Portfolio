@@ -82,35 +82,109 @@ const hero = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // elements already hidden via CSS
-      gsap.set(['.founder', '.body', '.button', '.img'], {
+      // Initial states
+      gsap.set(heroRef.current, { opacity: 0 });
+
+      gsap.set(['.founder', '.body', '.button'], {
         opacity: 0,
-        y: 40,
+        y: 80,
+      });
+
+      gsap.set('.img', {
+        opacity: 0,
+        scale: 0.95,
       });
 
       const tl = gsap.timeline();
 
-      // reveal container immediately (no flicker)
+      // Show container instantly (prevents flash stacking)
       tl.to(heroRef.current, {
         opacity: 1,
         duration: 0.01,
       });
 
+      // Image enters first (clean + modern)
       tl.to(
-        ['.founder', '.body', '.button', '.img'],
+        '.img',
         {
           opacity: 1,
-          y: 0,
+          scale: 1,
           duration: 0.6,
-          ease: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          ease: 'power3.out',
+        },
+        '+=0.3',
+      );
+
+      // Then text (staggered like your Framer version)
+      tl.to(
+        '.founder',
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: 'back.out(1.4)',
+        },
+        '-=0.2',
+      );
+
+      tl.to(
+        '.body',
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: 'power3.out',
           stagger: 0.15,
         },
-        '+=0.55',
+        '-=0.4',
+      );
+
+      tl.to(
+        '.button',
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: 'power3.out',
+        },
+        '-=0.4',
       );
     }, heroRef);
 
     return () => ctx.revert();
   }, []);
+
+  // useLayoutEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     gsap.set(heroRef.current, { opacity: 0 });
+
+  //     gsap.set(['.founder', '.body', '.button', '.img'], {
+  //       opacity: 0,
+  //       y: 40,
+  //     });
+
+  //     const tl = gsap.timeline();
+
+  //     tl.to(heroRef.current, {
+  //       opacity: 1,
+  //       duration: 0.7,
+  //     });
+
+  //     tl.to(
+  //       ['.founder', '.body', '.button', '.img'],
+  //       {
+  //         opacity: 1,
+  //         y: 0,
+  //         duration: 0.6,
+  //         ease: 'cubic-bezier(0.22, 1, 0.36, 1)',
+  //         stagger: 0.22,
+  //       },
+  //       '+=0.55',
+  //     );
+  //   }, heroRef);
+
+  //   return () => ctx.revert();
+  // }, []);
 
   // useLayoutEffect(() => {
   //   const ctx = gsap.context(() => {
@@ -192,7 +266,7 @@ const hero = () => {
   return (
     <div
       ref={heroRef}
-      className="opacity-0 mb-[7rem] lg:mb-[5rem] mt-[3.5rem] lg:mt-[2.5rem] hero"
+      className="mb-[7rem] lg:mb-[5rem] mt-[3.5rem] lg:mt-[2.5rem] hero"
     >
       <div className="flex flex-col gap-2 mt-[2rem] md:flex-row md:gap-2 lg:gap-[15rem] md:justify-center lg:mt-[2rem] xl:gap-[13rem]">
         <div className="px-[1.3rem] lg:mt-[5rem] md:max-w-md lg:max-w-lg">
