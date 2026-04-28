@@ -251,7 +251,9 @@ const hero = () => {
             <button
               className="btn3"
               data-hover="My CV"
-              onClick={() => window.open('/Ayodeji_Olupinla_CV.pdf', '_blank')}
+              onClick={() =>
+                window.open('/001_Ayodeji_Olupinla_CV.pdf', '_blank')
+              }
             >
               <span>My CV</span>
             </button>
