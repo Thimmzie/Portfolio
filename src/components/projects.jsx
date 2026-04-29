@@ -82,69 +82,141 @@ const projects = ({ appReady }) => {
     if (!appReady) return;
 
     let ctx;
-    let raf1 = requestAnimationFrame(() => {
-      let raf2 = requestAnimationFrame(() => {
-        ctx = gsap.context(() => {
-          const mm = gsap.matchMedia();
 
-          mm.add('(max-width: 768px)', () => {
-            gsap.utils.toArray('.project').forEach((card) => {
-              gsap.fromTo(
-                card,
-                { y: 80, opacity: 0 },
-                {
-                  y: 0,
-                  opacity: 1,
-                  duration: 0.6,
-                  ease: 'power3.out',
-                  scrollTrigger: {
-                    trigger: card,
-                    start: 'top 85%',
-                  },
-                },
-              );
-            });
-          });
+    const raf = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        const mm = gsap.matchMedia();
 
-          mm.add('(min-width: 769px)', () => {
+        gsap.set('.project', { opacity: 0, y: 80 });
+
+        mm.add('(max-width: 768px)', () => {
+          gsap.utils.toArray('.project').forEach((card) => {
             gsap.fromTo(
-              '.project',
-              { y: 80, opacity: 0 },
+              card,
+              { opacity: 0, y: 80 },
               {
-                y: 0,
                 opacity: 1,
-                stagger: 0.25,
+                y: 0,
+                duration: 0.6,
+                ease: 'power3.out',
                 scrollTrigger: {
-                  trigger: '.project',
-                  start: 'top 90%',
+                  trigger: card,
+                  start: 'top 85%',
+                  once: true,
                 },
               },
             );
           });
+        });
 
+        mm.add('(min-width: 769px)', () => {
           gsap.fromTo(
-            '.view-btn',
-            { y: 110, opacity: 0 },
+            '.project',
+            { opacity: 0, y: 80 },
             {
-              y: 0,
               opacity: 1,
+              y: 0,
+              stagger: 0.25,
               scrollTrigger: {
-                trigger: '.view-btn',
-                start: 'top 90%',
+                trigger: containerRef.current,
+                start: 'top 80%',
+                once: true,
               },
             },
           );
-        }, containerRef);
+        });
 
-        ScrollTrigger.refresh();
-      });
+        gsap.fromTo(
+          '.view-btn',
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            scrollTrigger: {
+              trigger: '.view-btn',
+              start: 'top 90%',
+              once: true,
+            },
+          },
+        );
+      }, containerRef);
+
+      ScrollTrigger.refresh();
     });
 
     return () => {
-      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf);
       ctx?.revert();
     };
   }, [appReady]);
+
+  // useLayoutEffect(() => {
+  //   if (!appReady) return;
+
+  //   let ctx;
+  //   let raf1 = requestAnimationFrame(() => {
+  //     let raf2 = requestAnimationFrame(() => {
+  //       ctx = gsap.context(() => {
+  //         const mm = gsap.matchMedia();
+
+  //         mm.add('(max-width: 768px)', () => {
+  //           gsap.utils.toArray('.project').forEach((card) => {
+  //             gsap.fromTo(
+  //               card,
+  //               { y: 80, opacity: 0 },
+  //               {
+  //                 y: 0,
+  //                 opacity: 1,
+  //                 duration: 0.6,
+  //                 ease: 'power3.out',
+  //                 scrollTrigger: {
+  //                   trigger: card,
+  //                   start: 'top 85%',
+  //                 },
+  //               },
+  //             );
+  //           });
+  //         });
+
+  //         mm.add('(min-width: 769px)', () => {
+  //           gsap.fromTo(
+  //             '.project',
+  //             { y: 80, opacity: 0 },
+  //             {
+  //               y: 0,
+  //               opacity: 1,
+  //               stagger: 0.25,
+  //               scrollTrigger: {
+  //                 trigger: '.project',
+  //                 start: 'top 90%',
+  //               },
+  //             },
+  //           );
+  //         });
+
+  //         gsap.fromTo(
+  //           '.view-btn',
+  //           { y: 110, opacity: 0 },
+  //           {
+  //             y: 0,
+  //             opacity: 1,
+  //             scrollTrigger: {
+  //               trigger: '.view-btn',
+  //               start: 'top 90%',
+  //             },
+  //           },
+  //         );
+  //       }, containerRef);
+
+  //       ScrollTrigger.refresh();
+  //     });
+  //   });
+
+  //   return () => {
+  //     cancelAnimationFrame(raf1);
+  //     ctx?.revert();
+  //   };
+  // }, [appReady]);
 
   const colors = ['#e3f2fd', '#e3f2fd'];
 
@@ -156,7 +228,7 @@ const projects = ({ appReady }) => {
       className="mb-[2rem] bg-[#000000] pt-[2rem] lg:pt-[5rem] pb-[7rem] lg:mt-[4rem] flex flex-col items-center"
     >
       <h1 className="text-[#ffffff] text-[1.5rem] font-[600]">
-        Recent Projects
+        Recent Projectsttt
       </h1>
       <div>
         <div className="flex flex-col mt-[3rem] items-center gap-[2rem] md:flex-row md:px-4 lg:px-[4rem]">

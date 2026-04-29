@@ -39,7 +39,7 @@ const tools = () => {
     );
   }, []);
   return (
-    <div className="mb-[5rem] -mt-[4rem]">
+    <div className="mb-[5rem] -mt-[1rem]">
       <div className="flex flex-col items-center text-[#ffffff] text-[1.5rem] font-[600] z-50">
         <h1>Tools & Technologies</h1>
       </div>

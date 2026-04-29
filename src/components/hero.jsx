@@ -138,7 +138,7 @@ const hero = ({ appReady }) => {
   return (
     <div
       ref={heroRef}
-      className="mb-[7rem] lg:mb-[5rem] mt-[3.5rem] lg:mt-[2.5rem] hero"
+      className="mb-[1rem] lg:mb-[2rem] mt-[3.5rem] lg:mt-[2.5rem] hero"
     >
       <div className="flex flex-col gap-2 mt-[2rem] md:flex-row md:gap-2 lg:gap-[15rem] md:justify-center lg:mt-[2rem] xl:gap-[13rem]">
         <div className="px-[1.3rem] lg:mt-[5rem] md:max-w-md lg:max-w-lg">
