@@ -79,7 +79,7 @@ const Greetings = ({ onFinish }) => {
 
   return (
     <div ref={containerRef} className="perspective-wrapper overflow-hidden">
-      <div className="bg-[#000000] h-screen overflow-y-hidden flex flex-col items-center justify-center text-[2rem] md:text-[2.5rem] text-[white] lg:text-[2rem] greeting-container">
+      <div className="bg-[#000000] fixed inset-0 z-[9999] overflow-hidden flex flex-col items-center justify-center text-[2rem] md:text-[2.5rem] text-[white] lg:text-[2rem] greeting-container">
         <span ref={textRef} className="pleasantries-text">
           {pleasantries[index]}
         </span>

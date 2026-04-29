@@ -12,8 +12,9 @@ const skills = ({ appReady }) => {
     if (!appReady) return;
 
     let ctx;
-    let raf1 = requestAnimationFrame(() => {
-      let raf2 = requestAnimationFrame(() => {
+
+    const raf1 = requestAnimationFrame(() => {
+      const raf2 = requestAnimationFrame(() => {
         ctx = gsap.context(() => {
           const items = gsap.utils.toArray('.skill-item');
 
@@ -29,7 +30,7 @@ const skills = ({ appReady }) => {
               ease: 'power3.out',
               scrollTrigger: {
                 trigger: skillsRef.current,
-                start: 'top 60%',
+                start: 'top 70%',
                 once: true,
                 invalidateOnRefresh: true,
               },
@@ -39,6 +40,8 @@ const skills = ({ appReady }) => {
 
         ScrollTrigger.refresh();
       });
+
+      return () => cancelAnimationFrame(raf2);
     });
 
     return () => {
@@ -83,7 +86,7 @@ const skills = ({ appReady }) => {
   return (
     <div ref={skillsRef} className="mb-[5rem] px-3 sm:px-6 md:px-10 lg:px-56">
       <h1 className="text-[#ffffff] text-[1.5rem] font-[600] text-center">
-        Constraints Resolved
+        Constraints Resolvedggggg
       </h1>
       <div className="flex flex-wrap gap-2 sm:gap-4 mt-8">
         {Skills.map((skill) => {
