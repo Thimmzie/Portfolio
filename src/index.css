@@ -1320,3 +1320,6 @@ body{
 .hero .img {
   opacity: 0;
 }
+.skill-item{
+  opacity:0;
+}
