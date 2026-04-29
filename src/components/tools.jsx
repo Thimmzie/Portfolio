@@ -33,7 +33,7 @@ const tools = () => {
         scrollTrigger: {
           trigger: '.tech',
           start: 'top 90%',
-          toggleActions: 'play none none reverse',
+          toggleActions: 'play none none none',
         },
       },
     );

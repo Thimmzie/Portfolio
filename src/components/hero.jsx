@@ -94,45 +94,74 @@ const hero = ({ appReady }) => {
   useLayoutEffect(() => {
     if (!appReady) return;
 
-    let ctx;
+    const ctx = gsap.context(() => {
+      gsap.set(heroRef.current, { opacity: 1 });
 
-    const raf1 = requestAnimationFrame(() => {
-      const raf2 = requestAnimationFrame(() => {
-        ctx = gsap.context(() => {
-          gsap.set(heroRef.current, { opacity: 0 });
-
-          gsap.set(['.founder', '.body', '.button', '.img'], {
-            opacity: 0,
-            y: 40,
-          });
-
-          const tl = gsap.timeline();
-
-          tl.to(heroRef.current, {
-            opacity: 1,
-            duration: 0.7,
-          });
-
-          tl.to(
-            ['.founder', '.body', '.button', '.img'],
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.6,
-              ease: 'power3.out',
-              stagger: 0.22,
-            },
-            '+=0.55',
-          );
-        }, heroRef);
+      gsap.set(['.founder', '.body', '.button', '.img'], {
+        opacity: 0,
+        y: 40,
       });
-    });
 
-    return () => {
-      cancelAnimationFrame(raf1);
-      ctx?.revert();
-    };
+      const tl = gsap.timeline({
+        onComplete: () => {
+          window.dispatchEvent(new Event('heroDone'));
+        },
+      });
+
+      tl.to(['.founder', '.body', '.button', '.img'], {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: 'power3.out',
+      });
+    }, heroRef);
+
+    return () => ctx.revert();
   }, [appReady]);
+
+  // useLayoutEffect(() => {
+  //   if (!appReady) return;
+
+  //   let ctx;
+
+  //   const raf1 = requestAnimationFrame(() => {
+  //     const raf2 = requestAnimationFrame(() => {
+  //       ctx = gsap.context(() => {
+  //         gsap.set(heroRef.current, { opacity: 0 });
+
+  //         gsap.set(['.founder', '.body', '.button', '.img'], {
+  //           opacity: 0,
+  //           y: 40,
+  //         });
+
+  //         const tl = gsap.timeline();
+
+  //         tl.to(heroRef.current, {
+  //           opacity: 1,
+  //           duration: 0.7,
+  //         });
+
+  //         tl.to(
+  //           ['.founder', '.body', '.button', '.img'],
+  //           {
+  //             opacity: 1,
+  //             y: 0,
+  //             duration: 0.6,
+  //             ease: 'power3.out',
+  //             stagger: 0.22,
+  //           },
+  //           '+=0.55',
+  //         );
+  //       }, heroRef);
+  //     });
+  //   });
+
+  //   return () => {
+  //     cancelAnimationFrame(raf1);
+  //     ctx?.revert();
+  //   };
+  // }, [appReady]);
 
   const navigate = useNavigate();
   return (

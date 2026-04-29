@@ -79,15 +79,15 @@ const projects = ({ appReady }) => {
   // }, []);
 
   useLayoutEffect(() => {
-    if (!appReady) return;
-
     let ctx;
+    let mm;
 
-    const raf = requestAnimationFrame(() => {
+    const init = () => {
       ctx = gsap.context(() => {
-        const mm = gsap.matchMedia();
+        mm = gsap.matchMedia();
 
         gsap.set('.project', { opacity: 0, y: 80 });
+        gsap.set('.view-btn', { opacity: 0, y: 60 });
 
         mm.add('(max-width: 768px)', () => {
           gsap.utils.toArray('.project').forEach((card) => {
@@ -117,6 +117,7 @@ const projects = ({ appReady }) => {
               opacity: 1,
               y: 0,
               stagger: 0.25,
+              ease: 'power3.out',
               scrollTrigger: {
                 trigger: containerRef.current,
                 start: 'top 80%',
@@ -132,6 +133,7 @@ const projects = ({ appReady }) => {
           {
             opacity: 1,
             y: 0,
+            ease: 'power3.out',
             scrollTrigger: {
               trigger: '.view-btn',
               start: 'top 90%',
@@ -139,16 +141,23 @@ const projects = ({ appReady }) => {
             },
           },
         );
-      }, containerRef);
 
-      ScrollTrigger.refresh();
-    });
+        ScrollTrigger.refresh();
+      }, containerRef);
+    };
+
+    const handleHeroDone = () => {
+      init();
+    };
+
+    window.addEventListener('heroDone', handleHeroDone);
 
     return () => {
-      cancelAnimationFrame(raf);
+      window.removeEventListener('heroDone', handleHeroDone);
       ctx?.revert();
+      mm?.revert();
     };
-  }, [appReady]);
+  }, []);
 
   // useLayoutEffect(() => {
   //   if (!appReady) return;
