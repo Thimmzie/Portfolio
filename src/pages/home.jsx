@@ -409,8 +409,8 @@ const home = ({ appReady }) => {
       </div>
 
       <Hero appReady={appReady} />
-      <Skills appReady={appReady} />
       <Project appReady={appReady} />
+      <Skills appReady={appReady} />
       <Tool />
       <Faq />
       <Footer appReady={appReady} />
