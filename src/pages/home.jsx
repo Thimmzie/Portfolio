@@ -410,7 +410,7 @@ const home = ({ appReady }) => {
 
       <Hero />
       <Skills />
-      <Project />
+      <Project appReady={appReady} />
       <Tool />
       <Faq />
       <Footer appReady={appReady} />

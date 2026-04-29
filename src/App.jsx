@@ -14,6 +14,7 @@ import Contact from './pages/contact';
 import Project from './pages/projectfull';
 import Article from './pages/article';
 import './App.css';
+import { ScrollTrigger } from 'gsap/all';
 
 function SplashController() {
   const location = useLocation();
@@ -21,16 +22,26 @@ function SplashController() {
   const [appReady, setAppReady] = useState(false);
 
   useEffect(() => {
-    const handleLoad = () => {
-      setTimeout(() => {
-        setAppReady(true);
-      }, 300);
-    };
+    if (!appReady) return;
 
-    window.addEventListener('load', handleLoad);
+    const raf1 = requestAnimationFrame(() => {
+      const raf2 = requestAnimationFrame(() => {
+        ScrollTrigger.getAll().forEach((t) => t.kill());
+        ScrollTrigger.clearMatchMedia();
+        ScrollTrigger.refresh(true);
+      });
 
-    return () => window.removeEventListener('load', handleLoad);
-  }, []);
+      return () => cancelAnimationFrame(raf2);
+    });
+
+    return () => cancelAnimationFrame(raf1);
+  }, [appReady]);
+
+  useEffect(() => {
+    if (!showGreetings) {
+      setAppReady(true);
+    }
+  }, [showGreetings]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -67,9 +78,15 @@ function SplashController() {
       setShowGreetings(false);
     }
   }, []);
-
   if (showGreetings) {
-    return <Greetings onFinish={() => setShowGreetings(false)} />;
+    return (
+      <Greetings
+        onFinish={() => {
+          setShowGreetings(false);
+          setAppReady(true);
+        }}
+      />
+    );
   }
 
   return (

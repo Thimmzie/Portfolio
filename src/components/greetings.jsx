@@ -15,6 +15,7 @@ const Greetings = ({ onFinish }) => {
     'Enle 👋',
     'Ndewo 👋',
     'Sannu 👋',
+    '',
   ];
 
   const [index, setIndex] = useState(0);
@@ -30,43 +31,51 @@ const Greetings = ({ onFinish }) => {
         opacity: 0,
         duration: 0.1,
         onComplete: () => {
-          setIndex((prev) => (prev + 1) % pleasantries.length);
+          setIndex((prev) => {
+            if (prev === pleasantries.length - 1) {
+              clearInterval(interval);
+              return prev;
+            }
+            return prev + 1;
+          });
+
           gsap.to(el, { opacity: 1, duration: 0.1 });
         },
       });
-    }, 230);
+    }, 200);
 
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const container = containerRef.current;
-      if (!container) return;
+    if (index !== pleasantries.length - 1) return;
 
+    const container = containerRef.current;
+    if (!container) return;
+
+    const delay = setTimeout(() => {
       gsap.fromTo(
         container,
         {
           z: -200,
-          opacity: 0,
-          scale: 0.6,
+          opacity: 1,
+          scale: 1,
           transformOrigin: 'center center',
         },
         {
           scale: 1,
           opacity: 0,
           ease: 'back.inOut',
-          rotateY: 0,
           duration: 0.6,
           onComplete: () => {
             if (typeof onFinish === 'function') onFinish();
           },
         },
       );
-    }, 2300);
+    }, 50);
 
-    return () => clearTimeout(timer);
-  }, [onFinish]);
+    return () => clearTimeout(delay);
+  }, [index, pleasantries.length, onFinish]);
 
   return (
     <div ref={containerRef} className="perspective-wrapper overflow-hidden">
