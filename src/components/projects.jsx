@@ -228,7 +228,7 @@ const projects = ({ appReady }) => {
       className="mb-[2rem] bg-[#000000] pt-[2rem] lg:pt-[5rem] pb-[7rem] lg:mt-[4rem] flex flex-col items-center"
     >
       <h1 className="text-[#ffffff] text-[1.5rem] font-[600]">
-        Recent Projectsttt
+        Recent Projects
       </h1>
       <div>
         <div className="flex flex-col mt-[3rem] items-center gap-[2rem] md:flex-row md:px-4 lg:px-[4rem]">
