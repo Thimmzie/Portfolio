@@ -167,7 +167,7 @@ const footer = ({ appReady }) => {
             data-hover="Get in touch"
             onClick={() => navigate('/contact')}
           >
-            Get in touchway
+            Get in touch
           </button>
         </div>
         <div className="horizontal mx-auto"></div>

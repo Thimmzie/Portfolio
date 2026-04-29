@@ -1313,3 +1313,10 @@ body{
   display: inline-block;
   transform-origin: left;
 }
+
+.hero .founder,
+.hero .body,
+.hero .button,
+.hero .img {
+  opacity: 0;
+}

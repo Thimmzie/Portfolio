@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 gsap.registerPlugin(ScrollTrigger);
 
-const hero = () => {
+const hero = ({ appReady }) => {
   const containerRef = useRef(null);
   const imgWrap1 = useRef(null);
   const imgWrap2 = useRef(null);
@@ -213,6 +213,49 @@ const hero = () => {
 
   //   return () => ctx.revert();
   // }, []);
+
+  useLayoutEffect(() => {
+    if (!appReady) return;
+
+    let ctx;
+
+    const raf1 = requestAnimationFrame(() => {
+      const raf2 = requestAnimationFrame(() => {
+        ctx = gsap.context(() => {
+          gsap.set(heroRef.current, { opacity: 0 });
+
+          gsap.set(['.founder', '.body', '.button', '.img'], {
+            opacity: 0,
+            y: 40,
+          });
+
+          const tl = gsap.timeline();
+
+          tl.to(heroRef.current, {
+            opacity: 1,
+            duration: 0.7,
+          });
+
+          tl.to(
+            ['.founder', '.body', '.button', '.img'],
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              ease: 'power3.out',
+              stagger: 0.22,
+            },
+            '+=0.55',
+          );
+        }, heroRef);
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame(raf1);
+      ctx?.revert();
+    };
+  }, [appReady]);
 
   const navigate = useNavigate();
   return (
