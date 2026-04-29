@@ -14,6 +14,7 @@ import Project from '../components/projects';
 import Tool from '../components/tools';
 import Faq from '../components/faq';
 import Footer from '../components/footer';
+import Ghost from '../components/ghost.jsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -409,6 +410,7 @@ const home = ({ appReady }) => {
       </div>
 
       <Hero appReady={appReady} />
+      <Ghost appReady={appReady} />
       <Skills appReady={appReady} />
       <Project appReady={appReady} />
       <Tool />

@@ -119,7 +119,7 @@ const skills = ({ appReady }) => {
   return (
     <div ref={skillsRef} className="mb-[5rem] px-3 sm:px-6 md:px-10 lg:px-56">
       <h1 className="text-[#ffffff] text-[1.5rem] font-[600] text-center">
-        Constraints Resolved
+        Constraints Resolvedoooooo
       </h1>
       <div className="flex flex-wrap gap-2 sm:gap-4 mt-8">
         {Skills.map((skill) => {

@@ -1323,3 +1323,6 @@ body{
 .skill-item{
   opacity:0;
 }
+.need{
+  opacity: 0;
+}
