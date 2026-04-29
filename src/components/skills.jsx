@@ -13,39 +13,35 @@ const skills = ({ appReady }) => {
 
     let ctx;
 
-    const raf1 = requestAnimationFrame(() => {
-      const raf2 = requestAnimationFrame(() => {
-        ctx = gsap.context(() => {
-          const items = gsap.utils.toArray('.skill-item');
+    const raf = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        const items = gsap.utils.toArray('.skill-item');
 
-          gsap.fromTo(
-            items,
-            { opacity: 0, y: 50, scale: 0.3 },
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              stagger: 0.06,
-              duration: 0.6,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: skillsRef.current,
-                start: 'top 70%',
-                once: true,
-                invalidateOnRefresh: true,
-              },
+        gsap.fromTo(
+          items,
+          { opacity: 0, y: 50, scale: 0.3 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            stagger: 0.06,
+            duration: 0.6,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: skillsRef.current,
+              start: 'top 70%',
+              once: true,
+              invalidateOnRefresh: true,
             },
-          );
-        }, skillsRef);
+          },
+        );
+      }, skillsRef);
 
-        ScrollTrigger.refresh();
-      });
-
-      return () => cancelAnimationFrame(raf2);
+      ScrollTrigger.refresh();
     });
 
     return () => {
-      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf);
       ctx?.revert();
     };
   }, [appReady]);
@@ -86,7 +82,7 @@ const skills = ({ appReady }) => {
   return (
     <div ref={skillsRef} className="mb-[5rem] px-3 sm:px-6 md:px-10 lg:px-56">
       <h1 className="text-[#ffffff] text-[1.5rem] font-[600] text-center">
-        Constraints Resolvedggggg
+        Constraints Resolved
       </h1>
       <div className="flex flex-wrap gap-2 sm:gap-4 mt-8">
         {Skills.map((skill) => {
