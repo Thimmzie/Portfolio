@@ -49,31 +49,38 @@ const skills = ({ appReady }) => {
   useLayoutEffect(() => {
     if (!appReady) return;
 
-    const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray('.skill-item');
+    let ctx;
+    let raf = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        const items = skillsRef.current.querySelectorAll('.skill-item');
 
-      gsap.fromTo(
-        items,
-        { opacity: 0, y: 50, scale: 0.3 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          stagger: 0.06,
-          duration: 0.6,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: skillsRef.current,
-            start: 'top 75%',
-            once: true,
+        gsap.fromTo(
+          items,
+          { opacity: 0, y: 50, scale: 0.3 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            stagger: 0.06,
+            duration: 0.6,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: skillsRef.current,
+              start: 'top 75%',
+              once: true,
+              invalidateOnRefresh: true,
+            },
           },
-        },
-      );
-    }, skillsRef);
+        );
+      }, skillsRef);
 
-    ScrollTrigger.refresh();
+      ScrollTrigger.refresh();
+    });
 
-    return () => ctx.revert();
+    return () => {
+      cancelAnimationFrame(raf);
+      ctx?.revert();
+    };
   }, [appReady]);
 
   // useEffect(() => {
@@ -112,7 +119,7 @@ const skills = ({ appReady }) => {
   return (
     <div ref={skillsRef} className="mb-[5rem] px-3 sm:px-6 md:px-10 lg:px-56">
       <h1 className="text-[#ffffff] text-[1.5rem] font-[600] text-center">
-        Constraints Resolvedaaaaa
+        Constraints Resolved
       </h1>
       <div className="flex flex-wrap gap-2 sm:gap-4 mt-8">
         {Skills.map((skill) => {
